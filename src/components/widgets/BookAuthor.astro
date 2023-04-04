@@ -3,6 +3,10 @@ import { Icon } from 'astro-icon';
 import { PROFILE } from '~/config.mjs';
 import Picture from '~/components/core/Picture.astro';
 
+const callOutReason = 'What sets Liran Tal apart as an authority on secure coding in Node.js?';
+// other options include:
+// What makes Liran qualified to teach you about secure coding in Node.js?
+
 const items = [
 	[
 		{
@@ -62,16 +66,13 @@ const items = [
 				</div>
 			</div>
 
-			<h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-				<span
-					class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 whitespace-nowrap"
+			<div class="grid grid-cols-12">
+				<h3
+					class="text-2xl col-start-3 col-end-11 md:text-2xl w-full font-bold leading-tighter tracking-tighter mb-4 font-heading"
 				>
-					Liran Tal</span
-				>
-			</h2>
-			<p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400">
-				What makes Liran qualified to teach you about secure coding in Node.js?
-			</p>
+					{callOutReason}
+				</h3>
+			</div>
 		</div>
 		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
 			{
