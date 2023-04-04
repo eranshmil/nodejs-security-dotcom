@@ -1,7 +1,7 @@
 MIT License
 
 Copyright (c) 2022 onWidget
-Copyright (c) 2022 Liran Tal
+Copyright (c) 2023 Liran Tal
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

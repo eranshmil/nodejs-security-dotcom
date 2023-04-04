@@ -14,8 +14,6 @@ const getNormalizedPost = async (post) => {
 		title: frontmatter.title,
 		description: frontmatter.description,
 		image: frontmatter.image,
-		// body: compiledContent(),
-		// Content: Content,
 		Content: post.Content,
 
 		excerpt: frontmatter.excerpt,

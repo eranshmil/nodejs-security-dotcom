@@ -86,25 +86,16 @@ export const FOOTER = {
 export const SITE = {
 	name: 'Liran Tal',
 
-	origin: 'https://lirantal.com',
+	origin: 'https://nodejs-security.com',
 	basePathname: '/',
 
-	title: 'Liran Tal',
-	description: 'Developer Advocate | GitHub Star | OpenJS Security Pathfinder Award',
-
-	deprecated_googleAnalyticsId: false, // or "G-XXXXXXXXXX",
-	deprecated_googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
-
-	splitbeeAnalytics: {
-		enabled: true,
-		doNotTrack: true,
-		noCookieMode: false,
-	},
+	title: 'Node.js Security starts with Node.js Secure Coding',
+	description: 'Node.js Security and Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
 };
 
 export const BLOG = {
 	disabled: false,
-	postsPerPage: 25,
+	postsPerPage: 10,
 
 	blog: {
 		disabled: false,

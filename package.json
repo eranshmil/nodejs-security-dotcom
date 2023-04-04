@@ -1,6 +1,6 @@
 {
-  "name": "lirantaldotcom",
-  "description": "Liran Tal's personal website and blog",
+  "name": "nodejs-security-dotcom",
+  "description": "Node.js Security and Node.js Secure Coding's website",
   "version": "0.0.0",
   "private": true,
   "scripts": {
