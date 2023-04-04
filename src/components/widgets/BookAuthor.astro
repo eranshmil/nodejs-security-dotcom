@@ -7,39 +7,48 @@ const callOutReason = 'What sets Liran Tal apart as an authority on secure codin
 // other options include:
 // What makes Liran qualified to teach you about secure coding in Node.js?
 
+const authorBio = `
+	Liran Tal is an accomplished software developer, respected security researcher, and prominent advocate for open source software in the JavaScript community.
+As an experienced author and educator, Liran has written several widely respected books on software security. These include "Serverless Security" published by O'Reilly, as well as the self-published titles "Essential Node.js Security" and "Web Security: Learning HTTP Security Headers".
+Liran's leadership in open source security includes significant contributions to OWASP projects, recording supply chain security incidents at the CNCF, and various OpenSSF initiatives. 
+Currently, Liran is a developer advocate at Snyk where he empowers developers with the knowledge and tools needed to build
+   and deploy secure software.
+	`;
+
 const items = [
 	[
 		{
-			title: 'Integration with Tailwind CSS',
+			title: 'Security Analyst for the Node.js Foundation',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				"In his role as a security analyst in the Node.js Foundation's Security Working Group, Liran reviewed hundreds of vulnerability reports for npm packages and established processes for responsible security disclosures and vulnerability triage.",
 		},
 		{
-			title: 'Ready-to-use Components',
+			title: 'Education is a core practice',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Passionate about educating developers on application security and secure coding practices, Liran is a world-wide international speaker, workshop instructor, and author of several books on the subject. He occasionally speaks on software security topics at academic institutions, such as presenting to students at the Electrical and Computer Engineering School at Purdue University.',
 		},
+
 		{
-			title: 'Best Practices',
+			title: 'Award-winning GitHub Star ⭐️',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Liran received the GitHub Star recognition award from GitHub for his work educating and inspiring developers.',
 		},
 	],
 	[
 		{
-			title: 'Excellent Page Speed',
+			title: 'Recipient of the Pathfinder for Security Award 🎖️',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'Honored with the OpenJS Foundation Pathfinder for Security Award, Liran is recognized for his work advancing Node.js security.',
 		},
 		{
-			title: 'Frequently updated',
+			title: 'Security Researcher',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				'An accomplished security researcher, Liran has disclosed security vulnerabilities in various open source software projects, including being credited with CVEs impacting npm packages.',
 		},
 		{
-			title: 'Open to new ideas and contributions',
+			title: 'Acclaimed Recognition at Black Hat',
 			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+				"Liran's work on supply chain security research, including Lockfile Injection, was presented at the prestigious Black Hat Europe 2021 cybersecurity conference. Liran is also the creator of several developer security tooling projects such as npq, is-website-vulnerable, and snync, which help developers and enterprises defend against dependency confusion attacks.",
 		},
 	],
 ];
@@ -113,13 +122,7 @@ const items = [
 			</h1>
 			<div class="max-w-3xl mx-auto">
 				<p class="text-l mb-8">
-					Known for his open source and JavaScript security initiatives, Liran Tal is an award-winning software
-					developer, security researcher, and open source champion in the JavaScript community. He's an internationally
-					recognized GitHub Star, acknowledged for his open source advocacy, and has received the OpenJS Foundation's
-					Pathfinder for Security for his work on Node.js security. His contributions to developer security education
-					include leading OWASP projects, building supply chain security tools, participation in CNCF and OpenSSF
-					initiatives, and authoring books such as O'Reilly's Serverless Security. He leads the developer advocacy team
-					at Snyk.io and is on a mission to empower developers with better application security skills.
+					{authorBio}
 				</p>
 			</div>
 		</div>
