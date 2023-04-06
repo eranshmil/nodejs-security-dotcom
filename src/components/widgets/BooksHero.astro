@@ -111,8 +111,17 @@ const {
 								>
 									<div class="font-bold">{CTA2?.text}</div>
 									<div class="text-xs ml-2 text-purple-200">|</div>
-									<div class="line-through pl-2 text-lg">{CTA2?.priceOld}</div>
+									{
+										CTA2?.priceNew ? (
+											<div class="line-through pl-2 text-lg">{CTA2?.priceOld}</div>
 									<div class="pl-2 font-bold text-md">{CTA2?.priceNew}</div>
+										)
+										: (
+
+										<div class="pl-2 text-lg">{CTA2?.priceOld}</div>
+										)
+									}
+									
 								</a>
 							)
 						}
