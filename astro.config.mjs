@@ -8,9 +8,9 @@ import partytown from '@astrojs/partytown';
 import { SITE } from './src/config.mjs';
 import mdx from '@astrojs/mdx';
 import solid from '@astrojs/solid-js';
-
 import remarkToc from 'remark-toc';
 import { remarkReadingTime } from './src/utils/remark-frontmatter-extensions.mjs';
+import compress from 'astro-compress';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -44,6 +44,7 @@ export default defineConfig({
 			remarkPlugins: [remarkReadingTime],
 		}),
 		solid(),
+		compress(),
 	],
 	vite: {
 		resolve: {
