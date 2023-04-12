@@ -86,7 +86,7 @@ export const FOOTER = {
 export const SITE = {
 	name: 'Liran Tal',
 
-	origin: 'https://nodejs-security.com',
+	origin: 'https://www.nodejs-security.com',
 	basePathname: '/',
 
 	title: 'Node.js Security starts with Node.js Secure Coding',
