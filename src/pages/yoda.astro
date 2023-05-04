@@ -65,7 +65,7 @@ const meta = {
 				</div>
 				<div
 					id="book"
-					class="col-start-8 col-span-4 ml-12 w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+					class="fade-in col-start-8 col-span-4 ml-12 w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
 				>
 					<Picture
 						class="h-full w-full object-cover"
@@ -85,13 +85,11 @@ const meta = {
 	/>
 </Layout>
 
-<noscript>
-	<style>
-		#splash-bg-fallback {
-			display: block;
-		}
-	</style>
-</noscript>
+<script>
+	setTimeout(() => {
+		document.getElementById('book').style.animation = 'float linear 2.5s infinite alternate';
+	}, 8000);
+</script>
 
 <style>
 	@keyframes float {
@@ -105,7 +103,8 @@ const meta = {
 	}
 
 	#book {
-		animation: float linear 2.5s infinite alternate;
+		/* animation: float linear 2.5s infinite alternate; */
+		animation: fadeIn ease 8s;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
@@ -119,6 +118,58 @@ const meta = {
 
 		#splash-bg-fallback {
 			@apply block;
+		}
+	}
+
+	.fade-in {
+		animation: fadeIn ease 10s;
+		-webkit-animation: fadeIn ease 10s;
+		-moz-animation: fadeIn ease 10s;
+		-o-animation: fadeIn ease 10s;
+		-ms-animation: fadeIn ease 10s;
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@-moz-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@-webkit-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@-o-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	@-ms-keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
 		}
 	}
 </style>
