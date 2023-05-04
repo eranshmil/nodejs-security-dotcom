@@ -39,7 +39,7 @@ export const FOOTER = {
 	],
 };
 
-const { bg } = Astro.props;
+const { bg, copyrights } = Astro.props;
 ---
 
 <footer class:list={['border-t border-gray-200 dark:border-slate-800', bg]}>
@@ -183,6 +183,10 @@ const { bg } = Astro.props;
 
 					Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a>
 					· All rights reserved.
+				</div>
+
+				<div>
+					{copyrights}
 				</div>
 			</div>
 		</div>
