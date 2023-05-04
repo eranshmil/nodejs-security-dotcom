@@ -1,0 +1,115 @@
+---
+import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+import bookImage from '~/assets/images/nodejs-secure-coding-book-3d-style-800.png';
+import Yoda from '~/assets/images/yoda_render.webp';
+import Starfield from '~/components/atoms/Starfield.astro';
+
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/BaseLayout.astro';
+
+const meta = {
+	title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
+	canonical: getCanonical(getHomePermalink()),
+};
+---
+
+<Layout {meta}>
+	<div class="h-screen overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white">
+		<section class="relative h-full bg-black">
+			<Starfield />
+			<div class="relative grid h-full place-items-center grid-cols-12 gap-4">
+				<div class="col-start-2 col-span-5">
+					<h2 class="flex flex-col">
+						<span
+							class="bg-clip-text text-bold text-2xl text-transparent bg-gradient-to-r from-purple-500 to-green-300"
+						>
+							Against command injection vulnerabilities,
+							<br />
+							secure coding of Node.js defend.
+						</span>
+
+						<div class="mt-8">
+							<div class="flex w-full sm:w-auto">
+								<a
+									class="btn text-white border border-green-800 bg-green-500 hover:bg-green-700 hover:border-green-700 sm:mb-0 w-full"
+									href="#"
+									target="_blank"
+									rel="noopener"
+								>
+									<Icon name="la:jedi" class="w-5 h-5 mr-1 -ml-1.5" />
+									Defend The Galaxy
+								</a>
+							</div>
+						</div>
+					</h2>
+				</div>
+				<div
+					id="yoda"
+					class="col-start-7 col-span-1 ml-12 w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+				>
+					<Picture
+						class="h-full w-full object-cover"
+						src={Yoda}
+						widths={[400, 768, 1024, 2040]}
+						sizes="180px"
+						loading="eager"
+						alt="A floating astronaut in a space suit"
+					/>
+				</div>
+				<div
+					id="astronaut"
+					class="col-start-8 col-span-4 ml-12 w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+				>
+					<Picture
+						class="h-full w-full object-cover"
+						src={bookImage}
+						widths={[400, 768, 1024, 2040]}
+						sizes="280px"
+						loading="eager"
+						alt="A floating astronaut in a space suit"
+					/>
+				</div>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<noscript>
+	<style>
+		#splash-bg-fallback {
+			display: block;
+		}
+	</style>
+</noscript>
+
+<style>
+	@keyframes float {
+		0% {
+			transform: translate3d(0, 0, 0);
+		}
+
+		100% {
+			transform: translate3d(0, 30px, 0);
+		}
+	}
+
+	#astronaut {
+		animation: float linear 2.5s infinite alternate;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#astronaut {
+			@apply animate-none;
+		}
+
+		:global(#starfield) {
+			@apply hidden;
+		}
+
+		#splash-bg-fallback {
+			@apply block;
+		}
+	}
+</style>
