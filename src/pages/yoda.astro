@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon';
 import bookImage from '~/assets/images/nodejs-secure-coding-book-3d-style-800.png';
 import Yoda from '~/assets/images/yoda_render.webp';
 import Starfield from '~/components/atoms/Starfield.astro';
+import BooksFooter from '~/components/widgets/BooksFooter.astro';
 
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BaseLayout.astro';
@@ -74,6 +75,7 @@ const meta = {
 			</div>
 		</section>
 	</div>
+	<BooksFooter bg="bg-black" />
 </Layout>
 
 <noscript>
