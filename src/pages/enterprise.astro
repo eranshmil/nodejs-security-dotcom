@@ -25,14 +25,6 @@ const meta = {
 	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
 	canonical: getCanonical(getHomePermalink()),
 };
-
-const content = [
-	`Hand-out book copies of the Node.js Secure Coding book in digital edition (PDF and EPUB) to your teams around the world`,
-	`Empower your team with a comprehensive understanding of Command Injection security
-vulnerabilities in Node.js applications and their impact on your business.`,
-	`Support your developers technical career growth and broaden their skill-set with
-	valuable and positive business impact that builds secure coding practices experience.`,
-];
 ---
 
 <Layout {meta}>
@@ -70,6 +62,17 @@ vulnerabilities in Node.js applications and their impact on your business.`,
 		subtitle="value add #1"
 		subheader="25 copies of the Node.js Secure Coding book"
 		content={content}
+		image={{
+			src: import('~/assets/images/nodejs-secure-coding-book-3d-style.png'),
+			alt: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+		}}
+		content={[
+			`Hand-out book copies of the Node.js Secure Coding book in digital edition (PDF and EPUB) to your teams around the world.`,
+			`Empower your team with a comprehensive understanding of Command Injection security
+	vulnerabilities in Node.js applications and their impact on your business.`,
+			`Support your developers technical career growth and broaden their skill-set with
+		valuable and positive business impact that builds secure coding practices experience.`,
+		]}
 	/>
 
 	<Features />
