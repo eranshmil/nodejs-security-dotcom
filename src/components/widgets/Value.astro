@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon';
 import Picture from '~/components/core/Picture.astro';
 
-const { title, subtitle, subheader, content, image } = Astro.props;
+const { title, subtitle, subheader, content, image, size, gallery } = Astro.props;
 ---
 
 <section>
@@ -18,7 +18,10 @@ const { title, subtitle, subheader, content, image } = Astro.props;
 
 		<div class="grid place-items-center">
 			<div
-				class="bg-white w-full lg:w-1/2 border-gray-200 dark:bg-gray-800 p-6 xl:p-8 rounded justify-between border dark:border-0 shadow dark:border-gray-600"
+				class:list={[
+					'bg-white w-full border-gray-200 dark:bg-gray-800 p-6 xl:p-8 rounded justify-between border dark:border-0 shadow dark:border-gray-600',
+					size ? size : 'lg:w-1/2',
+				]}
 			>
 				<div class="flex flex-1 flex-col">
 					<div class="mb-6">
@@ -43,11 +46,44 @@ const { title, subtitle, subheader, content, image } = Astro.props;
 							))
 						}
 
-						<div class="flex mt-8 justify-center place-items-center items-center">
-							<div class="flex flex-col items-center">
-								<img width="250" {...image} />
-							</div>
-						</div>
+						{
+							gallery && (
+								<div class="flex flex-wrap md:-m-2 -m-1">
+									<div class="flex flex-wrap w-1/2">
+										<div class="md:p-2 p-1 w-1/2">
+											<img class="w-full object-cover h-full object-center block" {...gallery['1small']} />
+										</div>
+										<div class="md:p-2 p-1 w-1/2">
+											<img class="w-full object-cover h-full object-center block" {...gallery['2small']} />
+										</div>
+										<div class="md:p-2 p-1 w-full">
+											<img class="w-full h-full object-cover object-center block" {...gallery['3large']} />
+										</div>
+									</div>
+									<div class="flex flex-wrap w-1/2">
+										<div class="md:p-2 p-1 w-full">
+											<img class="w-full h-full object-cover object-center block" {...gallery['4large']} />
+										</div>
+										<div class="md:p-2 p-1 w-1/2">
+											<img class="w-full object-cover h-full object-center block" {...gallery['5small']} />
+										</div>
+										<div class="md:p-2 p-1 w-1/2">
+											<img class="w-full object-cover h-full object-center block" {...gallery['6small']} />
+										</div>
+									</div>
+								</div>
+							)
+						}
+
+						{
+							image && (
+								<div class="flex mt-8 justify-center place-items-center items-center">
+									<div class="flex flex-col items-center">
+										<img width="250" {...image} />
+									</div>
+								</div>
+							)
+						}
 					</div>
 				</div>
 			</div>
