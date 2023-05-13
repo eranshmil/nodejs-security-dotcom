@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon';
 import Picture from '~/components/core/Picture.astro';
 
-const { title, subtitle, subheader, content, image, size, gallery } = Astro.props;
+const { title, subtitle, subheader, content, image, size, gallery, mosaic } = Astro.props;
 ---
 
 <section>
@@ -48,27 +48,41 @@ const { title, subtitle, subheader, content, image, size, gallery } = Astro.prop
 
 						{
 							gallery && (
+								<div class="flex flex-wrap md:-m-2 -m-1 justify-center place-items-center items-center">
+									<div class="flex flex-wrap w-1/2">
+										{gallery.map((imageItem) => (
+											<div class="md:p-2 p-1 w-1/2">
+												<img class="w-full object-cover h-full object-center block" {...imageItem} />
+											</div>
+										))}
+									</div>
+								</div>
+							)
+						}
+
+						{
+							mosaic && (
 								<div class="flex flex-wrap md:-m-2 -m-1">
 									<div class="flex flex-wrap w-1/2">
 										<div class="md:p-2 p-1 w-1/2">
-											<img class="w-full object-cover h-full object-center block" {...gallery['1small']} />
+											<img class="w-full object-cover h-full object-center block" {...mosaic['1small']} />
 										</div>
 										<div class="md:p-2 p-1 w-1/2">
-											<img class="w-full object-cover h-full object-center block" {...gallery['2small']} />
+											<img class="w-full object-cover h-full object-center block" {...mosaic['2small']} />
 										</div>
 										<div class="md:p-2 p-1 w-full">
-											<img class="w-full h-full object-cover object-center block" {...gallery['3large']} />
+											<img class="w-full h-full object-cover object-center block" {...mosaic['3large']} />
 										</div>
 									</div>
 									<div class="flex flex-wrap w-1/2">
 										<div class="md:p-2 p-1 w-full">
-											<img class="w-full h-full object-cover object-center block" {...gallery['4large']} />
+											<img class="w-full h-full object-cover object-center block" {...mosaic['4large']} />
 										</div>
 										<div class="md:p-2 p-1 w-1/2">
-											<img class="w-full object-cover h-full object-center block" {...gallery['5small']} />
+											<img class="w-full object-cover h-full object-center block" {...mosaic['5small']} />
 										</div>
 										<div class="md:p-2 p-1 w-1/2">
-											<img class="w-full object-cover h-full object-center block" {...gallery['6small']} />
+											<img class="w-full object-cover h-full object-center block" {...mosaic['6small']} />
 										</div>
 									</div>
 								</div>
