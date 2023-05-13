@@ -1,0 +1,57 @@
+---
+import { Icon } from 'astro-icon';
+import Picture from '~/components/core/Picture.astro';
+
+const { title, subtitle, subheader, content } = Astro.props;
+---
+
+<section>
+	<div class="container px-5 py-24 mx-auto">
+		<div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+			<h2 class="mb-4 text-4xl tracking-tight font-extrabold">
+				{title}
+			</h2>
+			<p>
+				{subtitle}
+			</p>
+		</div>
+
+		<div class="grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-1 gap-4">
+			<div class="">
+				<div
+					class="bg-white border-gray-200 dark:bg-gray-800 p-6 xl:p-8 rounded h-full justify-between border dark:border-0 shadow dark:border-gray-600"
+				>
+					<div class="flex flex-1 flex-col h-full">
+						<div class="mb-6">
+							<h3 class="mb-8 text-xl font-bold text-pink-500 dark:text-pink-500">{subheader}</h3>
+
+							{
+								content.map((contentParagraph) => (
+									<div class="flex mb-4">
+										<div class="flex flex-col items-center mr-4">
+											<div>
+												<div class="mt-2 flex items-center justify-center w-5 h-5 rounded-full border-pink-600 border-2">
+													<Icon name="tabler:check" class="w-3 h-3 text-gray-600 dark:text-slate-200 icon-bold" />
+												</div>
+											</div>
+										</div>
+										<div class="pt-1">
+											<p class="text-lg text-gray-900 dark:text-slate-300">{contentParagraph}</p>
+											<p class="text-gray-700" />
+										</div>
+									</div>
+								))
+							}
+						</div>
+						<div class="align-bottom mt-auto">
+							<div class="h-10 w-auto bg-[#ffe3e8]"></div>
+							<div class="h-10 w-auto bg-[#ffa2b3]"></div>
+							<div class="h-10 w-auto bg-[#fe6e8b]"></div>
+							<div class="h-10 w-auto bg-[#8a113d]"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

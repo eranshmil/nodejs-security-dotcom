@@ -1,0 +1,93 @@
+---
+// import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/BooksLayout.astro';
+
+import Hero from '~/components/widgets/BooksHero.astro';
+import Pricing1Column from '~/components/widgets/Pricing1Column.astro';
+import BookFeatures from '~/components/widgets/BookFeatures.astro';
+import Features from '~/components/widgets/Features.astro';
+import BookAuthor from '~/components/widgets/BookAuthor.astro';
+import BooksHeroYoda from '~/components/widgets/BooksHeroYoda.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import ScaleUpSecurity from '~/components/widgets/ScaleUpSecurity.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
+import FAQ from '~/components/widgets/FAQ.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ProfileHero from '~/components/widgets/ProfileHero.astro';
+import TestimonialHeroBlock from '~/components/widgets/TestimonialHeroBlock.astro';
+import Value from '~/components/widgets/Value.astro';
+
+const meta = {
+	title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
+	canonical: getCanonical(getHomePermalink()),
+};
+
+const content = [
+	`Hand-out book copies of the Node.js Secure Coding book in digital edition (PDF and EPUB) to your teams around the world`,
+	`Empower your team with a comprehensive understanding of Command Injection security
+vulnerabilities in Node.js applications and their impact on your business.`,
+	`Support your developers technical career growth and broaden their skill-set with
+	valuable and positive business impact that builds secure coding practices experience.`,
+];
+---
+
+<Layout {meta}>
+	<!-- <ProfileHero />
+	<Features />
+	<HighlightedPosts /> -->
+
+	<!-- <Hero
+		title="Node.js Secure Coding:"
+		subtitle="Defending Against Command Injection Vulnerabilities"
+		CTA2={{
+			text: 'Defend Your Code',
+			href: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41',
+			priceOld: '$57.60',
+			// priceNew: '$43.20',
+		}}
+		SKIP_CTA1={{ text: 'Learn more', href: '#features' }}
+		SKIP_CTA3={{ text: 'Learn more', href: '#features' }}
+		image={{
+			src: import('~/assets/images/nodejs-secure-coding-book-3d-style.png'),
+			alt: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+		}}
+	>
+		<Fragment slot="description">
+			<span class="hidden sm:inline">
+				Don't settle for generic security guides, experience them.
+				<br /><br />Learn secure coding conventions in Node.js by executing command injection attacks on real-world npm
+				packages and analyzing vulnerable code.
+			</span>
+		</Fragment>
+	</Hero> -->
+
+	<Value
+		title="Educate your developers and security teams"
+		subtitle="value add #1"
+		subheader="25 copies of the Node.js Secure Coding book"
+		content={content}
+	/>
+
+	<Features />
+	<Features3 />
+
+	<!-- <ScaleUpSecurity />
+
+	<TestimonialHeroBlock />
+
+	<BookFeatures />
+
+	
+
+	<Pricing1Column />
+
+	<BookAuthor />
+
+	<FAQ />
+	<Stats />
+	<CallToAction /> -->
+</Layout>
