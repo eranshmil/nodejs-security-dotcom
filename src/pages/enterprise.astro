@@ -6,6 +6,7 @@ import Layout from '~/layouts/BooksLayout.astro';
 // import Hero from '~/components/widgets/BooksHero.astro';
 import Hero from '~/components/widgets/EnterpriseHero.astro';
 import Pricing1Column from '~/components/widgets/Pricing1Column.astro';
+import PricingColumn from '~/components/widgets/EnterprisePricingColumns.astro';
 import BookFeatures from '~/components/widgets/BookFeatures.astro';
 import Features from '~/components/widgets/Features.astro';
 import BookAuthor from '~/components/widgets/BookAuthor.astro';
@@ -34,6 +35,9 @@ const meta = {
 	<HighlightedPosts /> -->
 
 	<Hero />
+
+	<PricingColumn />
+
 	<!-- <Hero
 		title="Node.js Secure Coding:"
 		subtitle="Defending Against Command Injection Vulnerabilities"
