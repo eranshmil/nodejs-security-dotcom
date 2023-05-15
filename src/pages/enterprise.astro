@@ -3,7 +3,8 @@
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
 
-import Hero from '~/components/widgets/BooksHero.astro';
+// import Hero from '~/components/widgets/BooksHero.astro';
+import Hero from '~/components/widgets/EnterpriseHero.astro';
 import Pricing1Column from '~/components/widgets/Pricing1Column.astro';
 import BookFeatures from '~/components/widgets/BookFeatures.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -32,6 +33,7 @@ const meta = {
 	<Features />
 	<HighlightedPosts /> -->
 
+	<Hero />
 	<!-- <Hero
 		title="Node.js Secure Coding:"
 		subtitle="Defending Against Command Injection Vulnerabilities"
