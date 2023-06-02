@@ -1,13 +1,14 @@
 ---
-import Picture from '~/components/core/Picture.astro';
+import { Image } from '@astrojs/image/components';
 ---
 
 <section class="h-screen">
 	<div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-		<Picture
+		<Image
 			src={import('/public/images/book/nodejs-secure-coding-book-3d-style.png')}
 			class="w-1/4 mb-8 mx-auto shadow-lg"
-			widths={['1114:1800']}
+			width="1114"
+			height="1800"
 			alt="Hero Image"
 		/>
 		<div class="text-center lg:w-2/3 w-full">
