@@ -1,0 +1,107 @@
+---
+import { Icon } from 'astro-icon';
+
+const testimonials = [
+	{
+		name: 'Thomas Gentilhomme',
+        picture: 'https://media.licdn.com/dms/image/C4E03AQH9if5PlxreKg/profile-displayphoto-shrink_800_800/0/1659959535383?e=1691020800&v=beta&t=xhBWcDY67ypoUNf9Sze6EJ1NdhXlwvKA16UyOrnzAp4',
+		title: 'Node.js lead at MyUnisoft, Node Security WG',
+		message: `I have finished reading Node.js Secure Coding from Liran Tal. I read the whole thing in an hour without realizing it. I learned and discovered a few things along the way. I laughed at the IFS, didn't see it coming.`,
+	},
+    {
+        name: 'Manuel Spigolon',
+        picture: 'https://media.licdn.com/dms/image/C4E03AQEXpGEkzbn3Hw/profile-displayphoto-shrink_800_800/0/1631006921874?e=1691020800&v=beta&t=DrloCNyO6RmImgW68mjxccb5lTchZjQwwvFwM2jf9f8',
+        title: 'Senior Software Developer at NearForm',
+        message: `I'm already reading it 🤩 #Devs! You have found where to spend your #training budget!`
+    }
+];
+
+const starsFillColor = 'gold'
+---
+
+<!-- <section class="body-font">
+	<div class="container px-5 py-24 mx-auto"> --><!-- Container for demo purpose -->
+<div class="container my-24 mx-auto md:px-6">
+	<section class="mb-32 text-center">
+		<h2 class="mb-4 text-3xl font-bold">Community Testimonials</h2>
+        <p>
+            Hear what the community has to say about the book and their recommendations to follow Node.js Secure Coding practices.
+        </p>
+        <div class="mt-12 grid gap-x-6 md:grid-cols-2 lg:gap-x-12">
+		{
+			testimonials.map((testimonialItem) => {
+				return (
+					
+						<div class="mb-12 md:mb-0">
+							<div class="mb-6 flex justify-center">
+								<img
+									src={testimonialItem.picture}
+									class="w-16 rounded-full shadow-lg dark:shadow-black/20"
+								/>
+							</div>
+							<h5 class="mb-2 text-lg font-bold">{testimonialItem.name}</h5>
+							<h6 class="mb-4 font-light text-primary dark:text-pink-500">{testimonialItem.title}</h6>
+							<p class="mb-4">
+								{testimonialItem.message}
+                                <!--
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="inline-block w-6">
+									<path
+										fill="currentColor"
+										d="M580 556h160V396H580v160Zm-360 0h160V396H220v160Zm406 220 80-160H520V336h280v288l-76 152h-98Zm-360 0 80-160H160V336h280v288l-76 152h-98Zm34-300Zm360 0Z"
+									/>
+								</svg>
+                            -->
+							</p>
+							<ul class="mb-0 flex justify-center">
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+											fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+							</ul>
+						</div>
+					
+				);
+			})
+		}
+        </div>
+	</section>
+</div>
+<!-- Container for demo purpose -->
+<!-- </div>
+</section> -->
