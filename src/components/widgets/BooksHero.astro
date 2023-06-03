@@ -4,7 +4,7 @@ import { Picture } from '@astrojs/image/components';
 
 interface CallToAction {
 	text: string;
-	href: string;
+	href?: string;
 	icon?: string;
 	priceOld?: string;
 	priceNew?: string;
@@ -16,6 +16,7 @@ export interface Props {
 	CTA1?: string | CallToAction;
 	CTA2?: string | CallToAction;
 	CTA3?: string | CallToAction;
+	DISCOUNT_CALLOUT?: CallToAction;
 	image?: string | any; // TODO: find HTMLElementProps
 }
 
@@ -27,6 +28,7 @@ const {
 	CTA1 = await Astro.slots.render('CTA1'),
 	CTA2 = await Astro.slots.render('CTA2'),
 	CTA3 = await Astro.slots.render('CTA3'),
+	DISCOUNT_CALLOUT = await Astro.slots.render('DISCOUNT_CALLOUT'),
 	image = await Astro.slots.render('image'),
 } = Astro.props;
 ---
@@ -110,15 +112,15 @@ const {
 									rel="noopener"
 								>
 									<div class="font-bold">{CTA2?.text}</div>
-									<div class="text-xs ml-2 text-purple-200">|</div>
+									<div class="text-lg ml-2 text-purple-200">|</div>
 									{
 										CTA2?.priceNew ? (
-											<div class="line-through pl-2 text-lg">{CTA2?.priceOld}</div>
-									<div class="pl-2 font-bold text-md">{CTA2?.priceNew}</div>
+											<div class="line-through pl-2 text-xs">{CTA2?.priceOld}</div>
+									<div class="text-white-300 pl-2 font-bold text-md">{CTA2?.priceNew}</div>
 										)
 										: (
 
-										<div class="pl-2 text-lg">{CTA2?.priceOld}</div>
+										<div class="pl-2 text-xs">{CTA2?.priceOld}</div>
 										)
 									}
 									
@@ -152,6 +154,20 @@ const {
 								</div>
 							)
 						}
+
+						{
+							DISCOUNT_CALLOUT && (
+								<div class="flex w-full sm:w-auto">
+									<div
+										class="btn text-black font-bold bg-gray-900 dark:bg-yellow-300 w-full"
+									>
+										<p>
+											{DISCOUNT_CALLOUT.text}
+										</p>
+									</div>
+								</div>
+								)
+						}
 					</div>
 					
 				</div>
@@ -159,7 +175,7 @@ const {
 					Digital versions in PDF and EPUB formats 
 				</p>
 				<p class="mt-2 text-sm font-light">
-					Apply coupon code <code>E4NJIWMQ</code> for 12% off during book launch
+					Apply coupon code <code>E4NJIWMQ</code> for 20% off during book launch
 				</p>
 				
 				{content && <Fragment set:html={content} />}
