@@ -41,7 +41,7 @@ const {
 			<div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
 				{
 					title && (
-						<div class="mb-12">
+						<div class="mb-4">
 							<h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
 								<span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500">
 									{title}
@@ -51,6 +51,15 @@ const {
 						</div>
 					)
 				}
+
+				<div class="flex items-center space-x-4 mb-12">
+					<img class="w-14 h-14 rounded-full" src="https://github.com/lirantal.png" alt="Liran Tal">
+					<div class="font-medium">
+						<div class="text-sm text-gray-500 dark:text-gray-400">written by</div>
+						<span class="font-bold">Liran Tal</span>
+					</div>
+				</div>
+
 				<div class="max-w-3xl mx-auto lg:max-w-none">
 					{description && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={description} />}
 					<div
