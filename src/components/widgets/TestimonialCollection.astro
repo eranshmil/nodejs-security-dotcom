@@ -13,6 +13,12 @@ const testimonials = [
         picture: 'https://media.licdn.com/dms/image/C4E03AQEXpGEkzbn3Hw/profile-displayphoto-shrink_800_800/0/1631006921874?e=1691020800&v=beta&t=DrloCNyO6RmImgW68mjxccb5lTchZjQwwvFwM2jf9f8',
         title: 'Senior Software Developer at NearForm',
         message: `I'm already reading it 🤩 #Devs! You have found where to spend your #training budget!`
+    },
+	{
+        name: 'Yoni Goldberg',
+        picture: 'https://pbs.twimg.com/profile_images/1133720567713030144/1ZSU_ct6_400x400.png',
+        title: 'Software Architect, Node.js Specialist',
+        message: `I wholeheartedly enjoyed working and learning from Liran's expertise in securing applications. With extensive experience speaking at global conferences and actively contributing code to the community, he is a true authority in the field. I highly endorse both his enlightening book and engaging workshop, as they are invaluable resources for anyone looking to enhance their understanding and implementation of application security`
     }
 ];
 
@@ -27,7 +33,7 @@ const starsFillColor = 'gold'
         <p>
             Hear what the community has to say about the book and their recommendations to follow Node.js Secure Coding practices.
         </p>
-        <div class="mt-12 grid gap-x-6 md:grid-cols-2 lg:gap-x-12">
+        <div class="mt-12 grid gap-x-6 md:grid-cols-3 lg:gap-x-12">
 		{
 			testimonials.map((testimonialItem) => {
 				return (
