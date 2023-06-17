@@ -1,5 +1,8 @@
 export const STORE = {
 	bookBuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41',
+	plan1BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/c8e9b3ec-c540-4723-bb18-5514a2c9f53f',
+	plan2BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/5ba65e29-2a52-4e65-acc2-24dfedb1bd02',
+	plan3BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/5f6f17a8-8bd9-41ad-85fa-03ebf0b77f46',
 	discountCode: 'E4NJIWMQ',
 };
 
