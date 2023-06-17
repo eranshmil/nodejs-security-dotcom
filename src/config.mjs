@@ -1,3 +1,8 @@
+export const STORE = {
+	bookBuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41',
+	discountCode: 'E4NJIWMQ',
+};
+
 export const PROFILE = {
 	githubURL: 'https://github.com/lirantal',
 	twitterURL: 'https://twitter.com/liran_tal',

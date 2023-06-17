@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
+import { STORE } from 'src/config.mjs';
 
 interface CallToAction {
 	text: string;
@@ -181,7 +182,7 @@ const {
 					
 				</div>
 				<p class="mt-2 text-sm font-light">
-					Apply coupon code <code>E4NJIWMQ</code> for 20% off during book launch
+					Apply coupon code <code>{STORE.discountCode}</code> for 20% off during book launch
 				</p>
 
 				<div class="mt-12">

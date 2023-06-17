@@ -1,3 +1,7 @@
+---
+import { STORE } from 'src/config.mjs';
+---
+
 <section class="body-font">
 	<div class="container px-5 py-24 mx-auto">
 		<div class="mx-auto max-w-screen-md text-center lg:mb-4">
@@ -7,7 +11,7 @@
 		</div>
 
 		<div class="lg:w-2/3 flex flex-col items-center mx-auto">
-			<a href="https://nodejs-security.lemonsqueezy.com/checkout/buy/a327f061-56fe-48c7-96cd-eb6728b48f2a">
+			<a href={STORE.bookBuyLink}>
 				<button
 					class="flex-shrink-0 text-white bg-yellow-400 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-md mt-10 sm:mt-0"
 					>Free Book Sample</button

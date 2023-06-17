@@ -1,4 +1,6 @@
 ---
+import { STORE } from 'src/config.mjs';
+
 const pricingFeatures = [
 	'Access an introduction to AppSec and Command Injection',
 	'6 chapters reviewing vulnerable npm packages',
@@ -66,10 +68,11 @@ const BuyCTAText = 'Start hacking';
 				</div>
 
 				<a
-					href="https://nodejs-security.lemonsqueezy.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41"
+					<a
+					href={STORE.bookBuyLink}
 					class="mt-auto btn text-white border border-pink-500 bg-pink-500 hover:bg-pink-700 hover:border-pink-700 sm:mb-0 w-full"
-					>{BuyCTAText}</a
-				>
+					>{BuyCTAText}
+				</a>
 			</div>
 		</div>
 	</div>

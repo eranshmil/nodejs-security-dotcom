@@ -21,6 +21,8 @@ import TestimonialHeroBlock from '~/components/widgets/TestimonialHeroBlock.astr
 import TestimonialCollection from '~/components/widgets/TestimonialCollection.astro';
 import BookSampleCTA from '~/components/widgets/BookSampleCTA.astro';
 
+import { STORE } from 'src/config.mjs';
+
 const meta = {
 	title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
 	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
@@ -38,7 +40,7 @@ const meta = {
 		subtitle="Defending Against Command Injection Vulnerabilities"
 		CTA2={{
 			text: 'Defend Your Code',
-			href: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41',
+			href: STORE.bookBuyLink,
 			priceOld: '$57.60',
 			priceNew: '$46.08',
 		}}
