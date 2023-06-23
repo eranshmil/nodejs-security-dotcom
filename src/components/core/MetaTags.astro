@@ -20,7 +20,6 @@ const { src: defaultImage } = await getImage({
 const {
 	title = SITE.name,
 	description = '',
-	image: _image = defaultImage,
 
 	canonical,
 	noindex = false,
@@ -29,6 +28,9 @@ const {
 	ogTitle = title,
 	ogType = 'website',
 } = Astro.props;
+
+let { image: _image } = Astro.props;
+_image = _image || defaultImage;
 
 const image =
 	typeof _image === 'string'
