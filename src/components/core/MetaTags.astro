@@ -8,7 +8,7 @@ import defaultImageSrc from '~/assets/images/default.png';
 import { SITE } from '~/config.mjs';
 import Fonts from '../atoms/Fonts.astro';
 import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
-import VercelAnalytics from './VercelAnalytics.astro';
+import WebAnalytics from './WebAnalytics.astro';
 
 const { src: defaultImage } = await getImage({
 	src: defaultImageSrc,
@@ -77,4 +77,4 @@ const image =
 
 <ExtraMetaTags />
 
-<VercelAnalytics />
+<WebAnalytics />
