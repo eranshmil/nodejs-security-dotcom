@@ -121,12 +121,13 @@ const {
 									target="_blank"
 									rel="noopener"
 								>
-									<div class="font-bold">{CTA2?.text}</div>
+									<div class="font-normal">{CTA2?.text}</div>
 									<div class="text-lg ml-2 text-purple-200">|</div>
 									{
 										CTA2?.priceNew ? (
-											<div class="line-through pl-2 text-xs">{CTA2?.priceOld}</div>
-									<div class="text-white-300 pl-2 font-bold text-md">{CTA2?.priceNew}</div>
+											
+											<div class="text-white-300 pl-2 font-regular text-sm">{CTA2?.priceNew}</div>
+											<div class="line-through pl-2 text-md">{CTA2?.priceOld}</div>
 										)
 										: (
 
