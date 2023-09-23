@@ -137,101 +137,121 @@ const {
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader1.jpg"
 							alt="Thomas"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader2.jpg"
 							alt="Manuel"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader3.jpg"
 							alt="Yoni"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader21.jpg"
 							alt="Tally"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader4.jpg"
 							alt="Mateo"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader5.jpg"
 							alt="Sergio"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader20.jpg"
 							alt="Manu"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader6.jpg"
 							alt="Hung"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader7.jpg"
 							alt="Kriakos"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader19.jpg"
 							alt="Sophia"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader8.jpg"
 							alt="Daniel"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader9.jpg"
 							alt="David"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader10.jpg"
 							alt="Miguel"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader11.jpg"
 							alt="Joachim"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader12.jpg"
 							alt="Jesús"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader13.jpg"
 							alt="DiMilan"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader14.jpg"
 							alt="Ashif"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader15.jpg"
 							alt="Ivan"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader16.jpg"
 							alt="Heru"
+							loading="lazy"
 						/>
 						<img
 							class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800"
 							src="/images/readers/reader17.jpg"
 							alt="Ngoran"
+							loading="lazy"
 						/>
 						<span
 							class="pl-3 flex items-center justify-center w-12 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800"
@@ -249,26 +269,10 @@ const {
 			<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-6">
 				<div class="grid gap-8 mb-6 lg:mb-4 md:grid-cols-2">
 					<div class="items-end bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-						<!-- <a href="#">
-                        <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Avatar">
-                    </a> -->
-						{
-							imageLightMode && (
-								<div class="relative m-auto">
-									{typeof imageLightMode === 'string' ? (
-										<Fragment set:html={imageLightMode} />
-									) : (
-										<Picture
-											class="mx-auto shadow-lg"
-											widths={[400, 768, 1024, 2040]}
-											sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-											loading="eager"
-											{...imageLightMode}
-										/>
-									)}
-								</div>
-							)
-						}
+						<div class="relative m-auto">
+							<img class="mx-auto shadow-lg" src="/images/book/book-cover-light.png" alt="Ivan" loading="eager" />
+						</div>
+
 						<div class="p-5 min-w-fit">
 							<h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
 								<a href="#">Digital book</a>
@@ -389,23 +393,9 @@ const {
 						<!-- <a href="#">
                         <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Avatar">
                     </a> -->
-						{
-							imageDarkMode && (
-								<div class="relative m-auto">
-									{typeof imageDarkMode === 'string' ? (
-										<Fragment set:html={imageDarkMode} />
-									) : (
-										<Picture
-											class="mx-auto shadow-lg"
-											widths={[400, 768, 1024, 2040]}
-											sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-											loading="eager"
-											{...imageDarkMode}
-										/>
-									)}
-								</div>
-							)
-						}
+						<div class="relative m-auto">
+							<img class="mx-auto shadow-lg" src="/images/book/book-cover-dark.png" alt="Ivan" loading="eager" />
+						</div>
 						<div class="p-5 min-w-fit">
 							<h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
 								<a href="#">Digital book</a>
