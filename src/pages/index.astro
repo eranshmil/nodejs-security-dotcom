@@ -3,7 +3,7 @@
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
 
-import Hero from '~/components/widgets/BooksHero.astro';
+import Hero from '~/components/widgets/BooksHero2.astro';
 import Pricing1Column from '~/components/widgets/Pricing1Column.astro';
 import BookFeatures from '~/components/widgets/BookFeatures.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -40,17 +40,22 @@ const meta = {
 		subtitle="Defending Against Command Injection Vulnerabilities"
 		CTA2={{
 			// text: 'Get the book, start coding securely',
-			text: 'Get the book',
+			text: 'Buy the book',
 			// text: 'Get started',
 			href: STORE.bookBuyLink,
+			hrefDarkMode: STORE.bookBuyLinkDarkMode,
 			priceOld: '$57.60',
 			priceNew: '$40.32',
 		}}
 		SKIP_CTA1={{ text: 'Learn more', href: '#features' }}
 		SKIP_CTA3={{ text: '30% OFF', href: '#features' }}
 		DISCOUNT_CALLOUT={{ text: '30% OFF SUMMER SALE' }}
-		image={{
-			src: import('~/assets/images/nodejs-secure-coding-book-3d-style.png'),
+		imageLightMode={{
+			src: import('/public/images/book/book-cover-light.png'),
+			alt: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+		}}
+		imageDarkMode={{
+			src: import('/public/images/book/book-cover-dark.png'),
 			alt: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
 		}}
 	>
