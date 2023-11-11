@@ -3,13 +3,17 @@ import { STORE } from '~/config.mjs';
 
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
-
-import Hero from '~/components/widgets/BooksHero2.astro';
+import Hero from '~/components/widgets/CommandInjection/BooksHero2.astro';
+import Pricing1Column from '~/components/widgets/CommandInjection/Pricing1Column.astro';
+import BookFeatures from '~/components/widgets/CommandInjection/BookFeatures.astro';
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
 import ScaleUpSecurity from '~/components/widgets/CommandInjection/ScaleUpSecurity.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import FAQ from '~/components/widgets/CommandInjection/FAQ.astro';
+import Stats from '~/components/widgets/CommandInjection/Stats.astro';
+import CallToAction from '~/components/widgets/CommandInjection/CallToAction.astro';
 import TestimonialHeroBlock from '~/components/widgets/CommandInjection/TestimonialHeroBlock.astro';
 import TestimonialCollection from '~/components/widgets/CommandInjection/TestimonialCollection.astro';
+import BookSampleCTA from '~/components/widgets/CommandInjection/BookSampleCTA.astro';
 
 const meta = {
 	title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
@@ -20,9 +24,8 @@ const meta = {
 
 <Layout {meta}>
 	<Hero
-		pretitle="Skill up on"
-		title="Node.js Secure Coding"
-		subtitle=""
+		title="Node.js Secure Coding:"
+		subtitle="Defending Against Command Injection Vulnerabilities"
 		CTA2={{
 			// text: 'Get the book, start coding securely',
 			text: 'Buy the book',
@@ -32,16 +35,9 @@ const meta = {
 			priceOld: '$57.60',
 			priceNew: '$40.32',
 		}}
-		BOOK_COMMAND_INJECTION={{
-			href: STORE.CommandInjection.buyBookLink,
-			priceOld: '$57.60',
-			priceNew: '$40.32',
-		}}
-		BOOK_PATH_TRAVERSAL={{
-			href: STORE.PathTraversal.buyBookLink,
-			priceOld: '$57.60',
-			priceNew: '$40.32',
-		}}
+		SKIP_CTA1={{ text: 'Learn more', href: '#features' }}
+		SKIP_CTA3={{ text: '30% OFF', href: '#features' }}
+		DISCOUNT_CALLOUT={{ text: '30% OFF SUMMER SALE' }}
 	/>
 
 	<TestimonialCollection />
@@ -50,7 +46,19 @@ const meta = {
 
 	<TestimonialHeroBlock />
 
+	<BookFeatures />
+
+	<Pricing1Column />
+
+	<BookSampleCTA />
+
+	<!-- <Steps /> -->
+	<!-- <Features3 /> -->
+	<!-- <Features /> -->
+
 	<BookAuthor />
 
+	<FAQ />
+	<Stats />
 	<CallToAction />
 </Layout>

@@ -1,45 +1,29 @@
 ---
-import { Icon } from 'astro-icon';
-import { Picture } from '@astrojs/image/components';
-import { STORE } from 'src/config.mjs';
-
-interface CallToAction {
-	text: string;
-	href?: string;
-	icon?: string;
-	priceOld?: string;
-	priceNew?: string;
-}
-
 export interface Props {
 	title?: string;
 	subtitle?: string;
-	CTA1?: string | CallToAction;
-	CTA2?: string | CallToAction;
-	CTA3?: string | CallToAction;
-	DISCOUNT_CALLOUT?: CallToAction;
-	image?: string | any; // TODO: find HTMLElementProps
+	pretitle?: string;
+	BOOK_COMMAND_INJECTION?: {
+		href: string;
+		priceNew: string;
+		priceOld: string;
+	};
+	BOOK_PATH_TRAVERSAL?: {
+		href: string;
+		priceNew: string;
+		priceOld: string;
+	};
 }
 
-const {
-	title,
-	subtitle,
-	description = await Astro.slots.render('description'),
-	content = await Astro.slots.render('content'),
-	CTA1 = await Astro.slots.render('CTA1'),
-	CTA2 = await Astro.slots.render('CTA2'),
-	CTA3 = await Astro.slots.render('CTA3'),
-	DISCOUNT_CALLOUT = await Astro.slots.render('DISCOUNT_CALLOUT'),
-	imageLightMode = await Astro.slots.render('image'),
-	imageDarkMode = await Astro.slots.render('image'),
-} = Astro.props;
+const { title, subtitle, pretitle, BOOK_COMMAND_INJECTION, BOOK_PATH_TRAVERSAL } = Astro.props;
 ---
 
 <div>
 	<section class="bg-white dark:bg-gray-900">
 		<div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-8 lg:px-12">
-			<a
-				href={CTA2?.href}
+			<!-- Top Section button CTA -->
+			<!-- <a
+				href={BOOK_COMMAND_INJECTION?.href}
 				class="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
 				role="alert"
 				target="_blank"
@@ -53,16 +37,16 @@ const {
 						d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
 						clip-rule="evenodd"></path></svg
 				>
-			</a>
-			<!-- <h1
-				class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
-			>
-			</h1> -->
+			</a> -->
 
 			{
 				title && (
 					<div class="mb-4">
 						<h1 class="text-5xl md:text-6xl font-extrabold leading-none tracking-tighter mb-4 font-heading dark:text-gray-200">
+							<div class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-5xl dark:text-white">
+								{pretitle}
+							</div>
+
 							<span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500">
 								{title}
 							</span>
@@ -73,8 +57,8 @@ const {
 			}
 
 			<p class="mb-4 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-32 dark:text-gray-400">
-				Learn secure coding conventions in Node.js by executing command injection attacks on real-world npm packages and
-				analyzing vulnerable code.
+				Master Node.js security and secure coding best practices through analyzing and exploiting real-world vulnerable
+				npm packages.
 			</p>
 			<div class="flex flex-col mb-8 lg:mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
 				<!-- {
@@ -268,274 +252,351 @@ const {
 		<section class="bg-white dark:bg-gray-900">
 			<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-6">
 				<div class="grid gap-8 mb-6 lg:mb-4 md:grid-cols-2">
-					<div class="items-end bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-						<div class="relative m-auto">
-							<img
-								class="mx-auto shadow-lg"
-								src="/images/book/book-cover-light.png"
-								alt="Node.js Secure Coding, regular light mode edition"
-								loading="eager"
-							/>
+					<!-- Begin book section -->
+					<div class="col-span-1 bg-gray-50 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+						<div>
+							<div class="m-2 p-2 flex flex-col items-center text-center justify-center">
+								<h2 class="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+									Node.js Secure Coding:
+									<span class="block"></span>
+									Defending Against Command Injection Vulnerabilities
+								</h2>
+								<div class="w-12 h-1 bg-indigo-500 rounded mt-2"></div>
+							</div>
 						</div>
 
-						<div class="p-5 min-w-fit">
-							<h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-								<a href="#">Digital book</a>
-							</h3>
-
-							<span class="text-gray-500 dark:text-gray-400 text-sm">PDF & EPUB</span>
-
-							<div class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-								<ul role="list" class="space-y-2 my-7">
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">106 Pages</span>
-									</li>
-
-									<li class="flex space-x-1 items-center mt-18">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white"> 12 Vulnerable npm Packages</span>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">33 Self-assessment Questions</span
-										>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">10 Chapters</span>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-yellow-300 dark:text-yellow-300"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">Summer Sale</span>
-										<span
-											class="bg-yellow-100 text-yellow-800 text-xs ml-1e px-1 font-medium rounded dark:bg-yellow-300 dark:text-yellow-900"
-											>30% OFF
-										</span>
-									</li>
-								</ul>
-
-								<div class="mt-4"></div>
+						<div class="items-end bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+							<div class="relative m-auto">
+								<img
+									class="mx-auto shadow-lg"
+									src="/images/book/book-command-injection-cover-light.png"
+									alt="Node.js Secure Coding, regular light mode edition"
+									loading="eager"
+								/>
 							</div>
 
-							<div class="flex items-center justify-between">
-								{
-									CTA2 && (
-										<>
-											<a
-												_class="w-full sm:w-auto bg-pink-500 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-pink-500 dark:hover:bg-pink-700 dark:focus:ring-gray-700"
-												class="w-full sm:w-auto inline-flex items-center justify-center text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded text-sm px-5 py-2 text-center"
-												href={CTA2?.href}
-												target="_blank"
-												rel="noopener"
+							<div class="p-5 min-w-fit">
+								<h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+									<a href="#"></a>
+								</h3>
+
+								<span class="text-gray-500 dark:text-gray-400 text-sm"></span>
+
+								<div class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+									<ul role="list" class="space-y-2 my-7">
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
 											>
-												<div class="font-bold">Buy</div>
-											</a>
-										</>
-									)
-								}
-								<div class="flex item">
-									<span class="text-sm font-base text-gray-900 dark:text-white">{CTA2?.priceNew}</span>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">PDF & EPUB</span>
+										</li>
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">106 Pages</span>
+										</li>
+
+										<li class="flex space-x-1 items-center mt-18">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">
+												12 Vulnerable npm Packages</span
+											>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white"
+												>33 Self-assessment Questions</span
+											>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">10 Chapters</span>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-purple-400 dark:text-purple600"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">Dark Mode</span>
+											<span
+												class="bg-purple-600 text-slate-100 text-xs ml-1e px-1 font-medium rounded dark:bg-purple-600 dark:text-slate-100"
+												>SPECIAL EDITION
+											</span>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-yellow-300 dark:text-yellow-300"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">Sale</span>
+											<span
+												class="bg-yellow-100 text-yellow-800 text-xs ml-1e px-1 font-medium rounded dark:bg-yellow-300 dark:text-yellow-900"
+												>30% OFF
+											</span>
+										</li>
+									</ul>
+
+									<div class="mt-4"></div>
+								</div>
+
+								<div>
+									<a class="text-indigo-500 inline-flex items-center text-sm" href="/book/command-injection">
+										Learn more
+										<svg
+											fill="none"
+											stroke="currentColor"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											class="w-4 h-4 ml-2"
+											viewBox="0 0 24 24"
+										>
+											<path d="M5 12h14M12 5l7 7-7 7"></path>
+										</svg>
+									</a>
+								</div>
+
+								<div class="pt-12 flex items-center justify-between">
+									<span class="text-sm font-base text-gray-900 dark:text-white">{BOOK_COMMAND_INJECTION?.priceNew}</span
+									>
+									<a
+										class="w-full sm:w-auto inline-flex items-center justify-center text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded text-sm px-5 py-2 text-center"
+										href={BOOK_COMMAND_INJECTION?.href}
+										target="_blank"
+										rel="noopener"
+										>Buy
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="items-end bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
-						<!-- <a href="#">
-                        <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Avatar">
-                    </a> -->
-						<div class="relative m-auto">
-							<img
-								class="mx-auto shadow-lg"
-								src="/images/book/book-cover-dark.png"
-								alt="Node.js Secure Coding book, Dark Mode Special Edition"
-								loading="eager"
-							/>
+					<!-- Begin book section -->
+					<div class="col-span-1 bg-gray-50 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+						<div>
+							<div class="m-2 p-2 flex flex-col items-center text-center justify-center">
+								<h2 class="text-md font-normal tracking-tight text-gray-900 dark:text-white">
+									Node.js Secure Coding:
+									<span class="block"></span>
+									Prevention and Exploitation of Path Traversal Vulnerabilities
+								</h2>
+								<div class="w-12 h-1 bg-indigo-500 rounded mt-2"></div>
+							</div>
 						</div>
-						<div class="p-5 min-w-fit">
-							<h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-								<a href="#">Digital book</a>
-							</h3>
 
-							<span class="text-gray-500 dark:text-gray-400 text-sm">PDF & EPUB</span>
-
-							<div class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-								<ul role="list" class="space-y-2 my-7">
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">106 Pages</span>
-									</li>
-
-									<li class="flex space-x-1 items-center mt-18">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white"> 12 Vulnerable npm Packages</span>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">33 Self-assessment Questions</span
-										>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">10 Chapters</span>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-purple-400 dark:text-purple600"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">Dark Mode</span>
-										<span
-											class="bg-purple-600 text-slate-100 text-xs ml-1e px-1 font-medium rounded dark:bg-purple-600 dark:text-slate-100"
-											>SPECIAL EDITION
-										</span>
-									</li>
-
-									<li class="flex space-x-1 items-center">
-										<svg
-											class="flex-shrink-0 w-3 h-3 text-yellow-300 dark:text-yellow-300"
-											aria-hidden="true"
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											viewBox="0 0 20 20"
-										>
-											<path
-												d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
-											></path>
-										</svg>
-										<span class="text-sm leading-tight text-gray-900 dark:text-white">Summer Sale</span>
-										<span
-											class="bg-yellow-100 text-yellow-800 text-xs ml-1e px-1 font-medium rounded dark:bg-yellow-300 dark:text-yellow-900"
-											>30% OFF
-										</span>
-									</li>
-								</ul>
-
-								<div class="mt-4"></div>
+						<div class="items-end bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
+							<div class="relative m-auto">
+								<img
+									class="mx-auto shadow-lg"
+									src="/images/book/book-path-traversal-cover-light.png"
+									alt="Node.js Secure Coding, regular light mode edition"
+									loading="eager"
+								/>
 							</div>
 
-							<div class="flex items-center justify-between">
-								{
-									CTA2 && (
-										<>
-											<a
-												_class="w-full sm:w-auto bg-pink-500 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-pink-500 dark:hover:bg-pink-700 dark:focus:ring-gray-700"
-												class="w-full sm:w-auto inline-flex items-center justify-center text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded text-sm px-5 py-2 text-center"
-												href={CTA2?.hrefDarkMode}
-												target="_blank"
-												rel="noopener"
+							<div class="p-5 min-w-fit">
+								<h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+									<a href="#"></a>
+								</h3>
+
+								<span class="text-gray-500 dark:text-gray-400 text-sm"></span>
+
+								<div class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
+									<ul role="list" class="space-y-2 my-7">
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
 											>
-												<div class="font-bold">Buy</div>
-											</a>
-										</>
-									)
-								}
-								<div class="flex item">
-									<span class="text-sm font-base text-gray-900 dark:text-white">{CTA2?.priceNew}</span>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">PDF & EPUB</span>
+										</li>
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">106 Pages</span>
+										</li>
+
+										<li class="flex space-x-1 items-center mt-18">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">
+												12 Vulnerable npm Packages</span
+											>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white"
+												>33 Self-assessment Questions</span
+											>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">10 Chapters</span>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-purple-400 dark:text-purple600"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">Dark Mode</span>
+											<span
+												class="bg-purple-600 text-slate-100 text-xs ml-1e px-1 font-medium rounded dark:bg-purple-600 dark:text-slate-100"
+												>SPECIAL EDITION
+											</span>
+										</li>
+
+										<li class="flex space-x-1 items-center">
+											<svg
+												class="flex-shrink-0 w-3 h-3 text-yellow-300 dark:text-yellow-300"
+												aria-hidden="true"
+												xmlns="http://www.w3.org/2000/svg"
+												fill="currentColor"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+												></path>
+											</svg>
+											<span class="text-sm leading-tight text-gray-900 dark:text-white">Sale</span>
+											<span
+												class="bg-yellow-100 text-yellow-800 text-xs ml-1e px-1 font-medium rounded dark:bg-yellow-300 dark:text-yellow-900"
+												>30% OFF
+											</span>
+										</li>
+									</ul>
+
+									<div class="mt-4"></div>
+								</div>
+
+								<div class="pt-12 flex items-center justify-between">
+									<span class="text-sm font-base text-gray-900 dark:text-white">{BOOK_PATH_TRAVERSAL?.priceNew}</span>
+									<a
+										class="w-full sm:w-auto inline-flex items-center justify-center text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded text-sm px-5 py-2 text-center"
+										href={BOOK_PATH_TRAVERSAL?.href}
+										target="_blank"
+										rel="noopener"
+										>Buy
+									</a>
 								</div>
 							</div>
 						</div>
