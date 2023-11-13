@@ -5,28 +5,61 @@ import { STORE } from 'src/config.mjs';
 
 <section class="relative">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-12 md:py-20">
-			<div class="max-w-2xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none">
-				<h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-					<span>Hands-On <br /> Node.js Security</span>
-				</h2>
-				<p class="text-xl text-gray-600 dark:text-slate-400">
-					Master secure coding in Node.js with real-world vulnerable dependencies and experience secure coding firsthand
-				</p>
+		<section>
+			<div class="container px-5 py-24 mx-auto">
+				<div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none">
+					<h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+						<span>Hands-On <br /> Node.js Security</span>
+					</h2>
+					<p class="text-xl text-gray-600 dark:text-slate-400">
+						Master secure coding in Node.js with real-world vulnerable npm dependencies and experience secure coding and
+						offensive security hacking first-hand
+					</p>
+				</div>
 
-				<div class="mt-6">
-					<a
-						class="btn text-white bg-pink-500 hover:bg-pink-700 mb-4 sm:mb-0"
-						href={STORE.bookBuyLink}
-						target="_blank"
-						rel="noopener"
-					>
-						<Icon name="tabler:download" class="w-5 h-5 mr-1 -ml-1.5" /> Get the book
-						<!-- <div class="text-xs ml-2 text-purple-200">|</div>
-						<div class="pl-2 font-bold text-md">$57.60</div> -->
-					</a>
+				<div class="flex justify-center gap-16">
+					<div class="h-full flex flex-col items-center text-center">
+						<img
+							alt="Node.js Secure Coding: Defending Against Command Injection Vulnerabilities"
+							class="mx-auto shadow-lg rounded-lg h-64 object-cover object-center mb-4"
+							src="/images/book/book-command-injection-cover-light.png"
+						/>
+						<div class="w-fit">
+							<div class="mt-2">
+								<a
+									class="btn text-white bg-pink-500 hover:bg-pink-700 mb-4 sm:mb-0"
+									href={STORE.CommandInjection.buyBookLink}
+									target="_blank"
+									rel="noopener"
+								>
+									<Icon name="tabler:download" class="w-5 h-5 mr-1 -ml-1.5" />
+									Get the book
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="h-full flex flex-col items-center text-center">
+						<img
+							alt="Node.js Secure Coding: Prevention and Exploitation of Path Traversal Vulnerabilities"
+							class="mx-auto shadow-lg rounded-lg h-64 object-cover object-center mb-4"
+							src="/images/book/book-path-traversal-cover-light.png"
+						/>
+						<div class="w-full">
+							<div class="mt-2">
+								<a
+									class="btn text-white bg-pink-500 hover:bg-pink-700 mb-4 sm:mb-0"
+									href={STORE.PathTraversal.buyBookLink}
+									target="_blank"
+									rel="noopener"
+								>
+									<Icon name="tabler:download" class="w-5 h-5 mr-1 -ml-1.5" />
+									Get the book
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
 </section>
