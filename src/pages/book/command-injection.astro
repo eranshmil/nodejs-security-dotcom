@@ -3,7 +3,7 @@ import { STORE } from '~/config.mjs';
 
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
-import Hero from '~/components/widgets/CommandInjection/BooksHero2.astro';
+import Hero from '~/components/widgets/CommandInjection/BooksHero.astro';
 import Pricing1Column from '~/components/widgets/CommandInjection/Pricing1Column.astro';
 import BookFeatures from '~/components/widgets/CommandInjection/BookFeatures.astro';
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
@@ -27,9 +27,7 @@ const meta = {
 		title="Node.js Secure Coding:"
 		subtitle="Defending Against Command Injection Vulnerabilities"
 		CTA2={{
-			// text: 'Get the book, start coding securely',
 			text: 'Buy the book',
-			// text: 'Get started',
 			href: STORE.bookBuyLink,
 			hrefDarkMode: STORE.bookBuyLinkDarkMode,
 			priceOld: '$57.60',
@@ -60,5 +58,13 @@ const meta = {
 
 	<FAQ />
 	<Stats />
-	<CallToAction />
+	<CallToAction
+		CTA={{
+			text: 'Buy the book',
+			href: STORE.bookBuyLink,
+			hrefDarkMode: STORE.bookBuyLinkDarkMode,
+			priceOld: '$57.60',
+			priceNew: '$40.32',
+		}}
+	/>
 </Layout>
