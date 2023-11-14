@@ -1,0 +1,251 @@
+---
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import { STORE } from 'src/config.mjs';
+
+interface CallToAction {
+	text: string;
+	href?: string;
+	icon?: string;
+	priceOld?: string;
+	priceNew?: string;
+}
+
+export interface Props {
+	title?: string;
+	subtitle?: string;
+	CTA1?: string | CallToAction;
+	CTA2?: string | CallToAction;
+	CTA3?: string | CallToAction;
+	DISCOUNT_CALLOUT?: CallToAction;
+	image?: string | any; // TODO: find HTMLElementProps
+}
+
+const {
+	title,
+	subtitle,
+	description = await Astro.slots.render('description'),
+	content = await Astro.slots.render('content'),
+	CTA1 = await Astro.slots.render('CTA1'),
+	CTA2 = await Astro.slots.render('CTA2'),
+	CTA3 = await Astro.slots.render('CTA3'),
+	DISCOUNT_CALLOUT = await Astro.slots.render('DISCOUNT_CALLOUT'),
+	image = await Astro.slots.render('image'),
+} = Astro.props;
+---
+
+<section class="relative md:-mt-[76px]">
+	<div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+		<div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
+			<div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
+				{
+					title && (
+						<div class="mb-4">
+							<h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200">
+								<span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500">
+									{title}
+								</span>
+							</h1>
+							<h2 class="my-auto text-4xl font-bold">{subtitle}</h2>
+						</div>
+					)
+				}
+
+				<div class="flex items-center space-x-4 mb-12">
+					<img class="w-14 h-14 rounded-full" src="/images/lirantal-profile-picture.png" alt="Liran Tal">
+					<div class="font-medium">
+						<div class="text-sm text-gray-500 dark:text-gray-400">written by</div>
+						<span class="font-bold">Liran Tal</span>
+					</div>
+				</div>
+
+				<div class="max-w-3xl mx-auto lg:max-w-none">
+					{description && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={description} />}
+					<div
+						class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl"
+					>
+						{
+							CTA1 && (
+								<div class="flex w-full sm:w-auto">
+									{typeof CTA1 === 'string' ? (
+										<Fragment set:html={CTA1} />
+									) : (
+										<a
+											class="btn text-white border border-pink-500 bg-pink-500 hover:bg-pink-700 hover:border-pink-700 sm:mb-0 w-full"
+											href={CTA1?.href}
+											target="_blank"
+											rel="noopener"
+										>
+											{CTA1?.icon && (
+												<>
+													<Icon name={CTA1.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
+												</>
+											)}
+											{CTA1?.text}
+										</a>
+									)}
+								</div>
+							)
+						}
+						<!-- <a
+							href="#"
+							class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+						>
+							<svg
+								class="mr-3 w-7 h-7"
+								aria-hidden="true"
+								focusable="false"
+								data-prefix="fab"
+								data-icon="apple"
+								role="img"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 384 512"
+								><path
+									fill="currentColor"
+									d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"
+								></path>
+							</svg>
+							<div class="text-left">
+								<div class="mb-1 text-xs">$57.6</div>
+								<div class="-mt-1 font-sans text-lg font-semibold">Buy</div>
+							</div>
+						</a> -->
+
+						{
+							CTA2 && (
+								<a
+									_class="w-full sm:w-auto bg-pink-500 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-pink-500 dark:hover:bg-pink-700 dark:focus:ring-gray-700"
+									class="w-full sm:w-auto inline-flex items-center justify-center text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+									href={CTA2?.href}
+									target="_blank"
+									rel="noopener"
+								>
+									<div class="font-normal">{CTA2?.text}</div>
+									<div class="text-lg ml-2 text-purple-200">|</div>
+									{
+										CTA2?.priceNew ? (
+											
+											<div class="text-white-300 pl-2 font-regular text-sm">{CTA2?.priceNew}</div>
+											<div class="line-through pl-3 text-lg">{CTA2?.priceOld}</div>
+										)
+										: (
+
+										<div class="pl-2 text-xs">{CTA2?.priceOld}</div>
+										)
+									}
+									
+								</a>
+							)
+							
+						}
+						
+
+						{
+							CTA3 && (
+								<div class="flex w-full sm:w-auto">
+									{typeof CTA3 === 'string' ? (
+										<Fragment set:html={CTA3} />
+									) : (
+										<a
+											class="btn text-white bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-800 w-full"
+											href={CTA3?.href}
+										>
+											{CTA3?.icon && (
+												<>
+													<Icon name={CTA3.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
+												</>
+											)}
+											{CTA3.text}
+											
+										</a>
+										
+									)}
+									
+								</div>
+							)
+						}
+
+						{
+							/*
+							DISCOUNT_CALLOUT && (
+								<div class="flex w-full sm:w-auto">
+									<div
+										class="btn text-black font-bold bg-yellow-300 dark:bg-yellow-300 w-full"
+									>
+										<p>
+											{DISCOUNT_CALLOUT.text}
+										</p>
+									</div>
+								</div>
+								)
+							*/
+						}
+					</div>
+					
+				</div>
+				<!-- <p class="mt-2 text-sm font-light text-yellow-300">
+					{DISCOUNT_CALLOUT.text}
+				</p> -->
+
+				<div class="mt-12">
+
+				<div class="flex mb-2 -space-x-4">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader1.jpg" alt="Thomas">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader2.jpg" alt="Manuel">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader3.jpg" alt="Yoni">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader21.jpg" alt="Tally">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader4.jpg" alt="Mateo">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader5.jpg" alt="Sergio">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader20.jpg" alt="Manu">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader6.jpg" alt="Hung">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader7.jpg" alt="Kriakos">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader19.jpg" alt="Sophia">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader8.jpg" alt="Daniel">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader9.jpg" alt="David">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader10.jpg" alt="Miguel">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader11.jpg" alt="Joachim">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader12.jpg" alt="Jesús">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader13.jpg" alt="DiMilan">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader14.jpg" alt="Ashif">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader15.jpg" alt="Ivan">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader16.jpg" alt="Heru">
+					<img class="w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" src="/images/readers/reader17.jpg" alt="Ngoran">
+					<span class="pl-3 flex items-center justify-center w-12 h-10 text-xs font-medium text-white bg-gray-700 border-2 border-white rounded-full hover:bg-gray-600 dark:border-gray-800">+99</span>
+				</div>
+				<p class="text-sm font-light">
+					Join Kyriakos, Hung, Sergio, Mateo, Daniel, and hundreds of developers who chooses to learn from Liran Tal's security books and educational content for invaluable insights and practical knowledge
+				</p>
+			</div>
+
+				{content && <Fragment set:html={content} />}
+			</div>
+			<div class="basis-1/2 pl-48">
+				{
+					image && (
+						<div class="relative mb-8 m-auto max-w-3xl">
+							{typeof image === 'string' ? (
+								<Fragment set:html={image} />
+							) : (
+								<Picture
+									class="mx-auto shadow-lg"
+									widths={[400, 768, 1024, 2040]}
+									sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+									loading="lazy"
+									{...image}
+								/>
+							)}
+						</div>
+					)
+				}
+				<div class="text-center pb-10 md:pb-16 mx-auto">
+					<p class="mt-2 text-sm font-light">
+						Digital book editions in PDF and EPUB formats 
+					</p>
+			</div>
+			</div>
+		</div>
+	</div>
+</section>
+
