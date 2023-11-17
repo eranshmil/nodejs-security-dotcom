@@ -1,8 +1,11 @@
 <script>
 	import posthog from 'posthog-js';
 
-	posthog.init('phc_3Pz7QXS83kSWho8CYerXbQFq6YMserXVs4OFufrFN1j', {
-		api_host: 'https://app.posthog.com',
-		persistence: 'memory',
-	});
+	// don't run analytics and events on localhost
+	if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+		posthog.init('phc_3Pz7QXS83kSWho8CYerXbQFq6YMserXVs4OFufrFN1j', {
+			api_host: 'https://app.posthog.com',
+			persistence: 'memory',
+		});
+	}
 </script>
