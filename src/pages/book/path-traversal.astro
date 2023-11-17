@@ -1,0 +1,66 @@
+---
+import { STORE } from '~/config.mjs';
+
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/BooksLayout.astro';
+import Hero from '~/components/widgets/PathTraversal/BooksHero.astro';
+import Pricing1Column from '~/components/widgets/CommandInjection/Pricing1Column.astro';
+import BookFeatures from '~/components/widgets/CommandInjection/BookFeatures.astro';
+import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
+import ScaleUpSecurity from '~/components/widgets/CommandInjection/ScaleUpSecurity.astro';
+import FAQ from '~/components/widgets/CommandInjection/FAQ.astro';
+import Stats from '~/components/widgets/CommandInjection/Stats.astro';
+import CallToAction from '~/components/widgets/CommandInjection/CallToAction.astro';
+import TestimonialHeroBlock from '~/components/widgets/CommandInjection/TestimonialHeroBlock.astro';
+import TestimonialCollection from '~/components/widgets/CommandInjection/TestimonialCollection.astro';
+import BookSampleCTA from '~/components/widgets/CommandInjection/BookSampleCTA.astro';
+import PagesGallery from '~/components/widgets/CommandInjection/PagesGallery.astro';
+
+const meta = {
+	title: 'Node.js Secure Coding: Prevention and Exploitation of Path Traversal Vulnerabilities',
+	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent path traversal and directory traversal vulnerabilities with expert Liran Tal.`,
+	canonical: getCanonical(getHomePermalink()),
+};
+---
+
+<Layout {meta}>
+	<Hero
+		title="Node.js Secure Coding:"
+		subtitle="Prevention and Exploitation of Path Traversal Vulnerabilities"
+		CTA2={{
+			text: 'Buy the book',
+			href: STORE.PathTraversal.buyBookLink,
+			priceOld: '$57.60',
+			priceNew: '$40.32',
+		}}
+	/>
+
+	<!-- <PagesGallery /> -->
+
+	<!-- <PagesGallery />
+
+	<TestimonialCollection />
+
+	<ScaleUpSecurity />
+
+	<TestimonialHeroBlock />
+
+	<BookFeatures />
+
+	<Pricing1Column />
+
+	<BookSampleCTA />
+
+	<BookAuthor />
+
+	<FAQ />
+	<Stats />
+	<CallToAction
+		CTA={{
+			text: 'Buy the book',
+			href: STORE.CommandInjection.bookBuyLinkDarkMode,
+			priceOld: '$57.60',
+			priceNew: '$40.32',
+		}}
+	/> -->
+</Layout>
