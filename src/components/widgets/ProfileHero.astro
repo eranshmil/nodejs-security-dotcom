@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import { PROFILE } from '~/config.mjs';
-import Picture from '~/components/core/Picture.astro';
+import { Image } from 'astro:assets'
 ---
 
 <section>
@@ -10,16 +10,11 @@ import Picture from '~/components/core/Picture.astro';
 			<div class="text-center pb-10 md:pb-16">
 				<div>
 					<div class="relative mb-8 m-auto max-w-3xl">
-						<Picture
-							src="@assets/images/lirantal-profile-picture.png"
+						<Image
+							src={import("/public/images/lirantal-profile-picture.png")}
 							class="mx-auto rounded-full shadow-lg"
-							widths={[100, 200]}
+							width="100"
 							alt="Liran Tal"
-							deprecated-src={import('~/assets/images/hero.jpg')}
-							deprecated-class="mx-auto rounded-md shadow-lg bg-gray-400 dark:bg-slate-700 w-full"
-							deprecated-widths={[400, 768]}
-							deprecated-sizes=" (max-width: 767px) 400px, 768px"
-							deprecated-aspectRatio="16:9"
 						/>
 					</div>
 				</div>

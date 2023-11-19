@@ -13,10 +13,12 @@ export async function getStaticPaths({ paginate }) {
 
 	const posts = await fetchPosts();
 
-	return paginate(posts, {
+	const pathEntries = paginate(posts, {
 		params: { blog: BLOG_BASE || undefined },
 		pageSize: BLOG.postsPerPage,
 	});
+
+	return pathEntries;
 }
 
 const { page } = Astro.props;

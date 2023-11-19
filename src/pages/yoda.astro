@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon';
 import bookImage from '~/assets/images/nodejs-secure-coding-book-3d-style-800.png';
 import Yoda from '~/assets/images/yoda_render.webp';
@@ -55,7 +55,7 @@ const meta = {
 					id="yoda"
 					class="col-start-7 col-span-1 ml-12 w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
 				>
-					<Picture
+					<Image
 						class="h-full w-full object-cover"
 						src={Yoda}
 						widths={[400, 768, 1024, 2040]}
@@ -68,7 +68,7 @@ const meta = {
 					id="book"
 					class="fade-in col-start-8 col-span-4 ml-12 w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
 				>
-					<Picture
+					<Image
 						class="h-full w-full object-cover"
 						src={bookImage}
 						widths={[400, 768, 1024, 2040]}
