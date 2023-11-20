@@ -1,0 +1,63 @@
+---
+import { Code } from 'astro:components';
+---
+
+<section class="items-center w-3/5 mx-auto flex-col justify-center my-24">
+
+    <h2 class="mb-4 text-3xl font-bold text-center">Sharpen your Node.js Coding Skills</h2>
+    <p class="sm:px-8 xl:px-32 text-center mb-4">
+        Here is a classic Fastify application code.
+        <span class="block">
+        Can you find the security vulnerability in the code below?
+        </span>
+    </p>
+
+    <div class="bg-gray-50 dark:bg-gray-800 rounded-t-md p-2">
+        <p
+            class="bg-blue-100 text-red-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-red-400"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-code mr-2"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M7 8l-4 4l4 4"></path><path
+                    d="M17 8l4 4l-4 4"></path><path d="M14 4l-4 16"></path></svg
+            >
+            Vulnerable Code
+        </p>
+    </div>
+    <div>
+        <Code
+            code={`
+    const fs = require("fs");
+    const path = require("path");
+    const fastify = require("fastify")();
+
+    const config = require('./config.json');;
+
+    fastify.get("/static", async (request, reply) => {
+        const filename = request.query.filename;
+        const filePath = path.join("/opt/app/uploads", filename);
+
+        try {
+            const fileContents = fs.readFileSync(filePath);
+            reply.code(200).send(fileContents);
+        } catch (err) {
+            reply.code(404).send("File not found");
+        }
+    });
+
+    fastify.listen({ port: 3000 });
+    `}
+            theme="material-theme-palenight"
+            lang="js"
+        />
+    </div>
+</section>
