@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon';
+
+const items = [
+	[
+		{
+			question: 'Why is Path Traversal Relevant to Node.js Developers?',
+			answer: `Path traversal vulnerabilities pose a significant threat to Node.js applications, allowing attackers to navigate and access sensitive files like .env or package.json. My book is tailored to Node.js developers, providing practical insights, real-world vulnerable code examples, and secure coding practices to fortify your applications against these potentially devastating attacks.`,
+		},
+		{
+			question: 'What Makes This Book Stand Out for Secure Coding Practices?',
+			answer: `This book goes beyond conventional secure coding guides. It not only reveals the hidden impacts of path traversal vulnerabilities but also offers hands-on examples, expert insights, and a deep dive into Node.js security. By exploring real-world vulnerable npm packages and best practices, you'll gain a robust understanding of secure coding, making this book an essential resource for Node.js developers looking to elevate their skills.`,
+		},
+		{
+			question: 'How Will This Book Enhance My Node.js Security Knowledge?',
+			answer: `This book provides a comprehensive exploration of path traversal vulnerabilities specific to Node.js, offering practical solutions and insights tailored to this environment. Whether you're a beginner or an experienced developer, you'll gain a deep understanding of Node.js security, enabling you to proactively identify and mitigate path traversal risks in your applications.`,
+		},
+	],
+	[
+		{
+			question: 'Is This Book Suitable for Developers at Different Skill Levels?',
+			answer: `Absolutely! My book is designed to cater to a wide range of developers. From those new to Node.js security to seasoned professionals, the content is structured to accommodate various skill levels. With a mix of foundational concepts and advanced techniques, every reader can benefit from the actionable insights and secure coding practices shared throughout the book.`,
+		},
+		{
+			question: 'How Does This Book Address the Latest Security Challenges in Node.js?',
+			answer: `This book is not just a static guide; it evolves with the Node.js security landscape and the secure coding practices specific to Node.js. This book's content reviews security vulnerabilities, attack vectors, and security best practices. With real-world examples and practical insights, you'll be equipped to tackle the dynamic challenges of securing Node.js applications effectively. Stay ahead in the ever-changing world of web security with this 2023 up-to-date educational resource.`,
+		},
+		{
+			question: 'Can I contact the author for additional help or questions?',
+			answer: `Anytime! I'm always happy to help. Reach out to me here [liran at lirantal dot com].`,
+		}
+	],
+];
+---
+
+<div class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
+	<div class="max-w-xl sm:mx-auto lg:max-w-2xl">
+		<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+			<h2 class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading">
+				Frequently Asked Questions
+			</h2>
+		</div>
+	</div>
+	<div class="max-w-screen-xl sm:mx-auto">
+		<div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
+			{
+				items.map((subitems) => (
+					<div class="space-y-8">
+						{subitems.map(({ question, answer }) => (
+							<div>
+								<p class="mb-4 text-xl font-bold">
+									<Icon name="tabler:arrow-down-right" class="w-7 h-7 text-pink-500 inline-block icon-bold" />
+									{question}
+								</p>
+								{answer.split('\n\n').map((paragraph) => (
+									<p class="text-gray-700 dark:text-gray-400 mb-2" set:html={paragraph} />
+								))}
+							</div>
+						))}
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>
