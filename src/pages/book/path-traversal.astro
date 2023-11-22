@@ -4,16 +4,12 @@ import { STORE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
 import Hero from '~/components/widgets/PathTraversal/BooksHero.astro';
-import Pricing1Column from '~/components/widgets/CommandInjection/Pricing1Column.astro';
-import BookFeatures from '~/components/widgets/CommandInjection/BookFeatures.astro';
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
-import ScaleUpSecurity from '~/components/widgets/CommandInjection/ScaleUpSecurity.astro';
-import FAQ from '~/components/widgets/CommandInjection/FAQ.astro';
-import Stats from '~/components/widgets/CommandInjection/Stats.astro';
-import CallToAction from '~/components/widgets/CommandInjection/CallToAction.astro';
+import FAQ from '~/components/widgets/PathTraversal/FAQ.astro';
+import Stats from '~/components/widgets/PathTraversal/Stats.astro';
+import CallToAction from '~/components/widgets/PathTraversal/CallToAction.astro';
 import TestimonialHeroBlock from '~/components/widgets/CommandInjection/TestimonialHeroBlock.astro';
 import TestimonialCollection from '~/components/widgets/CommandInjection/TestimonialCollection.astro';
-import BookSampleCTA from '~/components/widgets/CommandInjection/BookSampleCTA.astro';
 import PagesGallery from '~/components/widgets/PathTraversal/PagesGallery.astro';
 import VulnerabilityImpact from '~/components/widgets/PathTraversal/VulnerabilityImpact.astro';
 import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet1.astro';
@@ -49,22 +45,14 @@ const meta = {
 
 	<TestimonialCollection />
 
-	<!-- <ScaleUpSecurity /> -->
-
-	<!-- <BookFeatures /> -->
-
-	<!-- <Pricing1Column /> -->
-
-	<!-- <BookSampleCTA /> -->
-
 	<FAQ />
 	<Stats />
 	<CallToAction
 		CTA={{
 			text: 'Buy the book',
-			href: STORE.CommandInjection.bookBuyLinkDarkMode,
+			href: STORE.PathTraversal.buyBookLink,
 			priceOld: '$57.60',
 			priceNew: '$40.32',
 		}}
-	/> -->
+	/>
 </Layout>
