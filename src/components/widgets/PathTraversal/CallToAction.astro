@@ -1,0 +1,32 @@
+---
+const { CTA } = Astro.props;
+---
+
+<section class="relative">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="py-12 md:py-20">
+			<div class="max-w-2xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none">
+				<h2 class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+					<span>Hands-On <span class="block"></span>Node.js Security</span>
+				</h2>
+				<div class="mt-8 flex flex-col mb-4 lg:mb-4 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+					<a
+						class="w-full sm:w-auto bg-pink-500 hover:bg-pink-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-pink-500 dark:hover:bg-pink-700 dark:focus:ring-gray-700"
+						href={CTA?.href}
+						target="_blank"
+						rel="noopener"
+					>
+						<div class="font-normal">{CTA?.text}</div>
+						<div class="text-lg ml-2 text-purple-200">|</div>
+
+						<div class="text-white-300 pl-2 font-regular text-sm">{CTA?.priceNew}</div>
+						<div class="line-through pl-3 text-lg">{CTA?.priceOld}</div>
+					</a>
+				</div>
+				<p class="text-xl text-gray-600 dark:text-slate-400">
+					Master secure coding in Node.js with real-world vulnerable dependencies and experience secure coding firsthand
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
