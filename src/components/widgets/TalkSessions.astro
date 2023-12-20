@@ -1,0 +1,89 @@
+---
+import { Icon } from 'astro-icon';
+import { Image } from 'astro:assets'
+---
+
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
+	<div class="grid gap-6 row-gap-10 md:grid-cols-2">
+		<div class="md:pb-6 md:pr-16">
+			<h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading">
+				Educate your developer team on supply chain security and Node.js security topics
+			</h2>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
+							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+				</div>
+				<div class="pt-1 pb-8">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Node.js Secure Coding</p>
+					<p>
+						Focus on command injection and path traversal vulnerabilities. Participants will get acquainted with real-world, vulnerable code of open source npm packages that were identified via CVEs. They will learn how to recognize patterns of vulnerable code, and best practices to mitigate these sets of vulnerabilities. We can focus on one of command injection or path traversal, or encompass both in order to provide a broader spectrum of patterns and cases. The session includes an intro for AppSec fundamentals and an outro for continued education and other resources at their disposal.
+					</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
+							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+				</div>
+				<div class="pt-1 pb-8">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">The Mechanics of Malicious Packages</p>
+					<p>
+						A deepdive into supply chain security incidents with a focus on malicious packages - analyzing real incidents and stories behind them in the JavaScript / npm packages, analyzing vulnerable code, understanding the threat landscape from developer's to SCM, to CI, to public registries such as npmjs and pypi. Participants will have an increased awareness and secure mindset when working in the open source ecosystems (dependencies, docker container images, github actions) and will be presented with best practices and tools to help them combat against these threats.
+					</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
+							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+				</div>
+				<div class="pt-1 pb-8">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Open Source and JavaScript Security Controls</p>
+					<p>
+						Software supply chain security risks are ever-increasing, and if this wasn’t worrying enough, attacks have been sharpened to target developers and their ecosystems. From dependency confusion attacks, spearheaded malicious code backdoors in open source packages, and compromising your build pipelines infrastructure. The security risks prevalent in open source libraries and ecosystems pose an imminent threat to developers. What are some software security controls we can apply for a better security posture? Participants will have a broader understanding of the risks of open source software, from malicious packages to other security risks involved with open source software. 
+					</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
+							<Icon name="tabler:check" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+				</div>
+				<div class="pt-1">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">
+						Looking to train your team on a different topic? Let's chat!
+					</p>
+					<p class="text-gray-700"></p>
+				</div>
+			</div>
+		</div>
+		<div class="relative">
+            <!--
+                alternative 1:
+                //src={import('~/assets/images/lirantal-presenting-1.png')}
+             -->
+			<Image
+				class="rounded-md object-cover h-full shadow-lg bg-gray-400 dark:bg-slate-700"
+				src={import('~/assets/images/lirantal-presenting-2.png')}
+				alt="Liran Tal presenting at a conference"
+				loading="lazy"
+			/>
+		</div>
+	</div>
+</section>
