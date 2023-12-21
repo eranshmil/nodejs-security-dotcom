@@ -1,0 +1,96 @@
+---
+import { Icon } from 'astro-icon';
+
+const testimonials = [
+	{
+		name: 'Meital Eli Mur',
+        picture: '/images/testimonials/meital-eli.jpg',
+		title: 'InfoSec Compliance Leader at Taboola',
+		message: `I had the pleasure of planning and hosting a session on Open-Source Security & Secure Coding, delving into the vital intersection of development and security. In today's interconnected world, it's crucial to fortify our development against evolving threats. The enthusiastic engagement and insightful discussions during the training showcased a collective commitment to raising the security bar in our projects. A huge thank you to Liran Tal for sharing his expertise and empowering our teams with a great Security Development Training! 🙏`,
+	},
+];
+
+const starsFillColor = 'gold'
+---
+
+<div class="container my-24 mx-auto md:px-6">
+	<section class="mb-32 text-center">
+		<h2 class="mb-4 text-3xl font-bold">Companies Share Their Success</h2>
+        <p class="sm:px-16 xl:px-64">
+            Read testimonials from companies such as Taboola and others who have taken security training and educational books and experienced successful engagement and security uptick awareness in their teams.
+        </p>
+        <div class="mt-12 grid gap-x-6 md:grid-cols-1 lg:mx-64">
+		{
+			testimonials.map((testimonialItem) => {
+				return (
+					
+						<div class="mb-12">
+							<div class="mb-6 flex justify-center">
+								<img
+									src={testimonialItem.picture}
+									class="w-16 rounded-full shadow-lg dark:shadow-black/20"
+								/>
+							</div>
+							<h5 class="mb-2 text-lg font-bold">{testimonialItem.name}</h5>
+							<h6 class="mb-4 font-light text-primary dark:text-pink-500">{testimonialItem.title}</h6>
+							<p class="mb-4">
+								{testimonialItem.message}
+                                <!--
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="inline-block w-6">
+									<path
+										fill="currentColor"
+										d="M580 556h160V396H580v160Zm-360 0h160V396H220v160Zm406 220 80-160H520V336h280v288l-76 152h-98Zm-360 0 80-160H160V336h280v288l-76 152h-98Zm34-300Zm360 0Z"
+									/>
+								</svg>
+                            -->
+							</p>
+							<ul class="mb-0 flex justify-center">
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+											fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+							</ul>
+						</div>
+					
+				);
+			})
+		}
+        </div>
+	</section>
+</div>
