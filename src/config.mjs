@@ -110,7 +110,7 @@ export const SITE = {
 
 	title: 'Node.js Security starts with Node.js Secure Coding',
 	description:
-		'Master hands-on Node.js security with Node.js Secure Coding and learn how to defend against command injection vulnerabilities and prevent path traversal attacks',
+		'Master hands-on Node.js security with Node.js Secure Coding books and learn how to defend against command injection vulnerabilities and gain backend development skills to exploit and prevent path traversal attacks by reviewing real-world vulnerable npm packages and insecure code.',
 };
 
 export const BLOG = {
