@@ -109,7 +109,8 @@ export const SITE = {
 	basePathname: '/',
 
 	title: 'Node.js Security starts with Node.js Secure Coding',
-	description: 'Node.js Security and Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+	description:
+		'Master hands-on Node.js security with Node.js Secure Coding and learn how to defend against command injection vulnerabilities and prevent path traversal attacks',
 };
 
 export const BLOG = {
