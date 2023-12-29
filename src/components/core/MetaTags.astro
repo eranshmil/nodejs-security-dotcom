@@ -73,8 +73,26 @@ const image =
 		creator: '@liran_tal',
 		image: image ? image.toString() : undefined,
 		imageAlt: ogTitle,
+		title: ogTitle,
+		site: '@liran_tal',
 		description: description,
 		card: image ? 'summary_large_image' : 'summary',
+	}}
+	extend={{
+		meta: [
+			{
+				name: 'og:locale',
+				content: 'en_US',
+			},
+			{
+				name: 'og:description',
+				content: description,
+			},
+			{
+				name: 'og:site_name',
+				content: SITE.name,
+			}
+		]
 	}}
 />
 
