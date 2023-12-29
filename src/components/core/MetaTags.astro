@@ -1,22 +1,11 @@
 ---
 import { SEO } from 'astro-seo';
-import { Image } from 'astro:assets';
-import { getRelativeUrlByFilePath } from '~/utils/directories';
-
-import defaultImage from '~/assets/images/nodejs-secure-coding-website-og-lightmode-v3.png';
-
 import { SITE } from '~/config.mjs';
 import Fonts from '../atoms/Fonts.astro';
 import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
 import WebAnalytics from './WebAnalytics.astro';
 
-// const { src: defaultImage } = await getImage({
-// 	src: defaultImageSrc,
-// 	width: 1200,
-// 	height: 628,
-// });
-
-// const defaultImage = new URL(defaultImageSrc, Astro.site);
+import defaultImageFile from '~/assets/images/nodejs-secure-coding-website-og-lightmode-v3.png';
 
 const {
 	title = SITE.name,
@@ -30,18 +19,21 @@ const {
 	ogType = 'website',
 } = Astro.props;
 
+const siteBaseURL = new URL(Astro.url);
+const defaultImage = new URL(defaultImageFile.src, siteBaseURL);
+
 let { image: _image } = Astro.props;
 _image = _image || defaultImage;
 
-// console.log({ _image });
-// console.log(new URL(_image.src, Astro.site));
+let image = null;
+if (typeof _image === 'string') {
+    image = new URL(_image, siteBaseURL);
+} else if (_image && typeof _image['href'] !== 'undefined') {
+    image = new URL(_image['href'], siteBaseURL);
+} else {
+	image = defaultImage;
+}
 
-const image =
-	typeof _image === 'string'
-		? new URL(_image, Astro.site)
-		: _image && typeof _image['src'] !== 'undefined'
-		? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
-		: null;
 ---
 
 <meta charset="UTF-8" />
