@@ -20,6 +20,10 @@ export default defineConfig({
 	base: SITE.basePathname,
 	output: 'static',
 	trailingSlash: 'ignore',
+	redirects: {
+		'/business': '/security-training',
+		'/enterprise': '/security-training',
+	},
 	integrations: [
 		tailwind({
 			config: {
