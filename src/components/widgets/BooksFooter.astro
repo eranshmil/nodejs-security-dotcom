@@ -50,57 +50,44 @@ const currentYear = new Date().getFullYear();
 
 <footer class:list={['border-t border-gray-200 dark:border-slate-800', bg]}>
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-			<div class="col-start-3 col-end-6">
-				<div class="mb-2">
-					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>Liran Tal</a>
+		<div class="grid grid-cols-2 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12 mb-2">
+			<div>
+				<a class="inline-block font-bold text-xl" href={getHomePermalink()}>Liran Tal</a>
 
-					<ul class="text-sm">
-						<li class="mb-2">
-							<a
-								class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out"
-								href="https://lirantal.com/recognitions"
-							>
-								Award-winning security champion, open source advocate, and self-published author.
-							</a>
-						</li>
-					</ul>
-					<ul class="text-sm">
-						{
-							FOOTER.author_profile_links.map((item) => {
-								return (
-									<li class="mb-2">
-										{item.icon ? <Icon name={item.icon} class="inline-flex w-5 h-5" /> : ''}
-										<a
-											class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out"
-											href={item.link}
-										>
-											{item.title}
-										</a>
-									</li>
-								);
-							})
-						}
-					</ul>
-				</div>
-				<div class="text-sm text-gray-600">
-					<!-- @TODO 
-					<a
-						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Terms</a
-					> ·
-					<a
-						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-						href="#">Privacy Policy</a
-					> -->
-				</div>
+				<ul class="text-sm">
+					<li class="mb-2">
+						<a
+							class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out"
+							href="https://lirantal.com/recognitions"
+						>
+							Award-winning security champion, open source advocate, and self-published author.
+						</a>
+					</li>
+				</ul>
+				<ul class="text-sm">
+					{
+						FOOTER.author_profile_links.map((item) => {
+							return (
+								<li class="mb-2">
+									{item.icon ? <Icon name={item.icon} class="inline-flex w-5 h-5" /> : ''}
+									<a
+										class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out"
+										href={item.link}
+									>
+										{item.title}
+									</a>
+								</li>
+							);
+						})
+					}
+				</ul>
 			</div>
 
 			{
 				FOOTER.published_author_links.map((column) => {
 					return (
 						<>
-							<div class="col-start-8 col-end-12">
+							<div>
 								<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">{column.title}</div>
 								<ul class="text-sm">
 									{column.items.map((item) => {
@@ -187,8 +174,10 @@ const currentYear = new Date().getFullYear();
 					</span>
 				> -->
 
-					Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a>
-					· All rights reserved.
+					 Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/">
+						onWidget</a
+					>
+					 · All rights reserved.
 				</div>
 
 				<div>
