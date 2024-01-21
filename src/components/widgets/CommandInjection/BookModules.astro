@@ -1,0 +1,85 @@
+---
+
+const chapters = [
+    {
+        identifier: 'Chapter 1',
+        title: "Introduction to Application Security",
+        description: "By the end of this chapter, you'll have a solid understanding of fundamental concepts in application security, including CVEs, CWEs, the OWASP Top 10, NVD, source-to-sink, and attack vectors. Gain insights into the landscape of application security organizations, laying the groundwork for a comprehensive security mindset.",
+    },
+    {
+        identifier: 'Chapter 2',
+        title: 'Command Injection',
+        description: `In this chapter, you'll delve into the world of command injection vulnerabilities, understanding their prevalence and impact. Discover the various types of command injection vulnerabilities, learning how to classify them. Explore the real-world consequences on applications and software libraries. Uncover patterns of insecure code, not only specific to Node.js but also applicable across different programming languages, empowering you to proactively identify and address such vulnerabilities`,
+    },
+    {
+        identifier: 'Chapter 3',
+        title: 'Mitigating Argument Injection in Node.js Applications',
+        description: `Exploring an OS Command Injection vulnerability offered a pivotal lesson in securing Node.js applications. Avoiding string concatenation for input flowing to a system command is paramount, especially when user-controlled. Despite safer alternatives like spawn() or execFile(), the insecure exec() function was used in the vulnerable code. A critical revelation was the susceptibility to argument injection, where attackers manipulate command behavior by controlling arguments. The chapter explores this attack vector and underscores effective mitigation through the strategic use of the double dash (--) to signal the end of arguments and options parsing. This learning is crucial for fortifying applications against argument injection attacks, as demonstrated in other notable cases impacting Git and Docker, providing actionable insights for developers.`,
+    },
+    {
+        identifier: 'Chapter 4',
+        title: 'Fortifying Node.js Applications Against Command Injection Threats',
+        description: `This chapter delves into advanced strategies for securing Node.js applications against command injection threats. Drawing insights from real-world vulnerabilities, it emphasizes the importance of meticulous examination of arguments when spawning operating system commands. The lessons learned go beyond the basics of safe system process APIs, urging developers to scrutinize command-line arguments and positional values as part of robust security controls. The chapter distills essential practices, including thorough input validation, adopting both deny-list and allow-list approaches, questioning the misconception of project popularity equating to security, advocating code review for third-party libraries, and highlighting the nuanced nature of security fixes. By internalizing these lessons, developers fortify their understanding of command injection risks, equipping them with a proactive stance in securing their Node.js applications.`,
+    },
+    {
+        identifier: 'Chapter 5',
+        title: 'Hardening Node.js Against Command Injection: Insights from vulnerable npm package',
+        description: `This chapter explores critical insights derived from a Command Injection vulnerability discovered in the git-promise npm package. Focusing on input validation and sanitization, the vulnerability exposed risks associated with improper handling of user input in the exec() function. Despite a prior security fix, the chapter underscores the vulnerability's persistence due to insufficient mitigation measures. An intriguing aspect is the examination of the package's popularity decline post-disclosure, emphasizing the potential impact of security incidents on a project's adoption. Developers will gain valuable knowledge on effective input validation, the limitations of common sanitization techniques, and the interconnected nature of security and project popularity. This chapter serves as a comprehensive guide to fortifying Node.js projects against Command Injection vulnerabilities, ensuring developers are equipped to navigate evolving security landscapes.`,
+    },
+    {
+        identifier: 'Chapter 6',
+        title: 'Navigating Command Injection Pitfalls in vulnerable npm package: A Technical Deep Dive',
+        description: `Delving into a command injection vulnerability triggered by external tool integration, this chapter unveils critical lessons for developers. The episode emphasizes the need for a deep understanding of third-party tools, exemplified by ImageMagick. The vulnerability underscores the delicate balance between convenience and security, urging developers to navigate this terrain with caution. Key takeaways include the pitfalls of relying on the exec() API and the imperative to adopt more secure alternatives like execFile(). This chapter stands as a concise guide, empowering developers to fortify their Node.js applications against similar risks and navigate the evolving landscape of secure coding.`,
+    },
+    {
+        identifier: 'Chapter 7',
+        title: 'Defending Against Command Injection: Lessons from a Strapi vulnerability',
+        description: `This chapter dissects the CVE vulnerability in the Strapi project, offering invaluable insights for developers navigating the intricate landscape of command injection threats. The focal point is the critical importance of input sanitization when interfacing with system commands, underscored by the Strapi scenario where a lack thereof led to remote code execution. Developers are guided to prefer secure system process APIs, steering clear of potential shell expansion pitfalls. The chapter delves into nuanced considerations, advising against invoking npm’s run-scripts directly to mitigate command injection vulnerabilities. Furthermore, it emphasizes the necessity of cautious handling of user input, especially when interfacing with sensitive API calls. By unraveling the intricacies of this real-world exploit, developers gain practical wisdom in fortifying their applications against unforeseen vulnerabilities, even in widely recognized projects like Strapi. This chapter serves as an instrumental guide for developers aiming to bolster their defenses against command injection risks.`,
+    },    {
+        identifier: 'Chapter 8',
+        title: 'CLI Security: Leveraging GitHub as an attack vehicle against vulnerable CLIs',
+        description: `This chapter offers a deep dive into the security terrain, unraveling the vulnerabilities discovered in a CLI package in 2018 and how GitHub is leveraged as an attack vehicle. The key revelation is the susceptibility of command-line tools to security risks, challenging the misconception that they are inherently more secure than other software types. Developers are cautioned against dismissing CLI vulnerabilities as false positives, emphasizing the need for equal vigilance across diverse application landscapes. The narrative exposes the deceptive nature of seemingly innocuous data sources such as GitHub repositories, showcasing how unconventional origins can harbor exploitable vulnerabilities. The chapter underscores the critical role of robust input validation and sanitization practices, steering developers away from assumptions about the trustworthiness of input sources.`,
+    },
+    {
+        identifier: 'Chapter 9',
+        title: 'Mastering Secure Command Execution in Node.js',
+        description: `Dive into the intricacies of safeguarding your Node.js applications against command injection vulnerabilities with this chapter. Focusing on Node.js child_process, you'll navigate through pivotal topics like choosing the right API for secure command execution. Gain mastery over secure coding practices and code review techniques that empower you to proactively prevent command injection vulnerabilities. By the chapter's conclusion, you'll possess the skills to discern recommended Node.js process execution APIs, evaluate the security implications of utilizing the shell option in child_process APIs, implement effective user input escaping strategies, fortify defenses against argument injection attacks, and comprehend the security nuances tied to invoking npm package manager's run-scripts. This comprehensive exploration ensures you're well-equipped to tackle the multifaceted challenges of securing command execution in Node.js applications.`,
+    },
+    {
+        identifier: 'Chapter 10',
+        title: 'Deepening Your Command Injection Defenses',
+        description: `Embark on a journey to fortify your command injection defenses by delving into key topics that enhance your practical understanding. "Test Your Knowledge" invites you to assess your grasp of the presented concepts and best practices through interactive quizzes, ensuring a solid foundation. The exploration extends to "Command Injection in the Wild," offering real-world references to vulnerabilities found in both closed-source vendor software and open-source projects. These examples serve as invaluable insights, enabling you to comprehend and communicate the profound impact of command injection vulnerabilities effectively. Additionally, "CVEs in This Book" provides a comprehensive reference list, streamlining your access to critical information. This chapter serves as a pivotal resource, arming you with the knowledge and tools needed to elevate your command injection defense strategies and communicate security priorities within your organization.`,
+    },
+]
+
+---
+
+<section>
+
+    <div class="text-center">
+        <h2 class="mb-4 text-3xl font-bold">Node.js Security Modules in the Book</h2>
+    </div>
+
+    <div class="flex flex-col flex-wrap gap-4 m-4">
+
+        {
+            chapters.map((chapter, index) => (
+                <div class="md:max-w-3xl mx-auto">
+                    <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
+                            {chapter.identifier}
+                        </span>
+                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {chapter.title}
+                        </h3>
+                        <p class="font-normal text-gray-800 dark:text-slate-300">
+                            {chapter.description}
+                        </p>
+                    </div>
+                </div>
+            ))
+        }
+    
+    </div>
+
+</section>
