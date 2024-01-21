@@ -1,0 +1,162 @@
+---
+
+
+import SnykLogo from '~/assets/images/snyk-logo.png'
+import MicrosoftLogo from '~/assets/images/microsoft-logo.png'
+import OutbrainLogo from '~/assets/images/outbrain-logo.png'
+import FortechLogo from '~/assets/images/fortech-logo.png'
+import NearFormLogo from '~/assets/images/nearform-logo.png'
+import PlatformaticLogo from '~/assets/images/platformatic-logo.png'
+import StarbucksLogo from '~/assets/images/starbucks-logo.png'
+import BrightLogo from '~/assets/images/bright-logo.png'
+import TriggerDotDevLogo from '~/assets/images/triggerdotdev-logo.png'
+import ProferoLogo from '~/assets/images/profero-logo.png'
+import OxLogo from '~/assets/images/ox-logo.png'
+import ControlPlaneLogo from '~/assets/images/controlplane-logo.png'
+import HackForLaLogo from '~/assets/images/hackforla-logo.png'
+import SecureWorksLogo from '~/assets/images/secureworks-logo.png'
+import JohnDeereLogo from '~/assets/images/johndeere-logo.png'
+import MaerskLogo from '~/assets/images/maersk-logo.png'
+import AppsflyerLogo from '~/assets/images/appsflyer-logo.png'
+import MoneyhubLogo from '~/assets/images/moneyhub-logo.png'
+import JupiteroneLogo from '~/assets/images/jupiterone-logo.png'
+import SpendeskLogo from '~/assets/images/spendesk-logo.png'
+import TeleskillLogo from '~/assets/images/teleskill-logo.png'
+import AramisautoLogo from '~/assets/images/aramisauto-logo.png'
+import AmdocsLogo from '~/assets/images/amdocs-logo.png'
+import BasicfitLogo from '~/assets/images/basicfit-logo.png'
+
+const developersFromCompanies = [
+    {
+        logoFile: SnykLogo,
+        alt: 'Snyk',
+    },
+    {
+        logoFile: MicrosoftLogo,
+        alt: 'Microsoft',
+    },
+    {
+        logoFile: OutbrainLogo,
+        alt: 'Outbrain',
+    },
+    {
+        logoFile: FortechLogo,
+        alt: 'Fortech',
+    },
+    {
+        logoFile: NearFormLogo,
+        alt: 'NearForm',
+    },
+    {
+        logoFile: PlatformaticLogo,
+        alt: 'Platformatic',
+    },
+    {
+        logoFile: StarbucksLogo,
+        alt: 'Starbucks',
+    },
+    {
+        logoFile: BrightLogo,
+        alt: 'Bright',
+    },
+    {
+        logoFile: TriggerDotDevLogo,
+        alt: 'TriggerDotDev',
+    },
+    {
+        logoFile: ProferoLogo,
+        alt: 'Profero',
+    },
+    {
+        logoFile: OxLogo,
+        alt: 'Ox',
+        class: 'logo'
+    },
+    {
+        logoFile: ControlPlaneLogo,
+        alt: 'ControlPlane',
+    },
+    {
+        logoFile: HackForLaLogo,
+        alt: 'HackForLA',
+    },
+    {
+        logoFile: SecureWorksLogo,
+        alt: 'SecureWorks',
+        class: 'logo'
+    },
+    {
+        logoFile: JohnDeereLogo,
+        alt: 'JohnDeere',
+    },
+    {
+        logoFile: MaerskLogo,
+        alt: 'Maersk',
+        
+    },
+    {
+        logoFile: AppsflyerLogo,
+        alt: 'Appsflyer',
+    },
+    {
+        logoFile: MoneyhubLogo,
+        alt: 'Moneyhub',
+    },
+    {
+        logoFile: JupiteroneLogo,
+        alt: 'Jupiterone',
+        class: 'logo'
+    },
+    {
+        logoFile: SpendeskLogo,
+        alt: 'Spendesk',
+    },
+    {
+        logoFile: TeleskillLogo,
+        alt: 'Teleskill',
+    },
+    {
+        logoFile: AramisautoLogo,
+        alt: 'Aramisauto',
+    },
+    {
+        logoFile: AmdocsLogo,
+        alt: 'Amdocs',
+
+    },
+    {
+        logoFile: BasicfitLogo,
+        alt: 'Basicfit',
+    },
+]
+
+---
+
+<section class="bg-white dark:bg-gray-900">
+    
+
+    <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
+        
+        <h3 class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-3xl">
+            Bought by Developers From These Companies
+        </h3>
+
+        <div class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
+
+            {
+                developersFromCompanies.map(company => (
+                    <div class="flex justify-center items-center mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                        <img class={company?.class} alt={company.alt} src={company.logoFile.src} width="200" />
+                    </div>
+                ))
+            }
+
+        </div>
+    </div>
+</section>
+
+<style>
+    html.dark img.logo {
+        filter: invert(50%);
+    }
+</style>
