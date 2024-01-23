@@ -1,0 +1,91 @@
+---
+
+const chaptersCommandInjection = [
+    {
+        identifier: 'Chapter 1',
+        title: "Introduction to Application Security",
+        description: `Master application security essentials—CVEs, CWEs, OWASP Top 10. Elevate your Node.js skills, fortify defenses, and navigate the security landscape.`
+    },
+    {
+        identifier: 'Chapter 2',
+        title: 'Command Injection',
+        description: `Explore command injection vulnerabilities' landscape, types, and real-world impact. Classify vulnerabilities, detect insecure code patterns, and fortify applications`,
+    },
+    {
+        identifier: 'Chapter 3',
+        title: 'Mitigating Argument Injection in Node.js Applications',
+        description: `Mastering Node.js Security: Advanced Defense Against Command Injection. Learn crucial tactics beyond basics—robust input validation, nuanced security controls, and insights from real-world vulnerabilities. Elevate your Node.js applications' security posture`,
+    },
+    {
+        identifier: 'Chapter 4',
+        title: 'Fortifying Node.js Applications Against Command Injection Threats',
+        description: `Securing Node.js Projects: Unraveling Git-Promise Vulnerability. Delve into input validation nuances, persistence of vulnerabilities post-fix, and project popularity impact. Equip yourself with insights to fortify Node.js projects against evolving security landscapes`,
+    },
+    {
+        identifier: 'Chapter 5',
+        title: 'Hardening Node.js Against Command Injection: Insights from vulnerable npm package',
+        description: ``,
+    },
+    {
+        identifier: 'Chapter 6',
+        title: 'Navigating Command Injection Pitfalls in vulnerable npm package: A Technical Deep Dive',
+        description: `Mastering Secure Integration: Lessons from ImageMagick Vulnerability. Explore pitfalls of exec() API, balance convenience with security, and adopt secure alternatives. Navigate Node.js security with confidence`,
+    },
+    {
+        identifier: 'Chapter 7',
+        title: 'Defending Against Command Injection: Lessons from a Strapi vulnerability',
+        description: `Securing Strapi: Navigating Command Injection Risks. Uncover vital insights from a CVE vulnerability, emphasizing input sanitization, secure APIs, and cautious handling of user input. A practical guide for fortifying applications against command injection threats`,
+    },    
+    {
+        identifier: 'Chapter 8',
+        title: 'CLI Security: Leveraging GitHub as an attack vehicle against vulnerable CLIs',
+        description: `Command-Line Insecurity: Demystifying CLI Vulnerabilities. Delve into the 2018 discovery, debunking myths around CLI security. Uncover GitHub as an attack vector, highlighting the deceptive nature of data sources. Developers gain insights into robust input validation for fortified application security`,
+    },
+    {
+        identifier: 'Chapter 9',
+        title: 'Mastering Secure Command Execution in Node.js',
+        description: `Node.js Command Injection Defense: Mastering child_process APIs and Secure Coding. Navigate secure execution with insights on API choices, escaping strategies, and npm run-scripts. Equip yourself to proactively prevent vulnerabilities for robust Node.js application security`,
+    },
+    {
+        identifier: 'Chapter 10',
+        title: 'Deepening Your Command Injection Defenses',
+        description: `Mastering Command Injection Defenses: Test Your Knowledge, Real-world Examples, and CVE References. Elevate your understanding with quizzes, real-world insights, and a comprehensive CVE reference list. Equip yourself to fortify command injection defenses and communicate security priorities effectively`,
+    },
+]
+
+---
+
+<section class="mb-12">
+
+    <div class="text-center">
+        <h2 class="mb-4 text-3xl font-bold">
+            Defend Against Command Injection in Node.js
+        </h2>
+        <h3>
+            Security Education Modules in the Book
+        </h3>
+    </div>
+
+    <div class="flex flex-col flex-wrap gap-4 m-4">
+
+        {
+            chaptersCommandInjection.map((chapter, index) => (
+                <div class="md:max-w-3xl mx-auto">
+                    <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
+                            {chapter.identifier}
+                        </span>
+                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {chapter.title}
+                        </h3>
+                        <p class="font-normal text-gray-800 dark:text-slate-300">
+                            {chapter.description}
+                        </p>
+                    </div>
+                </div>
+            ))
+        }
+    
+    </div>
+
+</section>
