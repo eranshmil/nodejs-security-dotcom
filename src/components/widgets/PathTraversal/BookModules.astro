@@ -1,0 +1,90 @@
+---
+
+const chapters = [
+    {
+        identifier: 'Chapter 1',
+        title: 'Mastering Security Foundations for Node.js Development',
+        description: `In this introduction chapter, Node.js developers delve into the core security concepts that lay the foundation for robust application development. Beyond the realms of coding, we explore the indispensable terminology embraced by security practitioners. You'll gain a profound understanding of pivotal standards such as CVE and CWE, unraveling the intricate relationship between them. We demystify the significance of OWASP Top 10, decode the role of NVD, and navigate the intricacies of source-to-sink, empowering you with the knowledge to architect applications resilient to a spectrum of attack vectors.`,
+    },
+    {
+        identifier: 'Chapter 2',
+        title: 'Navigating Path Traversal Hazards in Node.js Applications',
+        description: `Embark on a journey through the intricacies of path traversal vulnerabilities in this chapter, where we unravel the reasons behind their prevalence in software. Going beyond the surface, we explore the nuanced impact of these vulnerabilities on Node.js applications and the software libraries residing in the expansive npm registry. As we dissect the anatomy of insecure code patterns, we equip Node.js developers with the tools to not only recognize but mitigate path traversal risks. By understanding the diverse classification employed by application security engineers, you'll emerge adept at fortifying your Node.js applications against the subtle yet potent threats of path traversal vulnerabilities. This chapter stands as a beacon, guiding developers toward secure coding practices in the dynamic landscape of Node.js development.`,
+    },
+    {
+        identifier: 'Chapter 3',
+        title: 'Decoding Path Join: Navigating Security Pitfalls in Node.js',
+        description: `In this chapter, we unravel the intricacies of path traversal vulnerabilities, even for seasoned engineers crafting scalable systems and popular open-source libraries. We spotlight a seemingly innocuous coding convention, exposing the peril of concatenating user input for file names or paths into predefined directories. Through a critical examination of a popular npm library's insecure practices, particularly in the utilization of path.join(), we unveil the pathway to arbitrary file access and the emergence of path traversal vulnerabilities. Our exploration transcends the naive assumption that a requested file path, labeled as 'relativePath,' is always as innocent as it seems. By going into the behavior of path.join() through a matrix table of inputs and returned values, we empower Node.js developers to fortify their code against the subtle yet potent risks posed by path traversal vulnerabilities. This chapter serves as a practical guide, steering developers away from insecure coding practices and towards robust, secure coding patterns`,
+    },
+    {
+        identifier: 'Chapter 4',
+        title: 'Unveiling Nuances: Beyond the ../ String in Node.js Path Traversal',
+        description: `Dive deep into the subtleties of path and directory traversal as we uncover its manifestations beyond the apparent ../ string in URLs. Our journey reveals a critical layer—URL strings encoded with percent-encoding. This chapter elucidates that the devil is in the details: insecure handling of file path resolution, characters decoding, becomes a breeding ground for path traversal attacks. Moreover, we scrutinize the deceptive assurances offered by functions like path.normalize() and other path and URL parsers, emphasizing their reluctance to evaluate and resolve percent-encoded URL strings. This nuanced exploration equips Node.js developers with the precision needed to fortify their applications against the intricacies of path traversal vulnerabilities, ensuring robust and secure coding practices.`,
+    },
+    {
+        identifier: 'Chapter 5',
+        title: 'Mastering Security: Navigating Nuances Beyond Classic Path Traversal in Node.js',
+        description: `This chapter unfolds the invaluable lessons gained from the secure coding journey, highlighting the 'send' npm package's resilient track record since 2015. The focus extends to intricate aspects like adjacent file paths and the perils of insecure logic checks that fail to firmly bind a requested path to its root. This exploration is a beacon for Node.js developers, steering them through complexities that often elude standard security measures.`,
+    },
+    {
+        identifier: 'Chapter 6',
+        title: `Unveiling Vulnerabilities: The Anatomy of Simple Code's Impact on Security`,
+        description: `In this chapter, we dissect the seemingly innocuous rush to quick implementations under tight deadlines, unraveling the security lesson that even the simplest code can harbor security vulnerabilities.`,
+    },
+    {
+        identifier: 'Chapter 7',
+        title: 'Navigating the Maze: Path Traversal Vulnerabilities in HTTP server npm devtools',
+        description: `What do we find when dissecting multiple versions and commits that attempted to fix a directory traversal security bug? The GitHub issue, titled "Incorrect commits for CVE-2018-3713," serves as a comprehensive repository of these vulnerabilities, annotated with versions and commit links. A pivotal lesson surfaces from the analysis: even with a focus on sanitization logic and an acute awareness of handling traversal steps, developers can stumble on seemingly simple oversights. The chapter highlights a specific case where a code logic error, compounded by the CLI starting with no root directory configuration, enabled attackers to exploit arbitrary file access on the host.`,
+    },    {
+        identifier: 'Chapter 8',
+        title: 'A Deep Dive into Security Oversights in a File Server npm devtool',
+        description: `In this chapter, we turn our attention to the less-traveled paths of security vulnerabilities within an npm package that, while not widely adopted, offers crucial insights into the intricacies of secure coding. The library's case study unfolds a narrative of developers being conscientious about security aspects and potential vulnerabilities, yet succumbing to programming errors tied to the very security controls implemented.`,
+    },
+    {
+        identifier: 'Chapter 9',
+        title: 'Path Traversal Beyond Deny-lists and Operating System Support',
+        description: `The first takeaway, a clear wake up call to developers, underscores the inadequacy and peril of relying on deny-lists as security controls. Their ineffectiveness not only undermines the security posture but also engenders a false sense of protection. The chapter advocates for a strategic placement of deny-lists as the final layer in a comprehensive security architecture. The second revelation dives into the often-overlooked realm of cross-platform operating system compatibility. The vulnerability dissected in this library lays bare the genuine security implications tied to a seemingly innocuous concept—an operating system support matrix.`,
+    },
+    {
+        identifier: 'Chapter 10',
+        title: 'Offensive Security: Automation, Exploitation, and Node.js Vigilance',
+        description: `Embark on a journey through the tactical landscape of offensive security tools as this chapter demystifies their role in automating the identification and exploitation of path traversal vulnerabilities. The reader gains practical insights by orchestrating an automated assault on a Node.js application, unraveling the intricacies of path traversal exploitation in real-time. The chapter transcends the application layer, diving into the vulnerabilities endemic to the Node.js runtime. It advocates for a proactive stance, emphasizing the indispensable need to keep the runtime updated as a bulwark against potential security breaches.`,
+    },
+    {
+        identifier: 'Chapter 11',
+        title: 'Mastering the Craft: Secure Coding Strategies to Prevent Path Traversal in Node.js',
+        description: `Dive deep into the intricate realm of Node.js security as this chapter meticulously crafts a compendium of secure coding best practices tailored to fortify against the looming specter of path traversal attacks. Each attack vector is met with pragmatic advice, empowering developers to navigate the subtleties of secure coding. The chapter concludes with an exploration of the symbiotic relationship between secure coding practices and robust security testing, emphasizing their pivotal role in the prevention of path traversal vulnerabilities. By the chapter's conclusion, you'll not only be adept at secure coding practices but also equipped to conduct comprehensive code reviews, backed by the ability to address critical questions that transcend Node.js boundaries.`,
+    },
+]
+
+---
+
+<section>
+
+    <div class="text-center">
+        <h2 class="mb-4 text-3xl font-bold">Node.js Security Modules in the Book</h2>
+    </div>
+
+    <div class="flex flex-col flex-wrap gap-4 m-4">
+
+        {
+            chapters.map((chapter, index) => (
+                <div class="md:max-w-3xl mx-auto">
+                    <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span class="bg-purple-200 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">
+                            {chapter.identifier}
+                        </span>
+                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {chapter.title}
+                        </h3>
+                        <p class="font-normal text-gray-800 dark:text-slate-300">
+                            {chapter.description}
+                        </p>
+                    </div>
+                </div>
+            ))
+        }
+    
+    </div>
+
+</section>
