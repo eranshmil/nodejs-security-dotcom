@@ -1,0 +1,96 @@
+---
+
+const chapters = [
+    {
+        identifier: 'Chapter 1',
+        title: 'Security Foundations for Node.js Development',
+        description: `An introductory chapter unfolds core security concepts and terminology for developers. Master CVE, CWE, OWASP Top 10, and other security-lingo terms in modern software development.`
+    },
+    {
+        identifier: 'Chapter 2',
+        title: 'Navigating Path Traversal Hazards in Node.js Applications',
+        description: `Journey through path traversal intricacies. Mitigate risks in Node.js apps. Secure coding guide for JavaScript developers building server-side applications .`
+    },
+    {
+        identifier: 'Chapter 3',
+        title: 'Decoding Path Join: Navigating Security Pitfalls in Node.js',
+        description: `Decode path traversal nuances. Expose insecure coding practices. Learn vulnerable code patterns and embrace insights for robust, secure Node.js coding.`
+    },
+    {
+        identifier: 'Chapter 4',
+        title: 'Unveiling Nuances: Beyond the ../ String in Node.js Path Traversal',
+        description: `Explore path and directory traversal subtleties. Decode percent-encoding pitfalls. Adopt high-precision secure coding best practices when dealing with core Node.js filesystem APIs for optimal Node.js security.`
+    },
+    {
+        identifier: 'Chapter 5',
+        title: 'Mastering Security: Navigating Nuances Beyond Classic Path Traversal in Node.js',
+        description: `Unearth secure coding lessons. Explore adjacent paths and logic checks. A beacon for Node.js developers that seek security controls and writing production-grade code.`
+    },
+    {
+        identifier: 'Chapter 6',
+        title: `Unveiling Vulnerabilities: The Anatomy of Simple Code's Impact on Security`,
+        description: `Dissect quickly written code implementations that result in secure coding errors.`
+    },
+    {
+        identifier: 'Chapter 7',
+        title: 'Navigating the Maze: Path Traversal Vulnerabilities in HTTP server npm devtools',
+        description: `Analyze directory traversal bugs. GitHub repository insights and lessons from oversights in CLI configuration that go from logic error to security vulnerabilities risking development environments.`
+    },    
+    {
+        identifier: 'Chapter 8',
+        title: 'A Deep Dive into Security Oversights in a File Server npm devtool',
+        description: `Explore npm package devtools that introduce security risks for developers. Insights into secure coding intricacies unfolding in CLIs that do not implement security controls.`
+    },
+    {
+        identifier: 'Chapter 9',
+        title: 'Path Traversal Beyond Deny-lists and Operating System Support',
+        description: `Wake up call on deny-lists. Cross-platform compatibility insights. Layers for comprehensive security and understand how overlooked bad practices end up a security implication.`
+    },
+    {
+        identifier: 'Chapter 10',
+        title: 'Offensive Security: Automation, Exploitation, and Node.js Vigilance',
+        description: `Employ tactical offensive security tools to learn how hackers automate path traversal exploits. In this chapter we highlight Node.js runtime vulnerabilities and required vigilance for your production apps.`
+    },
+    {
+        identifier: 'Chapter 11',
+        title: 'Mastering the Craft: Secure Coding Strategies to Prevent Path Traversal in Node.js',
+        description: `Meticulous guide for secure coding, demonstrating hands-on and best practices advice for Node.js developers. Adopt symbiotic coding and testing for robust defenses.`
+    },
+]
+
+---
+
+<section class="mb-12">
+
+    <div class="text-center">
+        <h2 class="mb-4 text-3xl font-bold">
+            Prevent Path Traversal in Node.js
+        </h2>
+        <h3>
+            Security Education Modules in the Book
+        </h3>
+    </div>
+
+    <div class="flex flex-col flex-wrap gap-4 m-4">
+
+        {
+            chapters.map((chapter, index) => (
+                <div class="md:max-w-3xl mx-auto">
+                    <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <span class="bg-purple-200 text-purple-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">
+                            {chapter.identifier}
+                        </span>
+                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            {chapter.title}
+                        </h3>
+                        <p class="font-normal text-gray-800 dark:text-slate-300">
+                            {chapter.description}
+                        </p>
+                    </div>
+                </div>
+            ))
+        }
+    
+    </div>
+
+</section>

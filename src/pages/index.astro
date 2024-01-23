@@ -13,8 +13,9 @@ import TestimonialCollection from '~/components/widgets/CommandInjection/Testimo
 import DeveloperCompanies from '~/components/widgets/DeveloperCompanies.astro';
 import HeroBookBundle from '~/components/widgets/HeroBookBundle.astro';
 import BookModulesCommandInjectionHighLevel from '~/components/widgets/BookModulesCommandInjectionHighLevel.astro';
+import BookModulesPathTraversalHighLevel from '~/components/widgets/BookModulesPathTraversalHighLevel.astro';
 import BookCoverHeroCommandInjection from '~/components/widgets/CommandInjection/BookCoverHeroCommandInjection.astro';
-
+import BookCoverHeroPathTraversal from '~/components/widgets/PathTraversal/BookCoverHeroPathTraversal.astro';
 const meta = {
 	title: SITE.title,
 	description: SITE.description,
@@ -61,6 +62,10 @@ const meta = {
 	<BookModulesCommandInjectionHighLevel />
 
 	<BookCoverHeroCommandInjection buyLink={"2323"} priceAfterDiscount={"2323"} />
+
+	<BookModulesPathTraversalHighLevel />
+
+	<BookCoverHeroPathTraversal buyLink={"2323"} priceAfterDiscount={"2323"} />
 
 	<ScaleUpSecurity />
 
