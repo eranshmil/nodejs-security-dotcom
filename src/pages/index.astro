@@ -11,6 +11,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import TestimonialHeroBlock from '~/components/widgets/CommandInjection/TestimonialHeroBlock.astro';
 import TestimonialCollection from '~/components/widgets/CommandInjection/TestimonialCollection.astro';
 import DeveloperCompanies from '~/components/widgets/DeveloperCompanies.astro';
+import HeroBookBundle from '~/components/widgets/HeroBookBundle.astro';
 
 const meta = {
 	title: SITE.title,
@@ -20,8 +21,11 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<Hero
-		pretitle="Skill up on"
+
+	<HeroBookBundle />
+
+	<!-- <Hero
+		_pretitle="Skill up on"
 		title="Node.js Secure Coding"
 		subtitle=""
 		CTA2={{
@@ -46,7 +50,7 @@ const meta = {
 			priceNew: '$40.32',
 			// priceNew: '$28.80',
 		}}
-	/>
+	/> -->
 
 	<DeveloperCompanies />
 	
