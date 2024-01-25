@@ -3,7 +3,8 @@ import { Icon } from 'astro-icon';
 import { PROFILE } from '~/config.mjs';
 import { Image } from 'astro:assets'
 
-const callOutReason = 'What sets Liran Tal apart as an authority on secure coding in Node.js?';
+const calloutTitle = "Meet Liran Tal, the Author."
+const callOutReason = '';
 // other options include:
 // What makes Liran qualified to teach you about secure coding in Node.js?
 
@@ -20,35 +21,35 @@ const items = [
 		{
 			title: 'Security Analyst for the Node.js Foundation',
 			description:
-				"In his role as a security analyst in the Node.js Foundation's Security Working Group, Liran reviewed hundreds of vulnerability reports for npm packages and established processes for responsible security disclosures and vulnerability triage.",
+				"In his role as a security analyst in the Node.js Foundation's Security Working Group, Liran reviewed hundreds of vulnerability reports for npm packages and established processes for responsible security disclosures and vulnerability triage 🏴‍☠️.",
 		},
 		{
 			title: 'Education is a core practice',
 			description:
-				'Passionate about educating developers on application security and secure coding practices, Liran is a world-wide international speaker, workshop instructor, and author of several books on the subject. He occasionally speaks on software security topics at academic institutions, such as presenting to students at the Electrical and Computer Engineering School at Purdue University.',
+				'Passionate about educating developers on application security and secure coding practices, Liran is a world-wide international speaker, workshop instructor, and author of several books on the subject. He occasionally speaks on software security topics at academic institutions, such as presenting to students at the Electrical and Computer Engineering School at Purdue University 🎓.',
 		},
 
 		{
 			title: 'Award-winning GitHub Star ⭐️',
 			description:
-				'Liran received the GitHub Star recognition award from GitHub for his work educating and inspiring developers.',
+				'Liran received the GitHub Star recognition award from GitHub for his work educating and inspiring developers and actively advocating for web security.',
 		},
 	],
 	[
 		{
 			title: 'Recipient of the Pathfinder for Security Award 🎖️',
 			description:
-				'Honored with the OpenJS Foundation Pathfinder for Security Award, Liran is recognized for his work advancing Node.js security.',
+				'Honored by the OpenJS Foundation with the Pathfinder for Security Award, Liran is recognized for his work advancing Node.js security.',
 		},
 		{
-			title: 'Security Researcher',
+			title: `I'm a Security Researcher`,
 			description:
-				'An accomplished security researcher, Liran has disclosed security vulnerabilities in various open source software projects, including being credited with CVEs impacting npm packages.',
+				'An accomplished security researcher, Liran has disclosed security vulnerabilities in various open source software projects, including being credited with CVEs to his name for vulnerabilities in npm packages with millions of downloads.',
 		},
 		{
 			title: 'Acclaimed Recognition at Black Hat',
 			description:
-				"Liran's work on supply chain security research, including Lockfile Injection, was presented at the prestigious Black Hat Europe 2021 cybersecurity conference. Liran is also the creator of several developer security tooling projects such as npq, is-website-vulnerable, and snync, which help developers and enterprises defend against dependency confusion attacks.",
+				"Liran's discovery in supply chain security research, including Lockfile Injection, was presented at the prestigious Black Hat Europe 2021 cybersecurity conference. Liran is also the creator of several developer security tooling projects such as npq, is-website-vulnerable, and snync, which help developers and enterprises defend against dependency confusion attacks.",
 		},
 	],
 ];
@@ -74,9 +75,12 @@ const items = [
 				<h3
 					class="text-2xl col-start-3 col-end-11 md:text-2xl w-full font-bold leading-tighter tracking-tighter mb-4 font-heading"
 				>
-					{callOutReason}
+					{calloutTitle}
 				</h3>
 			</div>
+			<p>
+				{callOutReason}
+			</p>
 		</div>
 		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
 			{
