@@ -43,7 +43,7 @@ export const STORE = {
 			discountCode: '',
 			discountPercentage: 60,
 			priceBeforeDiscount: '$115.20',
-			priceAfterDiscount: '46.00',
+			priceAfterDiscount: '$46.00',
 		},
 	},
 
