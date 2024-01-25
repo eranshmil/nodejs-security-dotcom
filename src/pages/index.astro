@@ -68,12 +68,6 @@ const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraver
 
 	<BookAuthor />
 
-	<DeveloperCompanies />
-	
-	<TestimonialCollection />
-
-	<BookModulesCommandInjectionHighLevel />
-
 	<BookCoverHeroCommandInjection
 		linkLearnMore={"/book/command-injection"}
 		discountPercentage={CommandInjectionPricing.discountPercentage}
@@ -82,15 +76,27 @@ const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraver
 		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
 	/>
 
-	<BookModulesPathTraversalHighLevel />
+	<DeveloperCompanies />
 
 	<BookCoverHeroPathTraversal
-	linkLearnMore={"/book/path-traversal"}
-	discountPercentage={PathTraversalPricing.discountPercentage}
-	linkBuy={PathTraversalPricing.linkBuy}
-	priceBeforeDiscount={PathTraversalPricing.priceBeforeDiscount}
-	priceAfterDiscount={PathTraversalPricing.priceAfterDiscount}
+		linkLearnMore={"/book/path-traversal"}
+		discountPercentage={PathTraversalPricing.discountPercentage}
+		linkBuy={PathTraversalPricing.linkBuy}
+		priceBeforeDiscount={PathTraversalPricing.priceBeforeDiscount}
+		priceAfterDiscount={PathTraversalPricing.priceAfterDiscount}
 	/>
+	
+	<TestimonialCollection />
+
+
+
+	<BookModulesCommandInjectionHighLevel />
+
+
+
+	<BookModulesPathTraversalHighLevel />
+
+
 
 	<ScaleUpSecurity />
 
