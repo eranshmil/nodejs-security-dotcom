@@ -9,10 +9,11 @@ export function buildBookPricing({ discountCode, bookId }) {
 	}
 
 	let storeLinkToBuy = STORE[bookId].linkBuy;
-	if (bookId !== 'bundle') {
-		// The books bundle is already priced at a discount, so no need to apply a discount code
-		// so if the bookId is something else, we do apply it:
-		storeLinkToBuy = `${storeLinkToBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
+
+	// The books bundle is already priced at a discount, so no need to apply a discount code
+	if (bookId === 'bundle') {
+		storeLinkToBuy = STORE[bookId].linkBuy;
+		appliedDiscountCode = 'bundle';
 	}
 
 	return {
