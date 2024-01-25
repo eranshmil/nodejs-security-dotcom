@@ -1,14 +1,64 @@
+export function buildBookPricing({ discountCode, bookId }) {
+	let appliedDiscountCode = '';
+	let pricingInformation = 'default';
+	if (!discountCode || !STORE[discountCode]) {
+		appliedDiscountCode = STORE.pricing.default.discountCode;
+	} else {
+		appliedDiscountCode = discountCode;
+		pricingInformation = discountCode;
+	}
+
+	let storeLinkToBuy = STORE[bookId].linkBuy;
+	if (bookId !== 'bundle') {
+		// The books bundle is already priced at a discount, so no need to apply a discount code
+		// so if the bookId is something else, we do apply it:
+		storeLinkToBuy = `${storeLinkToBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
+	}
+
+	return {
+		discountCode: appliedDiscountCode,
+		discountPercentage: STORE.pricing[appliedDiscountCode].discountPercentage,
+		priceBeforeDiscount: STORE.pricing[appliedDiscountCode].priceBeforeDiscount,
+		priceAfterDiscount: STORE.pricing[appliedDiscountCode].priceAfterDiscount,
+		linkBuy: storeLinkToBuy,
+	};
+}
+
 export const STORE = {
-	CommandInjection: {
-		buyBookLink:
-			'https://nodejs-secure-coding.lirantal.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41?checkout%5Bdiscount_code%5D=E3MZY0OA',
-		sampleBookLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/a327f061-56fe-48c7-96cd-eb6728b48f2a',
-		bookBuyLinkDarkMode:
-			'https://nodejs-secure-coding.lirantal.com/checkout/buy/eb07c29f-8b67-42b7-a604-4289026c7265?checkout%5Bdiscount_code%5D=E3MZY0OA',
+	pricing: {
+		default: {
+			discountCode: 'E3MZY0OA',
+			discountPercentage: 30,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$40.32',
+		},
+		E3MZY0OA: {
+			discountCode: 'E3MZY0OA',
+			discountPercentage: 30,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$40.32',
+		},
+		bundle: {
+			discountCode: '',
+			discountPercentage: 60,
+			priceBeforeDiscount: '$115.20',
+			priceAfterDiscount: '46.00',
+		},
 	},
+
+	bundle: {
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/8eca5d4c-87fb-41d2-859a-c9d2fa81ffd9',
+	},
+
+	CommandInjection: {
+		// buyLink:
+		// 	'https://nodejs-secure-coding.lirantal.com/checkout/buy/6ee5f646-a6fc-4d6e-bda4-7ebbe26aea41?checkout%5Bdiscount_code%5D=E3MZY0OA',
+		sampleBookLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/a327f061-56fe-48c7-96cd-eb6728b48f2a',
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/eb07c29f-8b67-42b7-a604-4289026c7265',
+	},
+
 	PathTraversal: {
-		buyBookLink:
-			'https://nodejs-secure-coding.lirantal.com/checkout/buy/4e558207-a427-4a64-ac23-f67a2cdce5d0?checkout%5Bdiscount_code%5D=E3MZY0OA',
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/4e558207-a427-4a64-ac23-f67a2cdce5d0',
 	},
 
 	plan1BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/c8e9b3ec-c540-4723-bb18-5514a2c9f53f',

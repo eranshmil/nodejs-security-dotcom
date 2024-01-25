@@ -1,10 +1,10 @@
 ---
-import { STORE, SITE } from '~/config.mjs';
+import { buildBookPricing, STORE, SITE } from '~/config.mjs';
 
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
 
-import Hero from '~/components/widgets/PageHero.astro';
+
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
 import ScaleUpSecurity from '~/components/widgets/CommandInjection/ScaleUpSecurity.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -16,16 +16,27 @@ import BookModulesCommandInjectionHighLevel from '~/components/widgets/BookModul
 import BookModulesPathTraversalHighLevel from '~/components/widgets/BookModulesPathTraversalHighLevel.astro';
 import BookCoverHeroCommandInjection from '~/components/widgets/CommandInjection/BookCoverHeroCommandInjection.astro';
 import BookCoverHeroPathTraversal from '~/components/widgets/PathTraversal/BookCoverHeroPathTraversal.astro';
+
 const meta = {
 	title: SITE.title,
 	description: SITE.description,
 	canonical: getCanonical(getHomePermalink()),
 };
+
+const discountCode = 'default';
+const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
+const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
+const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraversal'});
 ---
 
 <Layout {meta}>
 
-	<HeroBookBundle />
+	<HeroBookBundle
+		discountPercentage={bundlePricing.discountPercentage}
+		linkBuy={bundlePricing.linkBuy}
+		priceBeforeDiscount={bundlePricing.priceBeforeDiscount}
+		priceAfterDiscount={bundlePricing.priceAfterDiscount}
+	/>
 
 	<!-- <Hero
 		_pretitle="Skill up on"
@@ -64,19 +75,21 @@ const meta = {
 	<BookModulesCommandInjectionHighLevel />
 
 	<BookCoverHeroCommandInjection
-		linkLearnMore={"#"}
-		linkBuyBook={"#"}
-		priceBeforeDiscount={"$23"}
-		priceAfterDiscount={"$2323"}
+		linkLearnMore={"/book/command-injection"}
+		discountPercentage={CommandInjectionPricing.discountPercentage}
+		linkBuy={CommandInjectionPricing.linkBuy}
+		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
+		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
 	/>
 
 	<BookModulesPathTraversalHighLevel />
 
 	<BookCoverHeroPathTraversal
-		linkLearnMore={"#"}
-		linkBuyBook={"#"}
-		priceBeforeDiscount={"$23"}
-		priceAfterDiscount={"$2323"}
+	linkLearnMore={"/book/path-traversal"}
+	discountPercentage={PathTraversalPricing.discountPercentage}
+	linkBuy={PathTraversalPricing.linkBuy}
+	priceBeforeDiscount={PathTraversalPricing.priceBeforeDiscount}
+	priceAfterDiscount={PathTraversalPricing.priceAfterDiscount}
 	/>
 
 	<ScaleUpSecurity />
