@@ -8,7 +8,7 @@ export function buildBookPricing({ discountCode, bookId }) {
 		pricingInformation = discountCode;
 	}
 
-	let storeLinkToBuy = STORE[bookId].linkBuy;
+	let storeLinkToBuy = `${STORE[bookId].linkBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
 
 	// The books bundle is already priced at a discount, so no need to apply a discount code
 	if (bookId === 'bundle') {
