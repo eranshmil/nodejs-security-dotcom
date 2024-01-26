@@ -10,6 +10,7 @@ import solid from '@astrojs/solid-js';
 import remarkToc from 'remark-toc';
 import { remarkReadingTime } from './src/utils/remark-frontmatter-extensions.mjs';
 import compress from 'astro-compress';
+import vercel from '@astrojs/vercel/serverless';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -18,7 +19,8 @@ export default defineConfig({
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
 	site: SITE.origin,
 	base: SITE.basePathname,
-	output: 'static',
+	output: 'hybrid',
+	adapter: vercel(),
 	trailingSlash: 'ignore',
 	redirects: {
 		'/business': '/security-training',
