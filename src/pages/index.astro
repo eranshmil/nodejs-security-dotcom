@@ -1,10 +1,8 @@
 ---
 import { buildBookPricing, STORE, SITE } from '~/config.mjs';
-
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+
 import Layout from '~/layouts/BooksLayout.astro';
-
-
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
 import ScaleUpSecurity from '~/components/widgets/CommandInjection/ScaleUpSecurity.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -24,10 +22,13 @@ const meta = {
 	canonical: getCanonical(getHomePermalink()),
 };
 
-const discountCode = 'default';
+const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
 const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraversal'});
+
+// This page route is rendered on-demand on the server
+export const prerender = false
 ---
 
 <Layout {meta}>
@@ -76,7 +77,7 @@ const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraver
 		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
 		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
 	/>
-	
+
 	<BookBundleBuyTip
 		bundlePricing={bundlePricing}
 	/>

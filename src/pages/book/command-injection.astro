@@ -25,6 +25,9 @@ const meta = {
 	canonical: getCanonical(getHomePermalink()),
 	image: ogImage,
 };
+
+// This page route is rendered on-demand on the server
+export const prerender = false
 ---
 
 <Layout {meta}>
