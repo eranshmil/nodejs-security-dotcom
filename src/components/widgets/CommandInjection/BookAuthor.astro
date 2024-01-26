@@ -60,7 +60,7 @@ const items = [
 		<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
 			<div class="text-center">
 				<div>
-					<div class="relative mb-8 m-auto max-w-3xl">
+					<div class="relative mb-2 m-auto max-w-3xl">
 						<Image
 							src={import("/public/images/lirantal-profile-picture.png")}
 							class="mx-auto rounded-full shadow-lg"
@@ -71,17 +71,64 @@ const items = [
 				</div>
 			</div>
 
-			<div class="grid grid-cols-12">
+			<div class="flex items-center">
+				<ul class="flex mx-auto">
+					<li>
+						<a
+							class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+							aria-label="LinkedIn"
+							href={PROFILE.linkedinURL}
+						>
+							<Icon name="mdi:linkedin" class="w-5 h-5" />
+						</a>
+					</li>
+
+					<li>
+						<a
+							class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+							aria-label="Twitter"
+							href={PROFILE.twitterURL}
+						>
+							<Icon name="mdi:twitter" class="w-5 h-5" />
+						</a>
+					</li>
+					
+					<li>
+						<a
+							class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+							aria-label="Github"
+							href={PROFILE.githubURL}
+						>
+							<Icon name="mdi:github" class="w-5 h-5" />
+						</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="grid grid-cols-12 mt-4 ">
 				<h3
 					class="text-2xl col-start-3 col-end-11 md:text-2xl w-full font-bold leading-tighter tracking-tighter mb-4 font-heading"
 				>
 					{calloutTitle}
 				</h3>
+
+				
+
 			</div>
+			
+
+			
 			<p>
 				{callOutReason}
 			</p>
+
 		</div>
+
+
+
+
+
 		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
 			{
 				items.map((subitems) => (
