@@ -27,7 +27,7 @@ const meta = {
 
 const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
-const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
+const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraversal'});
 
 // This page route is rendered on-demand on the server
 export const prerender = false
