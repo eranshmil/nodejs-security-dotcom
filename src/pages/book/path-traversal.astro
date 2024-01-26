@@ -1,5 +1,5 @@
 ---
-import { STORE } from '~/config.mjs';
+import { STORE, buildBookPricing} from '~/config.mjs';
 
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
@@ -25,6 +25,10 @@ const meta = {
 	image: ogImage,
 };
 
+const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
+const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
+const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
+
 // This page route is rendered on-demand on the server
 export const prerender = false
 ---
@@ -33,15 +37,9 @@ export const prerender = false
 	<Hero
 		title="Node.js Secure Coding:"
 		subtitle="Prevention and Exploitation of Path Traversal Vulnerabilities"
-		CTA2={{
-			text: 'Buy the book',
-			href: STORE.PathTraversal.buyBookLink,
-			priceOld: '$57.60',
-			// %30 off
-			priceNew: '$40.32',
-			// 50% off coupon: BFYU99P
-			// priceNew: '$28.80',
-		}}
+
+		bundlePricing={bundlePricing}
+		bookPricing={PathTraversalPricing}
 	/>
 
 	<TestimonialHeroBlock />

@@ -210,9 +210,11 @@ const {
                             </a>
                         </div>
 
-                        <a href={linkLearnMore} class="text-xs inline-flex items-center text-blue-600 hover:underline">
-                            Learn more about the book
-                        </a>
+                        { linkLearnMore &&
+                            <a href={linkLearnMore} class="text-xs inline-flex items-center text-blue-600 hover:underline">
+                                Learn more about the book
+                            </a>
+                        }
                     </div>
                     </div>
                 </div>

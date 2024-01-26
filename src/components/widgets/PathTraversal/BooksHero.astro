@@ -3,30 +3,19 @@
 import BookCoverHeroPathTraversal from './BookCoverHeroPathTraversal.astro';
 import DeveloperCircles from '~/components/widgets/DeveloperCircles.astro';
 
-interface CallToAction {
-	text: string;
-	href?: string;
-	icon?: string;
-	priceOld?: string;
-	priceNew?: string;
-}
-
 export interface Props {
 	title?: string;
 	subtitle?: string;
-	CTA1?: string | CallToAction;
-	CTA2?: string | CallToAction;
-	CTA3?: string | CallToAction;
-	DISCOUNT_CALLOUT?: CallToAction;
-	image?: string | any; // TODO: find HTMLElementProps
+	image?: string | any;
+	bundlePricing?: object;
+	bookPricing?: object;
 }
 
 const {
 	title,
 	subtitle,
-	CTA1 = await Astro.slots.render('CTA1'),
-	CTA2 = await Astro.slots.render('CTA2'),
-	CTA3 = await Astro.slots.render('CTA3'),
+	bundlePricing,
+	bookPricing,
 } = Astro.props;
 ---
 
@@ -100,7 +89,12 @@ const {
 				</p>
 			</div>
 
-			<BookCoverHeroPathTraversal buyLink={CTA2.href} priceAfterDiscount={CTA2.priceNew} />
+			<BookCoverHeroPathTraversal
+				discountPercentage={bookPricing.discountPercentage}
+				linkBuy={bookPricing.linkBuy}
+				priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+				priceAfterDiscount={bookPricing.priceAfterDiscount}
+			/>
 			
 			<DeveloperCircles />
 
