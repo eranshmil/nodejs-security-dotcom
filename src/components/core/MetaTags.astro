@@ -8,6 +8,7 @@ import WebAnalytics from './WebAnalytics.astro';
 import defaultImageFile from '~/assets/images/whatsapp-compat-nodejs-secure-coding-website-og-lightmode.png';
 
 const {
+	post,
 	title = SITE.name,
 	description = '',
 
@@ -31,6 +32,8 @@ if (typeof ogImage === 'string') {
 } else {
 	ogImageURL = new URL(ogImage.src, siteBaseURL).href;
 }
+
+console.log(post)
 ---
 
 <meta charset="UTF-8" />
@@ -89,6 +92,14 @@ if (typeof ogImage === 'string') {
 				name: 'twitter:data1',
 				content: SITE.author,
 			},
+			{
+				name: 'twitter:label2',
+				content: 'Est. reading time',
+			},
+			{
+				name: 'twitter:data2',
+				content: `${post.readingTime}`,
+			}
 		]
 	}}
 />
