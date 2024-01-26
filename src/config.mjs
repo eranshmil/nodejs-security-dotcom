@@ -1,3 +1,5 @@
+import { forEachChild } from 'typescript';
+
 export function buildBookPricing({ discountCode, bookId }) {
 	let appliedDiscountCode = '';
 	let pricingInformation = 'default';
@@ -28,10 +30,10 @@ export function buildBookPricing({ discountCode, bookId }) {
 export const STORE = {
 	pricing: {
 		default: {
-			discountCode: 'E3MZY0OA',
-			discountPercentage: 30,
+			discountCode: 'U5MZE4OA',
+			discountPercentage: 45,
 			priceBeforeDiscount: '$57.60',
-			priceAfterDiscount: '$40.32',
+			priceAfterDiscount: '$31.68',
 		},
 		E3MZY0OA: {
 			discountCode: 'E3MZY0OA',
@@ -39,11 +41,17 @@ export const STORE = {
 			priceBeforeDiscount: '$57.60',
 			priceAfterDiscount: '$40.32',
 		},
+		U5MZE4OA: {
+			discountCode: 'U5MZE4OA',
+			discountPercentage: 45,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$31.68',
+		},
 		bundle: {
 			discountCode: '',
-			discountPercentage: 60,
+			discountPercentage: 62,
 			priceBeforeDiscount: '$115.20',
-			priceAfterDiscount: '$46.00',
+			priceAfterDiscount: '$43.77',
 		},
 	},
 
