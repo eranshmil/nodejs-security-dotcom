@@ -57,7 +57,11 @@ export const prerender = false
 
 	<BookFeatures />
 
-	<Pricing1Column />
+	<Pricing1Column
+		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
+		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
+		linkBuy={CommandInjectionPricing.linkBuy}
+	/>
 
 	<BookSampleCTA />
 
