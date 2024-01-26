@@ -163,6 +163,7 @@ export const FOOTER = {
 
 export const SITE = {
 	name: 'Node.js Secure Coding',
+	author: 'Liran Tal',
 
 	origin: 'https://www.nodejs-security.com',
 	basePathname: '/',
