@@ -68,12 +68,8 @@ export const prerender = false
 	<FAQ />
 	<Stats />
 	<CallToAction
-		CTA={{
-			text: 'Buy the book',
-			href: STORE.CommandInjection.bookBuyLinkDarkMode,
-			priceOld: '$57.60',
-			// priceNew: '$40.32',
-			priceNew: '$28.80',
-		}}
+		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
+		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
+		linkBuy={CommandInjectionPricing.linkBuy}
 	/>
 </Layout>

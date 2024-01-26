@@ -61,15 +61,8 @@ export const prerender = false
 	<FAQ />
 	<Stats />
 	<CallToAction
-		CTA={{
-			text: 'Buy the book',
-			href: STORE.PathTraversal.buyBookLink,
-			priceOld: '$57.60',
-			// %30 off
-			priceNew: '$40.32',
-			// priceNew: '$40.32',
-			// 50% off coupon: BFYU99P
-			// priceNew: '$28.80',
-		}}
+		priceBeforeDiscount={PathTraversalPricing.priceBeforeDiscount}
+		priceAfterDiscount={PathTraversalPricing.priceAfterDiscount}
+		linkBuy={PathTraversalPricing.linkBuy}
 	/>
 </Layout>
