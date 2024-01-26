@@ -19,21 +19,18 @@ const {
 	ogType = 'website',
 } = Astro.props;
 
+let { image: ogImage } = Astro.props;
+ogImage = ogImage || defaultImageFile;
+
 const siteBaseURL = new URL(Astro.url);
-const defaultImage = new URL(defaultImageFile.src, siteBaseURL);
-
-let { image: _image } = Astro.props;
-_image = _image || defaultImage;
-
-let image = null;
-if (typeof _image === 'string') {
-    image = new URL(_image, siteBaseURL);
-} else if (_image && typeof _image['href'] !== 'undefined') {
-    image = new URL(_image['href'], siteBaseURL);
+let ogImageURL = '';
+if (typeof ogImage === 'string') {
+	ogImageURL = new URL(ogImage, siteBaseURL).href;
+} else if (ogImage && typeof ogImage['href'] !== 'undefined') {
+	ogImageURL = new URL(ogImage['href'], siteBaseURL).href;
 } else {
-	image = defaultImage;
+	ogImageURL = new URL(ogImage.src, siteBaseURL).href;
 }
-
 ---
 
 <meta charset="UTF-8" />
@@ -50,25 +47,25 @@ if (typeof _image === 'string') {
 			url: canonical,
 			title: ogTitle,
 			type: ogType,
-			image: _image?.src ? _image.src : defaultImage.toString(),
+			image: ogImageURL,
 		},
 		image: {
-			url: image.toString(),
-			secureUrl: image.toString(),
+			url: ogImageURL,
+			secureUrl: ogImageURL,
 			alt: ogTitle,
-			height: _image?.height,
-			width: _image?.width,
-			type: _image?.format && `image/${_image.format}`,
+			height: ogImage?.height,
+			width: ogImage?.width,
+			type: ogImage?.format && `image/${ogImage.format}`,
 		},
 	}}
 	twitter={{
 		creator: '@liran_tal',
-		image: image ? image.toString() : undefined,
+		image: ogImageURL ? ogImageURL.toString() : undefined,
 		imageAlt: ogTitle,
 		title: ogTitle,
 		site: '@liran_tal',
 		description: description,
-		card: image ? 'summary_large_image' : 'summary',
+		card: ogImageURL ? 'summary_large_image' : 'summary',
 	}}
 	extend={{
 		meta: [
