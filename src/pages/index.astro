@@ -16,6 +16,9 @@ import BookCoverHeroCommandInjection from '~/components/widgets/CommandInjection
 import BookCoverHeroPathTraversal from '~/components/widgets/PathTraversal/BookCoverHeroPathTraversal.astro';
 import BookBundleBuyTip from '~/components/atoms/BookBundleBuyTip.astro';
 
+import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet1.astro';
+import VulnerableCodeSnippet2 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet2.astro';
+import NpmInstallVulnerable from '~/components/widgets/npmInstallVulnerable.astro';
 
 
 const meta = {
@@ -28,8 +31,6 @@ const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
 const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraversal'});
-import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet1.astro';
-import VulnerableCodeSnippet2 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet2.astro';
 
 // This page route is rendered on-demand on the server
 export const prerender = false
@@ -45,6 +46,8 @@ export const prerender = false
 	/>
 
 	<VulnerableCodeSnippet1 />
+
+	<NpmInstallVulnerable />
 
 	<BookAuthor />
 
