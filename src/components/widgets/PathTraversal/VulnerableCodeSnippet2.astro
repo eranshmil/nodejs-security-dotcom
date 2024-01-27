@@ -2,7 +2,7 @@
 import { Code } from 'astro:components';
 ---
 
-<section class="items-center w-3/5 mx-auto flex-col justify-center my-24">
+<section class="items-center md:w-3/5 px-4 mx-auto flex-col justify-center my-24">
 
     <h2 id="code-snippet-2" class="mb-4 text-3xl font-bold text-center">Test your Node.js Secure Coding skills</h2>
     <p class="sm:px-8 xl:px-32 text-center mb-4">
@@ -32,7 +32,7 @@ import { Code } from 'astro:components';
             Vulnerable code... is it?
         </p>
     </div>
-    <div>
+    <div class="text-xs md:text-base">
         <Code
             code={`
     const fastify = require('fastify')
@@ -41,20 +41,25 @@ import { Code } from 'astro:components';
     const downloadsPath = '/opt/downloads'
     const app = fastify()
 
-    app.get('/download', async (request, reply) => {
-        const file = request.query.file || 'default.png'
+    app.get('/download', async (req, rep) => {
+        const file = req.query.file || 'default.png'
 
         if (file.includes('..')) {
-          return reply.code(400).send('Directory Traversal Detected')
+          return rep.code(400)
+            .send('Directory Traversal Detected')
         }
 
         const normalizedFilename = path.normalize(file)
-        const downloadFilepath = path.resolve(downloadsPath, 'downloads', normalizedFilename)
+        const downloadFilepath = path.resolve(
+            downloadsPath, 
+            'downloads',
+            normalizedFilename)
 
         try {
-          await reply.sendFile(downloadFilepath)
+          await rep.sendFile(downloadFilepath)
         } catch (err) {
-          reply.code(404).send('Requested File Not Found')
+            rep.code(404).
+                send('Requested File Not Found')
         }
     })
     `}

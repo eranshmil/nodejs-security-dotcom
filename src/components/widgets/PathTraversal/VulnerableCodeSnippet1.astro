@@ -2,7 +2,7 @@
 import { Code } from 'astro:components';
 ---
 
-<section class="items-center w-3/5 mx-auto flex-col justify-center my-24">
+<section class="items-center md:w-3/5 px-4 mx-auto flex-col justify-center my-24">
 
     <h2 id="code-snippet-1" class="mb-4 text-3xl font-bold text-center">Sharpen your Node.js Coding Skills</h2>
     <p class="sm:px-8 xl:px-32 text-center mb-4">
@@ -33,7 +33,7 @@ import { Code } from 'astro:components';
             Vulnerable Code
         </p>
     </div>
-    <div>
+    <div class="text-xs md:text-base">
         <Code
             code={`
     const fs = require("fs");
@@ -42,15 +42,18 @@ import { Code } from 'astro:components';
 
     const config = require('./config.json');;
 
-    fastify.get("/static", async (request, reply) => {
-        const filename = request.query.filename;
-        const filePath = path.join("/opt/app/uploads", filename);
+    fastify.get("/static", async (req, rep) => {
+
+        const filename = req.query.filename;
+        const filePath = path.join(
+            "/opt/app/uploads", filename);
 
         try {
-            const fileContents = fs.readFileSync(filePath);
-            reply.code(200).send(fileContents);
+            const fileContents = fs.readFileSync(
+                filePath);
+            rep.code(200).send(fileContents);
         } catch (err) {
-            reply.code(404).send("File not found");
+            rep.code(404).send("File not found");
         }
     });
 
