@@ -143,7 +143,7 @@ export const FOOTER = {
 				},
 				{
 					title: 'Pathfinder Award for Security',
-					link: 'https://openjsf.org/announcement/2022/06/07/',
+					link: 'https://openjsf.org/blog/openjs-world-2022-heres-what-you-missed',
 					icon: 'logos:openjs-foundation-icon',
 				},
 				{
