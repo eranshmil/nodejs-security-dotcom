@@ -144,7 +144,7 @@ export const FOOTER = {
 			items: [
 				{
 					title: 'Essential Node.js Security',
-					link: 'https://leanpub.com/nodejssecurity',
+					link: 'https://leanpub.com/essential-nodejs-security',
 				},
 				{
 					title: "O'Reilly Serverless Security",
