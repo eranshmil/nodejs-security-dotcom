@@ -25,9 +25,11 @@ const meta = {
 	image: ogImage,
 };
 
-const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
+const discountCode = Astro.url.searchParams.get('discount_code') || 'EssentialNodejsSecurity';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const bookPricing = buildBookPricing({discountCode, bookId: 'EssentialNodejsSecurity'});
+
+console.log(bookPricing);
 
 // This page route is rendered on-demand on the server
 export const prerender = false

@@ -53,12 +53,19 @@ export const STORE = {
 			priceBeforeDiscount: '$115.20',
 			priceAfterDiscount: '$43.77',
 		},
-		bundleWithEssentialNodejsSecurity: {
-			discountCode: '',
-			discountPercentage: 62,
-			priceBeforeDiscount: '$115.20',
-			priceAfterDiscount: '$43.77',
+		EssentialNodejsSecurity: {
+			discountCode: 'E0MDYZMW',
+			discountPercentage: 100,
+			priceBeforeDiscount: '$29.99',
+			priceAfterDiscount: '$0.00',
 		},
+		// not yet in effect:
+		// bundleWithEssentialNodejsSecurity: {
+		// 	discountCode: '',
+		// 	discountPercentage: 62,
+		// 	priceBeforeDiscount: '$115.20',
+		// 	priceAfterDiscount: '$43.77',
+		// },
 	},
 
 	bundle: {
@@ -77,7 +84,7 @@ export const STORE = {
 	},
 
 	EssentialNodejsSecurity: {
-		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/4e558207-a427-4a64-ac23-f67a2cdce5d0',
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/5d5975e1-4481-40a5-b180-de154cc865b0',
 	},
 
 	plan1BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/c8e9b3ec-c540-4723-bb18-5514a2c9f53f',
