@@ -25,7 +25,7 @@ const meta = {
 	image: ogImage,
 };
 
-const discountCode = Astro.url.searchParams.get('discount_code') || 'EssentialNodejsSecurity';
+const discountCode = Astro.url.searchParams.get('discount_code') || 'E0MDYZMW';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const bookPricing = buildBookPricing({discountCode, bookId: 'EssentialNodejsSecurity'});
 

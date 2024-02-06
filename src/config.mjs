@@ -3,7 +3,8 @@ import { forEachChild } from 'typescript';
 export function buildBookPricing({ discountCode, bookId }) {
 	let appliedDiscountCode = '';
 	let pricingInformation = 'default';
-	if (!discountCode || !STORE[discountCode]) {
+
+	if (!discountCode || !STORE.pricing[discountCode]) {
 		appliedDiscountCode = STORE.pricing.default.discountCode;
 	} else {
 		appliedDiscountCode = discountCode;
@@ -52,6 +53,12 @@ export const STORE = {
 			discountPercentage: 62,
 			priceBeforeDiscount: '$115.20',
 			priceAfterDiscount: '$43.77',
+		},
+		E0MDYZMW: {
+			discountCode: 'E0MDYZMW',
+			discountPercentage: 100,
+			priceBeforeDiscount: '$29.99',
+			priceAfterDiscount: '$0.00',
 		},
 		EssentialNodejsSecurity: {
 			discountCode: 'E0MDYZMW',
