@@ -1,0 +1,73 @@
+---
+import { STORE, buildBookPricing} from '~/config.mjs';
+
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/BooksLayout.astro';
+import Hero from '~/components/widgets/EssentialNodejsSecurity/Hero.astro';
+import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
+import FAQ from '~/components/widgets/PathTraversal/FAQ.astro';
+import Stats from '~/components/widgets/PathTraversal/Stats.astro';
+import CallToAction from '~/components/widgets/PathTraversal/CallToAction.astro';
+import TestimonialHeroBlock from '~/components/widgets/CommandInjection/TestimonialHeroBlock.astro';
+import TestimonialCollection from '~/components/widgets/CommandInjection/TestimonialCollection.astro';
+import PagesGallery from '~/components/widgets/PathTraversal/PagesGallery.astro';
+import VulnerabilityImpact from '~/components/widgets/PathTraversal/VulnerabilityImpact.astro';
+import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet1.astro';
+import VulnerableCodeSnippet2 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet2.astro';
+import BookModules from '~/components/widgets/PathTraversal/BookModules.astro';
+
+import ogImage from '~/assets/images/path-traversal-book-og-v1.png';
+
+const meta = {
+	title: 'Essential Node.js Security',
+	description: `for Express Web Applications`,
+	canonical: getCanonical(getHomePermalink()),
+	image: ogImage,
+};
+
+const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
+const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
+const bookPricing = buildBookPricing({discountCode, bookId: 'EssentialNodejsSecurity'});
+
+// This page route is rendered on-demand on the server
+export const prerender = false
+---
+
+<Layout {meta}>
+	<Hero
+		title="Essential Node.js Security"
+		subtitle="for Express Web Applications"
+        description="Hands-on and abundant with source code for a practical guide to Securing Node.js web applications."
+
+		bundlePricing={bundlePricing}
+		bookPricing={bookPricing}
+	/>
+
+	<TestimonialHeroBlock />
+
+	<PagesGallery />
+	
+	<Stats />
+
+	<BookModules />
+
+	<VulnerableCodeSnippet1 />
+
+	
+
+	<VulnerabilityImpact />
+
+	<BookAuthor />
+
+	<TestimonialCollection />
+
+	<VulnerableCodeSnippet2 />
+
+	<FAQ />
+	
+	<CallToAction
+		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+		priceAfterDiscount={bookPricing.priceAfterDiscount}
+		linkBuy={bookPricing.linkBuy}
+	/>
+</Layout>

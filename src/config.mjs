@@ -53,6 +53,12 @@ export const STORE = {
 			priceBeforeDiscount: '$115.20',
 			priceAfterDiscount: '$43.77',
 		},
+		bundleWithEssentialNodejsSecurity: {
+			discountCode: '',
+			discountPercentage: 62,
+			priceBeforeDiscount: '$115.20',
+			priceAfterDiscount: '$43.77',
+		},
 	},
 
 	bundle: {
@@ -67,6 +73,10 @@ export const STORE = {
 	},
 
 	PathTraversal: {
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/4e558207-a427-4a64-ac23-f67a2cdce5d0',
+	},
+
+	EssentialNodejsSecurity: {
 		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/4e558207-a427-4a64-ac23-f67a2cdce5d0',
 	},
 
