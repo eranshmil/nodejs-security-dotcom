@@ -36,6 +36,9 @@ const {
     bundlePricing,
     bookPricing
 } = Astro.props;
+
+
+const buyType = bookPricing.discountPercentage === 100 ? 'Free' : 'Buy'
 ---
 
 <section>
@@ -82,7 +85,7 @@ const {
             <span class="block"></span>
 
             <div class="mt-2 flex">
-                <BtnBuyNow buyType="Free" linkBuy={bookPricing.linkBuy} />
+                <BtnBuyNow buyType={buyType} linkBuy={bookPricing.linkBuy} />
             </div>
 
 
