@@ -56,7 +56,7 @@ const buyType = bookPricing.discountPercentage === 100 ? 'Free' : 'Buy'
                     <h2 class="my-auto text-4xl font-bold">{subtitle}</h2>
                 </div>
 
-				<div class="flex items-center space-x-4 mb-12">
+				<div class="flex lg:justify-start justify-center text-center items-center space-x-4 mb-12">
 					<img class="w-10 h-10 rounded-full" src="/images/lirantal-profile-picture.png" alt="Liran Tal">
 					<div class="font-medium">
 						<div class="text-sm text-gray-500 dark:text-gray-400">written by</div>
@@ -84,7 +84,7 @@ const buyType = bookPricing.discountPercentage === 100 ? 'Free' : 'Buy'
 
             <span class="block"></span>
 
-            <div class="mt-2 flex">
+            <div class="my-2 mb-4">
                 <BtnBuyNow buyType={buyType} linkBuy={bookPricing.linkBuy} />
             </div>
 
@@ -135,7 +135,7 @@ const buyType = bookPricing.discountPercentage === 100 ? 'Free' : 'Buy'
                 class="my-4 rounded-lg dark:shadow-gray-500 lg:hover:shadow-2xl hover:relative lg:hover:scale-150 lg:hover:z-10"
                 />
 
-            <div class="flex flex-col-reverse gap-2 mb-4">
+            <div class="flex flex-col-reverse gap-2 mb-4 mt-4">
                 <p class="text-normal font-light text-gray-500 dark:text-gray-400">
                     <span class="block"></span>
                     <a
@@ -151,7 +151,7 @@ const buyType = bookPricing.discountPercentage === 100 ? 'Free' : 'Buy'
                     </a>
 
                     <a
-                        class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-normal rounded-lg text-sm px-4 py-1.5 text-center inline-flex items-center me-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                        class="mt-2 text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-normal rounded-lg text-sm px-4 py-1.5 text-center inline-flex items-center me-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
                         href="/"
                     >
                         Learn more
