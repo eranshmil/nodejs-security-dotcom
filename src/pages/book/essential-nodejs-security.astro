@@ -15,6 +15,7 @@ import VulnerabilityImpact from '~/components/widgets/PathTraversal/Vulnerabilit
 import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet1.astro';
 import VulnerableCodeSnippet2 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet2.astro';
 import BookModules from '~/components/widgets/PathTraversal/BookModules.astro';
+import ScaleUpSecurity from '~/components/widgets/EssentialNodejsSecurity/ScaleUpSecurity.astro';
 
 import ogImage from '~/assets/images/path-traversal-book-og-v1.png';
 
@@ -42,6 +43,8 @@ export const prerender = false
 		bundlePricing={bundlePricing}
 		bookPricing={bookPricing}
 	/>
+
+    <ScaleUpSecurity />
 
     <TestimonialCollection />
 
