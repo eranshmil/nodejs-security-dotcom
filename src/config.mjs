@@ -60,6 +60,12 @@ export const STORE = {
 			priceBeforeDiscount: '$29.99',
 			priceAfterDiscount: '$0.00',
 		},
+		C1MZE0OA: {
+			discountCode: 'C1MZE0OA',
+			discountPercentage: 50,
+			priceBeforeDiscount: '$29.99',
+			priceAfterDiscount: '$14.99',
+		},
 		EssentialNodejsSecurity: {
 			discountCode: 'E0MDYZMW',
 			discountPercentage: 100,
