@@ -6,17 +6,13 @@ import Layout from '~/layouts/BooksLayout.astro';
 import Hero from '~/components/widgets/EssentialNodejsSecurity/Hero.astro';
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
 import FAQ from '~/components/widgets/PathTraversal/FAQ.astro';
-import Stats from '~/components/widgets/PathTraversal/Stats.astro';
-import CallToAction from '~/components/widgets/PathTraversal/CallToAction.astro';
 import TestimonialHeroBlock from '~/components/widgets/CommandInjection/TestimonialHeroBlock.astro';
 import TestimonialCollection from '~/components/widgets/CommandInjection/TestimonialCollection.astro';
-import PagesGallery from '~/components/widgets/PathTraversal/PagesGallery.astro';
-import VulnerabilityImpact from '~/components/widgets/PathTraversal/VulnerabilityImpact.astro';
-import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet1.astro';
-import VulnerableCodeSnippet2 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet2.astro';
-import BookModules from '~/components/widgets/PathTraversal/BookModules.astro';
 import ScaleUpSecurity from '~/components/widgets/EssentialNodejsSecurity/ScaleUpSecurity.astro';
 import TestimonialCollectionOther from '~/components/widgets/EssentialNodejsSecurity/TestimonialCollection.astro'
+import BookCoverHeroCommandInjection from '~/components/widgets/CommandInjection/BookCoverHeroCommandInjection.astro';
+import BookCoverHeroPathTraversal from '~/components/widgets/PathTraversal/BookCoverHeroPathTraversal.astro';
+import BookBundleBuyTip from '~/components/atoms/BookBundleBuyTip.astro';
 
 import ogImage from '~/assets/images/path-traversal-book-og-v1.png';
 
@@ -30,6 +26,9 @@ const meta = {
 const discountCode = Astro.url.searchParams.get('discount_code') || 'C1MZE0OA';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const bookPricing = buildBookPricing({discountCode, bookId: 'EssentialNodejsSecurity'});
+
+const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
+const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraversal'});
 
 // This page route is rendered on-demand on the server
 export const prerender = false
@@ -48,6 +47,40 @@ export const prerender = false
     <ScaleUpSecurity />
 
     <TestimonialCollectionOther />
+
+    <div class="mx-auto my-12 text-center">
+        <h1 class="text-3xl">
+            Check out Liran's newest
+            <span class="block"></span>
+            <span class="font-bold">
+                Node.js Secure Coding 
+            </span>
+            books
+            <span class="block"></span>
+            👇
+        </h1>
+
+    </div>
+
+	<BookCoverHeroCommandInjection
+		linkLearnMore={"/book/command-injection"}
+		discountPercentage={CommandInjectionPricing.discountPercentage}
+		linkBuy={CommandInjectionPricing.linkBuy}
+		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
+		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
+	/>
+
+    <BookBundleBuyTip
+		bundlePricing={bundlePricing}
+	/>
+
+	<BookCoverHeroPathTraversal
+		linkLearnMore={"/book/path-traversal"}
+		discountPercentage={PathTraversalPricing.discountPercentage}
+		linkBuy={PathTraversalPricing.linkBuy}
+		priceBeforeDiscount={PathTraversalPricing.priceBeforeDiscount}
+		priceAfterDiscount={PathTraversalPricing.priceAfterDiscount}
+	/>
 
 	<TestimonialHeroBlock />
 
