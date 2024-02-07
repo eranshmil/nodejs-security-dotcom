@@ -1,0 +1,107 @@
+---
+const testimonials = [
+    {
+        name: 'David Madar',
+        picture: '/images/testimonials/david-madar.jpg',
+        title: 'Software Engineer at Hewlett Packard Enterprise',
+        message: `Excellent book. Covers the possible security issues and the right way to discover and deal with them. Written clearly with plenty of examples. A great book for those who wish to enrich their knowledge in security and for those who want to implement practical security solutions in their application.`
+		
+	},
+    {
+        name: 'Ran Bar Zik',
+        picture: '/images/testimonials/ran-bar-zik.jpg',
+        title: 'Web Developer @AOL',
+        message: `An essential book for every Node.js developer out there. Many security issues can be avoided just by understanding the inherent security risks and this book covers clear description and how to tackle those issues. It is recommended not only for Node.js developers but to all JavaScript developers who want to expand their understanding of security. Security in source code should not be neglected and by reading this book every developer will do a major step towards producing more secure code.`
+    },
+];
+
+const starsFillColor = 'gold'
+---
+
+<!-- <section class="body-font">
+	<div class="container px-5 py-24 mx-auto"> --><!-- Container for demo purpose -->
+<div class="container my-24 mx-auto md:px-6 max-md:px-4 mt-32">
+	<section class="mb-32 text-center">
+		<h2 class="mb-4 text-3xl font-bold">Testimonials from Top Node.js Developers</h2>
+        <p class="sm:px-16 xl:px-64">
+            Read testimonials and learn what the developer community has to say about the books and their recommendations to skill up on Node.js Secure Coding practices.
+        </p>
+        <div class="mt-12 grid gap-x-6 md:grid-cols-2 lg:gap-x-12">
+		{
+			testimonials.map((testimonialItem) => {
+				return (
+					
+						<div class="mb-12">
+							<div class="mb-6 flex justify-center">
+								<img
+									src={testimonialItem.picture}
+									alt={testimonialItem.name}
+									class="w-16 rounded-full shadow-lg dark:shadow-black/20"
+								/>
+							</div>
+							<h5 class="mb-2 text-lg font-bold">{testimonialItem.name}</h5>
+							<h6 class="mb-4 font-light text-primary dark:text-pink-500">{testimonialItem.title}</h6>
+							<p class="mb-4">
+								{testimonialItem.message}
+                                <!--
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="inline-block w-6">
+									<path
+										fill="currentColor"
+										d="M580 556h160V396H580v160Zm-360 0h160V396H220v160Zm406 220 80-160H520V336h280v288l-76 152h-98Zm-360 0 80-160H160V336h280v288l-76 152h-98Zm34-300Zm360 0Z"
+									/>
+								</svg>
+                            -->
+							</p>
+							<ul class="mb-0 flex justify-center">
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+											fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+								<li>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" class="w-5 text-warning">
+										<path
+                                        fill={starsFillColor}
+											d="m233 976 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"
+										/>
+									</svg>
+								</li>
+							</ul>
+						</div>
+					
+				);
+			})
+		}
+        </div>
+	</section>
+</div>
+<!-- Container for demo purpose -->
+<!-- </div>
+</section> -->
