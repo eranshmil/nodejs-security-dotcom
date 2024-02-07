@@ -23,10 +23,12 @@ const meta = {
 	image: ogImage,
 };
 
-const discountCode = Astro.url.searchParams.get('discount_code') || 'C1MZE0OA';
+let discountCode
+discountCode = Astro.url.searchParams.get('discount_code') || 'C1MZE0OA';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const bookPricing = buildBookPricing({discountCode, bookId: 'EssentialNodejsSecurity'});
 
+discountCode = Astro.url.searchParams.get('discount_code') || 'default';
 const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
 const PathTraversalPricing = buildBookPricing({discountCode, bookId: 'PathTraversal'});
 
