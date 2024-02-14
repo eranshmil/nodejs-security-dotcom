@@ -1,5 +1,3 @@
-import { forEachChild } from 'typescript';
-
 export function buildBookPricing({ discountCode, bookId }) {
 	let appliedDiscountCode = '';
 	let pricingInformation = 'default';
