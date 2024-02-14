@@ -1,29 +1,33 @@
 export function buildBookPricing({ discountCode, bookId }) {
-	let appliedDiscountCode = '';
-	let pricingInformation = 'default';
+	let pricingData = {};
 
-	if (!discountCode || !STORE.pricing[discountCode]) {
-		appliedDiscountCode = STORE.pricing.default.discountCode;
+	if (discountCode) {
+		const appliedDiscountCode = STORE.pricing[discountCode].discountCode;
+		let storeLinkToBuy = `${STORE[bookId].linkBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
+		pricingData = {
+			discountCode: appliedDiscountCode,
+			discountPercentage: STORE.pricing[discountCode].discountPercentage,
+			priceBeforeDiscount: STORE.pricing[discountCode].priceBeforeDiscount,
+			priceAfterDiscount: STORE.pricing[discountCode].priceAfterDiscount,
+			linkBuy: storeLinkToBuy,
+		};
 	} else {
-		appliedDiscountCode = discountCode;
-		pricingInformation = discountCode;
+		const appliedDiscountCode = STORE.pricing[bookId].discountCode;
+		let storeLinkToBuy = `${STORE[bookId].linkBuy}?checkout`;
+		if (appliedDiscountCode) {
+			storeLinkToBuy = `${STORE[bookId].linkBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
+		}
+
+		pricingData = {
+			discountCode: appliedDiscountCode,
+			discountPercentage: STORE.pricing[bookId].discountPercentage,
+			priceBeforeDiscount: STORE.pricing[bookId].priceBeforeDiscount,
+			priceAfterDiscount: STORE.pricing[bookId].priceAfterDiscount,
+			linkBuy: storeLinkToBuy,
+		};
 	}
 
-	let storeLinkToBuy = `${STORE[bookId].linkBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
-
-	// The books bundle is already priced at a discount, so no need to apply a discount code
-	if (bookId === 'bundle') {
-		storeLinkToBuy = STORE[bookId].linkBuy;
-		appliedDiscountCode = 'bundle';
-	}
-
-	return {
-		discountCode: appliedDiscountCode,
-		discountPercentage: STORE.pricing[appliedDiscountCode].discountPercentage,
-		priceBeforeDiscount: STORE.pricing[appliedDiscountCode].priceBeforeDiscount,
-		priceAfterDiscount: STORE.pricing[appliedDiscountCode].priceAfterDiscount,
-		linkBuy: storeLinkToBuy,
-	};
+	return pricingData;
 }
 
 export const STORE = {
@@ -70,6 +74,19 @@ export const STORE = {
 			priceBeforeDiscount: '$29.99',
 			priceAfterDiscount: '$0.00',
 		},
+		CommandInjection: {
+			discountCode: '',
+			discountPercentage: 0,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$57.60',
+		},
+		PathTraversal: {
+			discountCode: '',
+			discountPercentage: 0,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$57.60',
+		},
+
 		// not yet in effect:
 		// bundleWithEssentialNodejsSecurity: {
 		// 	discountCode: '',

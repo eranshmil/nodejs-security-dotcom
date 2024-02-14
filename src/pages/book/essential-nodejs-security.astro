@@ -24,6 +24,7 @@ const meta = {
 };
 
 let discountCode
+
 discountCode = Astro.url.searchParams.get('discount_code') || 'C1MZE0OA';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const bookPricing = buildBookPricing({discountCode, bookId: 'EssentialNodejsSecurity'});
