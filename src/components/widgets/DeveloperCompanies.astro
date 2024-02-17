@@ -148,7 +148,7 @@ const developersFromCompanies = [
             {
                 developersFromCompanies.map(company => (
                     <div class="flex justify-center items-center mr-5 mb-5 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img class={company?.class} alt={company.alt} src={company.logoFile.src} width="200" />
+                        <img class={company?.class} alt={company.alt} src={company.logoFile.src} width="200" loading="lazy" />
                     </div>
                 ))
             }
