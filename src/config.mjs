@@ -33,10 +33,10 @@ export function buildBookPricing({ discountCode, bookId }) {
 export const STORE = {
 	pricing: {
 		default: {
-			discountCode: 'U5MZE4OA',
-			discountPercentage: 45,
+			discountCode: 'E3MZY0OA',
+			discountPercentage: 30,
 			priceBeforeDiscount: '$57.60',
-			priceAfterDiscount: '$31.68',
+			priceAfterDiscount: '$40.32',
 		},
 		E3MZY0OA: {
 			discountCode: 'E3MZY0OA',
