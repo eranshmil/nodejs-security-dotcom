@@ -12,26 +12,58 @@ const {
 
 ---
 
+<script is:inline>
+    // randomly select a title out of 5 options in the array:
+    const titles = [
+        {
+            title: 'Master Node.js Secure Coding',
+            subtitle: '100% practical hands-on coding techniques'
+        },
+      {
+        title: 'Ship Secure JavaScript Apps',
+        subtitle: 'master secure coding practices you can apply at work'
+      },
+      {
+        title: 'Become a Node.js Security Wizard',
+        subtitle: 'Learn secure coding techniques and build unbreakable Node.js apps'
+      },
+      {
+        title: 'How Good Is Your Node.js?',
+        subtitle: 'Learn to find & fix security issues with this Node.js Secure Coding training'
+      },
+      {
+        title: 'Master the Art of Node.js Security',
+        subtitle: 'Learn expert security techniques and level up'
+      }
+    ];
+
+    const titleContent = titles[Math.floor(Math.random() * titles.length)];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const title = document.getElementById('title');
+        title.textContent = titleContent.title;
+
+        const subtitle = document.getElementById('subtitle');
+        subtitle.textContent = titleContent.subtitle;
+    });
+</script>
+
 <section class="bg-white dark:bg-gray-900 mb-32">
     
     <div class="grid max-w-screen-xl px-2 py-4 mx-auto lg:gap-8 xl:gap-0 lg:py-10 lg:grid-cols-12">
         <div class="mr-auto place-self-center lg:col-span-7">
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500" id="title">
                     Master Node.js Secure Coding
                 </span>
             </h1>
-            <p class="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-lg dark:text-gray-300">
-                <!-- Security is now a <span class="font-bold">necessary skill</span> for high-paying employment. -->
-                <span class="block"></span>
-                Zero security fluff. 100% practical.
-                <span class="block"></span>
-                Secure coding for the busy developer. 
+            <p class="max-w-2xl mb-4 font-light text-gray-500 lg:mb-4 md:text-lg lg:text-lg dark:text-gray-300" id="subtitle">
+                100% practical hands-on coding techniques
             </p>
 
             <div class="mb-4">
                 <p class="mb-2 text-sm text-gray-900 dark:text-slate-200">
-                    Bundle includes 2 books:
+                    <!-- Bundle includes 2 books: -->
                 </p>
                 <!-- List -->
                 <ul role="list" class="space-y-1 text-gray-500 dark:text-slate-200">
@@ -70,6 +102,9 @@ const {
                     <span class="mx-1 text-normal">
                         |
                     </span> -->
+                    <span class="text-sm text-black dark:text-slate-50">
+                        2 training books for 
+                    </span>
                     <span class="text-sm font-normal line-through text-slate-400">
                         {priceBeforeDiscount}
                     </span>
@@ -81,7 +116,7 @@ const {
                     <span class="block"></span>
                 </div>
 
-                <div class="mt-2">
+                <div class="mt-2 ml-3">
                     <a
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-14 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         href={linkBuy}
@@ -198,7 +233,6 @@ const {
 </section>
 
 <style>
-
 img {
     z-index: 5;
   }
