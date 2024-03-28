@@ -21,35 +21,42 @@ const {
 ---
 
 <div>
-	<section class="bg-white dark:bg-gray-900">
-		<div class="py-8 mx-auto max-w-screen-xl text-center lg:py-8 lg:px-12">
+	<section class="bg-white dark:bg-gray-900 pt-14">
+		<div class="mx-auto max-w-screen-2xl">
+			<div class="flex flex-row justify-center gap-24">
 
-			{
-				title && (
-					<div class="mb-4">
-						<h1 class="text-5xl md:text-6xl font-extrabold leading-none tracking-tighter mb-4 font-heading dark:text-gray-200">
-							<span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500">
-								{title}
-							</span>
-						</h1>
-						<h2 class="my-auto text-4xl font-semibold">{subtitle}</h2>
-					</div>
-				)
-			}
+				<div class="flex flex-col justify-center">
+					<h1 class="text-5xl md:text-6xl font-extrabold leading-none tracking-tighter mb-4 font-heading dark:text-gray-200">
+						<span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-secondary-500">
+							{title}
+						</span>
+					</h1>
+					<h2 class="text-4xl font-semibold">{subtitle}</h2>
+				</div>
+				
 
-			<BookCoverHeroCodeInjection
-				discountPercentage={bookPricing.discountPercentage}
-				linkBuy={bookPricing.linkBuy}
-				priceBeforeDiscount={bookPricing.priceBeforeDiscount}
-				priceAfterDiscount={bookPricing.priceAfterDiscount}
-			/>
+				<div>
+					<BookCoverHeroCodeInjection
+						discountPercentage={bookPricing.discountPercentage}
+						linkBuy={bookPricing.linkBuy}
+						priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+						priceAfterDiscount={bookPricing.priceAfterDiscount}
+					/>
 
-			<BookBundleBuyTip
+
+				</div>
+			</div>
+
+			
+
+		
+	</section>
+
+	<!-- <BookBundleBuyTip
 				bundlePricing={bundlePricing}
 			/>
 			
 			<DeveloperCircles />
 
-		</div>
-	</section>
+		</div> -->
 </div>
