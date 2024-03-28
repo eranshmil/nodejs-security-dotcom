@@ -1,0 +1,102 @@
+---
+import { STORE } from 'src/config.mjs';
+
+const pricingFeatures = [
+	'Access an introduction to AppSec and Command Injection',
+	'6 chapters reviewing vulnerable npm packages',
+	'Real-world CVE analysis of vulnerable code',
+	'Experience hands-on defensive programming approach',
+	// 'Expert insights from a security researcher and developer',
+	'Command Injection attack and defense secure coding',
+	'Best practices for securing Node.js code',
+];
+
+const BuyCTAText = 'Start hacking';
+// other options include:
+// 'Start learning, commence hacking'
+// 'Start hacking, unlock secure coding'
+
+const {
+    discountPercentage,
+    priceBeforeDiscount,
+    priceAfterDiscount,
+    linkBuy,
+    linkLearnMore,
+} = Astro.props;
+---
+
+<section class="bg-white dark:bg-gray-900">
+	<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+		<div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+			<h2 class="mb-4 text-4xl tracking-tight font-extrabold">
+				Master Node.js Security:
+				<br />
+				Get Started with Secure Coding
+			</h2>
+			<p>
+				The Definitive Guide to Defending Against Command Injection Vulnerabilities and Building Secure Node.js
+				Applications
+			</p>
+			<!-- <p class="mb-5 sm:text-xl">
+				Start hacking right away with the Ivory Rose edition, or go full-on geek mode with the Starlit Rose edition.
+			</p> -->
+		</div>
+		<div class="space-y-8 lg:grid lg:grid-cols-1 sm:gap-6 xl:gap-10 lg:space-y-0">
+			<div
+				class="flex flex-col p-6 mx-auto w-12/12 text-center bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800"
+			>
+				<h3 class="mb-4 text-2xl font-semibold">Developers Level Up</h3>
+				<p class="font-light text-gray-500 text-md dark:text-gray-400"></p>
+				<div class="mt-6 mb-8 space-y-4 text-left">
+					<ul role="list">
+						{
+							pricingFeatures.map((feature) => (
+								<li class="flex items-center space-x-3 mb-4">
+									<svg
+										class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fill-rule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+									<span>{feature}</span>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+
+				<div class="mt-auto flex justify-center items-baseline mb-4">
+					<span class="ml-1 text-sm text-slate-50">
+						{priceAfterDiscount}
+					</span>
+
+					<span class="ml-1 text-sm font-normal line-through text-slate-400">
+						{priceBeforeDiscount}
+					</span>
+	
+					<span class="block"></span>
+				</div>
+
+				<div class="flex mx-auto">
+					<a
+						class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-14 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+						href={linkBuy}
+						target="_blank"
+						rel="noopener"
+						>
+						<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+							<path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+						</svg>
+						Buy Now
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

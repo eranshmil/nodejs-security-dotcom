@@ -1,0 +1,81 @@
+---
+import { STORE, buildBookPricing } from '~/config.mjs';
+
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/BooksLayout.astro';
+import Hero from '~/components/widgets/CodeInjection/BooksHero.astro';
+import Pricing1Column from '~/components/widgets/CodeInjection/Pricing1Column.astro';
+import BookFeatures from '~/components/widgets/CodeInjection/BookFeatures.astro';
+import BookAuthor from '~/components/widgets/CodeInjection/BookAuthor.astro';
+import ScaleUpSecurity from '~/components/widgets/CodeInjection/ScaleUpSecurity.astro';
+import FAQ from '~/components/widgets/CodeInjection/FAQ.astro';
+import Stats from '~/components/widgets/CodeInjection/Stats.astro';
+import CallToAction from '~/components/widgets/CodeInjection/CallToAction.astro';
+import TestimonialHeroBlock from '~/components/widgets/CodeInjection/TestimonialHeroBlock.astro';
+import TestimonialCollection from '~/components/widgets/CodeInjection/TestimonialCollection.astro';
+import BookSampleCTA from '~/components/widgets/CodeInjection/BookSampleCTA.astro';
+import PagesGallery from '~/components/widgets/CodeInjection/PagesGallery.astro';
+import BookModules from '~/components/widgets/CodeInjection/BookModules.astro';
+
+import ogImage from '~/assets/images/command-injection-book-og-v1.png';
+
+const meta = {
+	title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
+	canonical: getCanonical(getHomePermalink()),
+	image: ogImage,
+};
+
+const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
+const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
+const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
+
+// This page route is rendered on-demand on the server
+export const prerender = false
+---
+
+<Layout {meta}>
+	<Hero
+		title="Node.js Secure Coding:"
+		subtitle="Defending Against Command Injection Vulnerabilities"
+
+		bundlePricing={bundlePricing}
+		bookPricing={CommandInjectionPricing}
+	/>
+
+	<PagesGallery />
+
+	<Stats />
+
+	<TestimonialCollection />
+
+	<BookModules />
+
+	<ScaleUpSecurity />
+
+	<TestimonialHeroBlock />
+
+	<BookFeatures />
+
+	<Pricing1Column
+		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
+		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
+		linkBuy={CommandInjectionPricing.linkBuy}
+	/>
+
+	<BookSampleCTA />
+
+	<!-- <Steps /> -->
+	<!-- <Features3 /> -->
+	<!-- <Features /> -->
+
+	<BookAuthor />
+
+	<FAQ />
+	
+	<CallToAction
+		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
+		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
+		linkBuy={CommandInjectionPricing.linkBuy}
+	/>
+</Layout>

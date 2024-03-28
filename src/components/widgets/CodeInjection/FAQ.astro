@@ -1,0 +1,66 @@
+---
+import { Icon } from 'astro-icon';
+
+const items = [
+	[
+		{
+			question: 'Will I learn Node.js security best practices?',
+			answer: `I wrote this book first and foremost as a Node.js coding best practices so you can apply secure coding conventions. You can think of it as a Node.js security checklist that you can apply at work or in your own projects.`,
+		},
+		{
+			question: 'Will I learn about Node.js security vulnerabilities?',
+			answer: `Yes, more than you realized. Forget common Node.js security tutorials and generic security guides - experience true security expertise with this hands-on approach that will analyze actual npm packages that were found vulnerable, some of which you may use today in your projects, and learn why they were vulnerable and how to fix insecure code.`,
+		},
+		{
+			question: 'What programming level is required to benefit from this book?',
+			answer:
+				"This book doesn't assume any prior knowledge of security nor advanced knowledge of Node.js. It opens with a short introduction to application security, then to Command Injection class of vulnerabilities, and continues to deep-dive into publicly-known vulnerable npm package versions. You will read a lot of code and learn why it's insecure, and how to fix it.",
+		},
+	],
+	[
+		{
+			question: 'Can it help with Node.js API security?',
+			answer: `Probably. As a backend developer, you may need to resort to process execution APIs such as exec() or spawn() in order to perform image processing off the main thread, or other use-cases. You will learn how to secure your Node.js APIs in reference to preventing common Command Injection pitfalls and insecure coding.`,
+		},
+		{
+			question: 'Can I contact the author for additional help or questions?',
+			answer: `Yes, anytime. I'm always happy to help! Reach out to me here [liran at lirantal dot com].`,
+		},
+		{
+			question: 'Does this book focus on other secure Node.js aspects?',
+			answer: `No, it focuses specifically and entirely on Command Injection vulnerabilities and how to prevent them. Regardless, it will likely teach you about application security topics and Node.js security best practices that you can apply in your own projects.`,
+		},
+	],
+];
+---
+
+<div class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
+	<div class="max-w-xl sm:mx-auto lg:max-w-2xl">
+		<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+			<h2 class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading">
+				Frequently Asked Questions
+			</h2>
+		</div>
+	</div>
+	<div class="max-w-screen-xl sm:mx-auto">
+		<div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
+			{
+				items.map((subitems) => (
+					<div class="space-y-8">
+						{subitems.map(({ question, answer }) => (
+							<div>
+								<p class="mb-4 text-xl font-bold">
+									<Icon name="tabler:arrow-down-right" class="w-7 h-7 text-pink-500 inline-block icon-bold" />
+									{question}
+								</p>
+								{answer.split('\n\n').map((paragraph) => (
+									<p class="text-gray-700 dark:text-gray-400 mb-2" set:html={paragraph} />
+								))}
+							</div>
+						))}
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>

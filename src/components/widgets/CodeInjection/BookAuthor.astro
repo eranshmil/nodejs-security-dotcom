@@ -1,0 +1,176 @@
+---
+import { Icon } from 'astro-icon';
+import { PROFILE } from '~/config.mjs';
+import { Image } from 'astro:assets'
+
+const calloutTitle = "Meet Liran Tal, the Author."
+const callOutReason = '';
+// other options include:
+// What makes Liran qualified to teach you about secure coding in Node.js?
+
+const authorBio = `
+	Liran Tal is an accomplished software developer, respected security researcher, and prominent advocate for open source software in the JavaScript community.
+As an experienced author and educator, Liran has written several widely respected books on software security. These include "Serverless Security" published by O'Reilly, as well as the self-published titles "Essential Node.js Security" and "Web Security: Learning HTTP Security Headers".
+Liran's leadership in open source security includes significant contributions to OWASP projects, recording supply chain security incidents at the CNCF, and various OpenSSF initiatives. 
+Currently, Liran is a developer advocate at Snyk where he empowers developers with the knowledge and tools needed to build
+   and deploy secure software.
+	`;
+
+const items = [
+	[
+		{
+			title: 'Security Analyst for the Node.js Foundation',
+			description:
+				"In his role as a security analyst in the Node.js Foundation's Security Working Group, Liran reviewed hundreds of vulnerability reports for npm packages and established processes for responsible security disclosures and vulnerability triage 🏴‍☠️.",
+		},
+		{
+			title: 'Education is a core practice',
+			description:
+				'Passionate about educating developers on application security and secure coding practices, Liran is a world-wide international speaker, workshop instructor, and author of several books on the subject. He occasionally speaks on software security topics at academic institutions, such as presenting to students at the Electrical and Computer Engineering School at Purdue University 🎓.',
+		},
+
+		{
+			title: 'Award-winning GitHub Star ⭐️',
+			description:
+				'Liran received the GitHub Star recognition award from GitHub for his work educating and inspiring developers and actively advocating for web security.',
+		},
+	],
+	[
+		{
+			title: 'Recipient of the Pathfinder for Security Award 🎖️',
+			description:
+				'Honored by the OpenJS Foundation with the Pathfinder for Security Award, Liran is recognized for his work advancing Node.js security.',
+		},
+		{
+			title: `I'm a Security Researcher`,
+			description:
+				'An accomplished security researcher, Liran has disclosed security vulnerabilities in various open source software projects, including being credited with CVEs to his name for vulnerabilities in npm packages with millions of downloads.',
+		},
+		{
+			title: 'Acclaimed Recognition at Black Hat',
+			description:
+				"Liran's discovery in supply chain security research, including Lockfile Injection, was presented at the prestigious Black Hat Europe 2021 cybersecurity conference. Liran is also the creator of several developer security tooling projects such as npq, is-website-vulnerable, and snync, which help developers and enterprises defend against dependency confusion attacks.",
+		},
+	],
+];
+---
+
+<section class="scroll-mt-16 mb-32" id="features">
+	<div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 shadow-xl dark:shadow-none dark:bg-slate-800">
+		<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+			<div class="text-center">
+				<div>
+					<div class="relative mb-2 m-auto max-w-3xl">
+						<Image
+							src={import("/public/images/lirantal-profile-picture.png")}
+							class="mx-auto rounded-full shadow-lg"
+							width="250"
+							alt="Liran Tal"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex items-center">
+				<ul class="flex mx-auto">
+					<li>
+						<a
+							class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+							aria-label="LinkedIn"
+							href={PROFILE.linkedinURL}
+						>
+							<Icon name="mdi:linkedin" class="w-5 h-5" />
+						</a>
+					</li>
+
+					<li>
+						<a
+							class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+							aria-label="Twitter"
+							href={PROFILE.twitterURL}
+						>
+							<Icon name="mdi:twitter" class="w-5 h-5" />
+						</a>
+					</li>
+					
+					<li>
+						<a
+							class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+							aria-label="Github"
+							href={PROFILE.githubURL}
+						>
+							<Icon name="mdi:github" class="w-5 h-5" />
+						</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="grid mt-4 mx-auto text-center">
+				<h3
+					class="text-2xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+				>
+					{calloutTitle}
+				</h3>
+
+				
+
+			</div>
+			
+
+			
+			<p>
+				{callOutReason}
+			</p>
+
+		</div>
+
+
+
+
+
+		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
+			{
+				items.map((subitems) => (
+					<div class="space-y-8 sm:px-8">
+						{subitems.map(({ title, description }) => (
+							<div class="flex flex-row max-w-md">
+								<div class="mb-4 mr-4">
+									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-pink-500">
+										<svg class="w-12 h-12 p-0.5" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+											<g fill="none" fill-rule="evenodd">
+												<rect class="fill-current text-pink-600" width="64" height="64" rx="32" />
+												<g stroke-linecap="square" stroke-width="2">
+													<path class="stroke-current text-white" d="M20.571 20.571h13.714v17.143H20.571z" />
+													<path
+														class="stroke-current text-pink-300"
+														d="M38.858 26.993l6.397 1.73-4.473 16.549-13.24-3.58"
+													/>
+												</g>
+											</g>
+										</svg>
+									</div>
+								</div>
+								<div>
+									<h3 class="mb-3 text-xl font-bold">{title}</h3>
+									<p>{description}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				))
+			}
+		</div>
+		<div class="text-center mt-24">
+			<h2 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading">
+				About
+				<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">Liran Tal</span>
+			</h2>
+			<div class="max-w-3xl mx-auto">
+				<p class="text-l mb-8">
+					{authorBio}
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

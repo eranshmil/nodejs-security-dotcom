@@ -1,0 +1,216 @@
+---
+
+const {
+    discountPercentage,
+    priceBeforeDiscount,
+    priceAfterDiscount,
+    linkBuy,
+    linkLearnMore,
+} = Astro.props;
+
+---
+
+<section class="bg-white dark:bg-gray-900 mb-32 text-center">
+    <div class="px-4 mx-auto max-w-screen-xl lg:px-6">
+        <div class="grid gap-4 mb-6 lg:mb-4 md:grid-cols-2 items-center bg-gray-50 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <!-- <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700"> -->
+                <div class="">
+                    <img
+                        class="shadow-lg rounded-lg"
+                        src="/images/book/book-command-injection-cover-light.png"
+                        alt="Node.js Secure Coding: Defending Against Command Injection Vulnerabilities"
+                        loading="eager"
+                    />
+                </div>
+
+                <div class="p-5 min-w-fit">
+                    <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <a href="#">Digital book</a>
+                    </h3>
+
+                    <span class="text-gray-500 dark:text-gray-400 text-sm">PDF & EPUB</span>
+
+                    <div class="mt-4 mb-4 font-light text-gray-500 dark:text-gray-400">
+                        <p class="text-left mb-2 text-sm text-gray-900 dark:text-slate-300">
+                            The book features:
+                        </p>
+                        <ul role="list" class="space-y-2">
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">106 Pages</span>
+                            </li>
+
+                            <li class="flex space-x-1 items-center mt-18">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">
+                                    12 Vulnerable npm Packages</span
+                                >
+                            </li>
+
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white"
+                                    >33 Self-assessment Questions</span
+                                >
+                            </li>
+
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">10 Chapters</span>
+                            </li>
+
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-purple-400 dark:text-purple600"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">Light Mode</span>
+                                <span
+                                    class="bg-purple-600 text-slate-100 text-xs ml-1e px-1 font-medium rounded dark:bg-purple-600 dark:text-slate-100"
+                                    >
+                                </span>
+                            </li>
+
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-purple-400 dark:text-purple600"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">Dark Mode</span>
+                                <span
+                                    class="bg-purple-600 text-slate-100 text-xs ml-1e px-1 font-medium rounded dark:bg-purple-600 dark:text-slate-100"
+                                    >SPECIAL EDITION
+                                </span>
+                            </li>
+
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-green-300 dark:text-green-300"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">July 2023 release</span>
+                            </li>
+
+                            <li class="flex space-x-1 items-center">
+                                <svg
+                                    class="flex-shrink-0 w-3 h-3 text-yellow-300 dark:text-yellow-300"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path
+                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+                                    ></path>
+                                </svg>
+                                <span class="text-sm leading-tight text-gray-900 dark:text-white">Sale</span>
+                                <span
+                                    class="bg-yellow-100 text-yellow-800 text-xs ml-1e px-1 font-medium rounded dark:bg-yellow-300 dark:text-yellow-900"
+                                    >{discountPercentage}% OFF
+                                </span>
+                            </li>
+
+                        </ul>
+
+                        <div class="mt-4"></div>
+                    </div>
+
+
+                    <div class="pt-8">
+        
+                        <span class="ml-1 text-sm font-normal line-through text-slate-400">
+                            {priceBeforeDiscount}
+                        </span>
+
+                        <span class="ml-1 text-sm text-black dark:text-slate-50">
+                            {priceAfterDiscount}
+                        </span>
+        
+                        <span class="block"></span>
+        
+                        <div class="mt-2">
+                            <a
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-14 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                href={linkBuy}
+                                target="_blank"
+                                rel="noopener"
+                                >
+                                <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                    <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                </svg>
+                                Buy Now
+                            </a>
+                        </div>
+
+                        { linkLearnMore &&
+                            <a href={linkLearnMore} class="text-xs inline-flex items-center text-blue-600 hover:underline">
+                                Learn more about the book
+                            </a>
+                        }
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+</section>

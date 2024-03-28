@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon';
+import { Image } from 'astro:assets'
+---
+
+<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
+	<div class="grid gap-6 row-gap-10 md:grid-cols-2">
+		<div class="md:pb-6 md:pr-16">
+			<h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading">
+				Master Node.js Security Through Hands-On Learning and Best Practices
+			</h2>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
+							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+				</div>
+				<div class="pt-1 pb-8">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Comprehensive learning path</p>
+					<p>
+						Whether you're a beginner or an experienced JavaScript developer, this Node.js Secure Coding book takes a
+						comprehensive approach to security. From basic terminology to introduction to Command Injection, you'll
+						learn about assorted patterns of insecure code observed in popular and well-known npm packages.
+					</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
+							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+				</div>
+				<div class="pt-1 pb-8">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Hands-on learning</p>
+					<p>
+						Unlike other security books that rely on theoretical examples, this book is based on real-world vulnerable
+						code found in popular npm packages. You'll get hands-on experience reviewing and fixing security issues in
+						these projects, learning practical security skills and Node.js secure coding best practices.
+					</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
+							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+				</div>
+				<div class="pt-1 pb-8">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Best practices and practical takeaways</p>
+					<p>
+						Each chapter ends with a summary of the lessons learned, highlighting best practices for securing your
+						Node.js code and improving your overall security knowledge of Command Injection vulnerabilities.
+					</p>
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex flex-col items-center mr-4">
+					<div>
+						<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
+							<Icon name="tabler:check" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+						</div>
+					</div>
+				</div>
+				<div class="pt-1">
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">
+						Congratulations!
+						<br />You've leveled up your security skills!
+					</p>
+					<p class="text-gray-700"></p>
+				</div>
+			</div>
+		</div>
+		<div class="relative">
+			<Image
+				class="rounded-md object-contain h-full shadow-lg bg-white"
+				src={import('~/assets/images/nodejs-secure-coding-book-features-1-pager.png')}
+				widths={[400, 2480]}
+				_sizes="(max-width: 768px) 100vw, 432px"
+				alt="Node.js Secure Coding book features"
+				loading="lazy"
+			/>
+		</div>
+	</div>
+</section>
