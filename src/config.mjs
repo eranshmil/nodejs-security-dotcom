@@ -38,6 +38,12 @@ export const STORE = {
 			priceBeforeDiscount: '$57.60',
 			priceAfterDiscount: '$40.32',
 		},
+		A0MZIZMQ: {
+			discountCode: 'A0MZIZMQ',
+			discountPercentage: 70,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$17.28',
+		},
 		E3MZY0OA: {
 			discountCode: 'E3MZY0OA',
 			discountPercentage: 30,
@@ -86,6 +92,12 @@ export const STORE = {
 			priceBeforeDiscount: '$57.60',
 			priceAfterDiscount: '$57.60',
 		},
+		CodeInjection: {
+			discountCode: '',
+			discountPercentage: 0,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$57.60',
+		},
 
 		// not yet in effect:
 		// bundleWithEssentialNodejsSecurity: {
@@ -109,6 +121,10 @@ export const STORE = {
 
 	PathTraversal: {
 		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/4e558207-a427-4a64-ac23-f67a2cdce5d0',
+	},
+
+	CodeInjection: {
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/buy/6d360ff1-dd31-492c-82e6-b6c169208126',
 	},
 
 	EssentialNodejsSecurity: {

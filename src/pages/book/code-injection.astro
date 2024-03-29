@@ -26,9 +26,10 @@ const meta = {
 	image: ogImage,
 };
 
-const discountCode = Astro.url.searchParams.get('discount_code') || 'default';
+// @TBD - during pre-order we use the discount A0MZIZMQ for this book
+const discountCode = Astro.url.searchParams.get('discount_code') || 'A0MZIZMQ';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
-const CommandInjectionPricing = buildBookPricing({discountCode, bookId: 'CommandInjection'});
+const bookPricing = buildBookPricing({discountCode, bookId: 'CodeInjection'});
 
 // This page route is rendered on-demand on the server
 export const prerender = false
@@ -40,7 +41,7 @@ export const prerender = false
 		subtitle="Mitigate and Weaponize Code Injection Vulnerabilities"
 
 		bundlePricing={bundlePricing}
-		bookPricing={CommandInjectionPricing}
+		bookPricing={bookPricing}
 	/>
 
 	<!-- TODO doesn't exist yet -->
@@ -60,9 +61,9 @@ export const prerender = false
 	<!-- <BookFeatures /> -->
 
 	<!-- <Pricing1Column
-		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
-		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
-		linkBuy={CommandInjectionPricing.linkBuy}
+		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+		priceAfterDiscount={bookPricing.priceAfterDiscount}
+		linkBuy={bookPricing.linkBuy}
 	/> -->
 
 	<!-- <BookSampleCTA /> -->
@@ -78,8 +79,8 @@ export const prerender = false
 	<FAQ />
 	
 	<CallToAction
-		priceBeforeDiscount={CommandInjectionPricing.priceBeforeDiscount}
-		priceAfterDiscount={CommandInjectionPricing.priceAfterDiscount}
-		linkBuy={CommandInjectionPricing.linkBuy}
+		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+		priceAfterDiscount={bookPricing.priceAfterDiscount}
+		linkBuy={bookPricing.linkBuy}
 	/>
 </Layout>
