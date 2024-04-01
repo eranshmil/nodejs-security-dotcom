@@ -28,7 +28,10 @@ const meta = {
 	title: `${post.title}`,
 	description: post.description,
 	canonical: post.canonical || getCanonical(getPermalink(post.slug, 'post')),
+	// this uses the plain image from the frontmatter
 	image: await findImage(post.image),
+	// instead, use the dynamic og image
+	ogImage: `/og/${post.slug}.png`,
 	ogTitle: post.title,
 	ogType: 'article',
 	post: post,

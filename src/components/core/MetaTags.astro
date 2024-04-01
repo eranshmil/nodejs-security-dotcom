@@ -20,17 +20,36 @@ const {
 	ogType = 'website',
 } = Astro.props;
 
-let { image: ogImage } = Astro.props;
-ogImage = ogImage || defaultImageFile;
+let { image } = Astro.props;
+let { ogImage } = Astro.props;
+
+image = image || defaultImageFile;
 
 const siteBaseURL = new URL(Astro.url);
 let ogImageURL = '';
-if (typeof ogImage === 'string') {
+let ogImageProperites = {
+	height: 630,
+	width: 1200,
+	format: 'png',
+};
+
+if (ogImage) {
 	ogImageURL = new URL(ogImage, siteBaseURL).href;
-} else if (ogImage && typeof ogImage['href'] !== 'undefined') {
-	ogImageURL = new URL(ogImage['href'], siteBaseURL).href;
 } else {
-	ogImageURL = new URL(ogImage.src, siteBaseURL).href;
+	if (typeof image === 'string') {
+		ogImageURL = new URL(image, siteBaseURL).href;
+	} else{
+		ogImageProperites = {
+			height: image.height,
+			width: image.width,
+			format: image.format,
+		};
+		if (image && typeof image['href'] !== 'undefined') {
+			ogImageURL = new URL(image['href'], siteBaseURL).href;
+		} else {
+			ogImageURL = new URL(image.src, siteBaseURL).href;
+		}
+	}
 }
 
 let articleMetaTags = []
@@ -95,9 +114,9 @@ if (post && post.pubDate) {
 			url: ogImageURL,
 			secureUrl: ogImageURL,
 			alt: ogTitle,
-			height: ogImage?.height,
-			width: ogImage?.width,
-			type: ogImage?.format && `image/${ogImage.format}`,
+			height: ogImageProperites?.height,
+			width: ogImageProperites?.width,
+			type: ogImageProperites?.format && `image/${ogImageProperites.format}`,
 		},
 	}}
 	twitter={{
