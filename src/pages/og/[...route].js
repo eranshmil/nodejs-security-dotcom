@@ -47,7 +47,7 @@ export const { getStaticPaths, GET } = OGImageRoute({
 				path: bgFile,
 				fit: 'fill',
 			},
-			padding: 30,
+			padding: 50,
 			font: {
 				title: {
 					size: 62,
