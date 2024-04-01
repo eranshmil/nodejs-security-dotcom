@@ -44,9 +44,12 @@ let _posts;
 
 /** */
 export const fetchPosts = async () => {
-	_posts = _posts || load();
+	// _posts = _posts || load();
+	// return await _posts;
 
-	return await _posts;
+	if (_posts) return _posts;
+	_posts = await load();
+	return _posts;
 };
 
 /** */
