@@ -16,6 +16,7 @@ import TestimonialCollection from '~/components/widgets/TestimonialCollection.as
 import BookSampleCTA from '~/components/widgets/CodeInjection/BookSampleCTA.astro';
 import PagesGallery from '~/components/widgets/CodeInjection/PagesGallery.astro';
 import BookModules from '~/components/widgets/CodeInjection/BookModules.astro';
+import TopRated from '~/components/atoms/TopRated.astro';
 
 import ogImage from '~/assets/images/command-injection-book-og-v1.png';
 
@@ -44,6 +45,31 @@ export const prerender = false
 		bookPricing={bookPricing}
 	/>
 
+
+	
+
+	<div class="flex flex-col justify-center text-center mt-12 md:mb-44">
+		<!-- <p class="block mt-4">
+			You heard <code class="text-blue-500"> eval()</code>
+			and <code class="text-blue-500">new Function()</code> are 
+			dangerous but have you seen them in action for real-world use cases?
+		</p>
+		<p class="block mt-4">
+			Do you know why Node.js <code class="text-blue-500">vm module</code> is dangerous?
+			Do you know how to exploit <code class="text-blue-500">require</code> 
+			 and <code class="text-blue-500">import</code> as security sinks?
+		</p> -->
+		
+		<p class="block mt-4">
+			<span class="font-semibold underline decoration-blue-500 decoration-2 underline-offset-4">Get trained on secure coding techniques</span> that's hacker-proof and 
+			build unbreakable Node.js and Server-side JavaScript apps.
+		</p>
+
+		<div class="mt-4 self-center text-center justify-center flex">
+			<TopRated />
+		</div>
+	</div>
+	
 	<!-- TODO doesn't exist yet -->
 	<!-- <PagesGallery /> -->
 
