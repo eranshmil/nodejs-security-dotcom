@@ -1,5 +1,5 @@
 ---
-
+import { Icon } from 'astro-icon';
 import BookCoverHeroCodeInjection from './BookCoverHeroCodeInjection.astro';
 import DeveloperCircles from '~/components/widgets/DeveloperCircles.astro';
 
@@ -10,6 +10,36 @@ export interface Props {
 	bundlePricing?: object;
 	bookPricing?: object;
 }
+
+const bookChapters = [
+	{
+		title: 'Learn AppSec jargon: RCE, ACE, Arbitrary Code Injection, CVE, CWE, Exfiltration, Exploitation, Attack Vectors and more'
+	},
+	{
+		title: 'How attacks exploit JavaScript applications through insecure Code Injection sinks and sources'
+	},
+	{
+		title: 'Why, how and when <code class="text-sm text-blue-500">eval()</code> and <code class="text-sm text-blue-500">new Function()</code> are a breeding ground for Code Injection attacks'
+	},
+	{
+		title: 'How to exploit <code class="text-sm text-blue-500">require</code> and <code class="text-sm text-blue-500">import</code> as security sinks and gain code execution at runtime in JavaScript SSR and Node.js'
+	},
+	{
+		title: 'How to avoid weak code injection patterns'
+	},
+	{
+		title: 'How JavaScript serialization are often exploited'
+	},
+	{
+		title: 'Demystifying JavaScript sandboxing with Node.js <code class="text-sm text-blue-500">vm module</code> and other vulnerable APIs and how attackers bypass them'
+	},
+	{
+		title: 'Burst the bubble of false sense of security in npm dependencies that promise an isolated sandbox environment for JavaScript'
+	},
+	{
+		title: 'Analyze real-world Code Injection vulnerabilities found in npm packages and how to fix them'
+	}
+]
 
 const {
 	title,
@@ -32,28 +62,47 @@ const {
 					</h1>
 					<h2 class="text-3xl font-regular">{subtitle}</h2>
 
-					<div class="mt-12 md:mb-44">
-						<p class="block mt-4">
-							You heard <code class="text-blue-500"> eval()</code>
-							and <code class="text-blue-500">new Function()</code> are 
-							dangerous but have you seen them in action for real-world use cases?
-						</p>
-						<p class="block mt-4">
-							Do you know why Node.js <code class="text-blue-500">vm module</code> is dangerous?
-							Do you know how to exploit <code class="text-blue-500">require</code> 
-							 and <code class="text-blue-500">import</code> as security sinks?
-						</p>
-						<p>
-
-						</p>
-						<p class="block mt-4">
-							<span class="font-semibold underline decoration-blue-500 decoration-2 underline-offset-4">Get trained on secure coding techniques</span> that's hacker-proof and 
-							build unbreakable Node.js and Server-side JavaScript apps.
-						</p>
-					</div>
-					
+					<section class="px-4 pt-8">
+						<div id="talks" class="grid gap-6 row-gap-10">
+							<div class="md:pb-6 md:pr-16">
+								<h3 class="mb-2 text-xl font-heading">
+									Master the Art of Code Injection in JavaScript by learning:
+								</h3>
+								{
+									bookChapters.map((chapter, index) => (
+									<div class="flex">
+										<div class="flex flex-col items-center mr-4">
+											<div>
+												<div class="flex items-center justify-center w-6 h-6 rounded-full border-secondary-500 border-2">
+													<Icon name={`tabler:number-${++index}`} class="w-4 h-4 text-gray-600 dark:text-slate-200 icon-bold" />
+												</div>
+											</div>
+											<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
+										</div>
+										<div class="pb-2 -mt-1">
+											<p class="text-md font-base text-gray-900 dark:text-slate-300" set:html={chapter.title}></p>
+										</div>
+									</div>
+									))
+								}
+								<div class="flex">
+									<div class="flex flex-col items-center mr-4">
+										<div>
+											<div class="flex items-center justify-center w-6 h-6 rounded-full border-primary-600 border-2">
+												<Icon name="tabler:check" class="w-4 h-4 text-gray-600 dark:text-slate-200 icon-bold" />
+											</div>
+										</div>
+									</div>
+									<div class="">
+										<p class="text-gray-700 dark:text-slate-300 font-bold">
+											Gain security expertise and adopt secure coding best practices in building JavaScript and Node.js applications
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
 				</div>
-				
 
 				<div class="">
 					<BookCoverHeroCodeInjection
