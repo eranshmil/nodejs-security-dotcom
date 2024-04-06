@@ -79,15 +79,37 @@ const bookProducts = [
         price: '$29.99'
 	},
 ];
+
 ---
 
 <Layout {meta}>
+
+    <script is:inline>
+        // randomly select a title out of 5 options in the array:
+        const openingIntro = [
+            `Hi 👋, I'm Liran Tal and I'm your mentor today`,
+            `Hi 👋, I'm Liran Tal and I'm on a mission`,
+            `Hi there 👋, I'm Liran Tal and I'll be your secure developer buddy`,
+        ]
+
+        const introContent = openingIntro[Math.floor(Math.random() * openingIntro.length)];
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const title = document.getElementById('intro');
+            title.textContent = introContent;
+        });
+    </script>
+
     <section class="mt-14">
         <div class="container mx-auto flex px-5 items-center text-center justify-center flex-col">
             
             <div class="w-32 mb-4">
                 <img class="rounded-full" src="/images/lirantal-profile-picture.png" alt="Liran Tal profile picture" />
             </div>
+
+            <span class="mb-4" id="intro">
+                Hi 👋, I'm Liran Tal and I'm your mentor today
+            </span>
     
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">
                 Teaching developers how to apply world-class JavaScript secure coding skills
