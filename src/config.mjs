@@ -2,6 +2,11 @@ export function buildBookPricing({ discountCode, bookId }) {
 	let pricingData = {};
 
 	if (discountCode) {
+		// if we can't find an appropriate discount code then we'll default to the default one
+		if (STORE.pricing[discountCode] === undefined) {
+			discountCode = 'default';
+		}
+
 		const appliedDiscountCode = STORE.pricing[discountCode].discountCode;
 		let storeLinkToBuy = `${STORE[bookId].linkBuy}?checkout%5Bdiscount_code%5D=${appliedDiscountCode}`;
 		pricingData = {
