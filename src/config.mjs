@@ -136,6 +136,10 @@ export const STORE = {
 		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/5d5975e1-4481-40a5-b180-de154cc865b0',
 	},
 
+	WebSecurityHeaders: {
+		linkBuy: 'https://nodejs-secure-coding.lirantal.com/checkout/buy/3e91088f-cbb8-41a0-9c3a-5d60233f6f7b',
+	},
+
 	plan1BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/c8e9b3ec-c540-4723-bb18-5514a2c9f53f',
 	plan2BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/5ba65e29-2a52-4e65-acc2-24dfedb1bd02',
 	plan3BuyLink: 'https://nodejs-security.lemonsqueezy.com/checkout/buy/5f6f17a8-8bd9-41ad-85fa-03ebf0b77f46',

@@ -1,0 +1,217 @@
+---
+import { STORE, buildBookPricing } from '~/config.mjs';
+
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/BooksLayout.astro';
+import Hero from '~/components/widgets/CodeInjection/BooksHero.astro';
+import Pricing1Column from '~/components/widgets/CodeInjection/Pricing1Column.astro';
+import BookFeatures from '~/components/widgets/CodeInjection/BookFeatures.astro';
+import BookAuthor from '~/components/widgets/CodeInjection/BookAuthor.astro';
+import ScaleUpSecurity from '~/components/widgets/CodeInjection/ScaleUpSecurity.astro';
+import FAQ from '~/components/widgets/CodeInjection/FAQ.astro';
+import Stats from '~/components/widgets/CodeInjection/Stats.astro';
+import CallToAction from '~/components/widgets/CodeInjection/CallToAction.astro';
+import TestimonialHeroBlock from '~/components/widgets/CodeInjection/TestimonialHeroBlock.astro';
+import TestimonialCollection from '~/components/widgets/TestimonialCollection.astro';
+import BookSampleCTA from '~/components/widgets/CodeInjection/BookSampleCTA.astro';
+import PagesGallery from '~/components/widgets/CodeInjection/PagesGallery.astro';
+import BookModules from '~/components/widgets/CodeInjection/BookModules.astro';
+import TopRated from '~/components/atoms/TopRated.astro';
+
+import ogImage from '~/assets/images/code-injection-book-og-v1.png';
+
+const meta = {
+	title: 'Node.js Secure Coding: Mitigate and Weaponize Code Injection Vulnerabilities',
+	description: `Learn Node.js security and secure coding best practices to prevent code injection vulnerabilities.`,
+	canonical: getCanonical(getHomePermalink()),
+	image: ogImage,
+};
+
+// @TBD - during pre-order we use the discount A0MZIZMQ for this book
+const discountCode = Astro.url.searchParams.get('discount_code') || 'A0MZIZMQ';
+const bundlePricing = buildBookPricing({ discountCode: '', bookId: 'bundle' });
+const bookPricing = buildBookPricing({ discountCode, bookId: 'CodeInjection' });
+
+// This page route is rendered on-demand on the server
+export const prerender = false;
+
+const bookProducts = [
+	{
+		title: 'Node.js Secure Coding: Mitigate and Weaponize Code Injection Vulnerabilities',
+		description: `Learn Node.js security and secure coding best practices to prevent code injection vulnerabilities.`,
+		coverPicture: '/images/book/book-code-injection-cover-light.png',
+        linkLearnMore: '/book/code-injection',
+		linkBuy: STORE.CodeInjection.linkBuy,
+        price: '$57.60'
+	},
+	{
+        title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
+    	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
+		coverPicture: '/images/book/book-command-injection-cover-light.png',
+        linkLearnMore: '/book/command-injection',
+		linkBuy: STORE.CommandInjection.linkBuy,
+        price: '$57.60'
+	},
+    {
+        title: 'Node.js Secure Coding: Prevention and Exploitation of Path Traversal Vulnerabilities',
+    	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent path traversal and directory traversal vulnerabilities with expert Liran Tal.`,
+		coverPicture: '/images/book/book-path-traversal-cover-light.png',
+        linkLearnMore: '/book/path-traversal',
+		linkBuy: STORE.PathTraversal.linkBuy,
+        price: '$57.60'
+	},
+    {
+        title: 'Essential Node.js Security for Express Web Applications',
+    	description: ``,
+		coverPicture: '/images/book/essential-nodejs-security-2020-book-cover.png',
+        linkLearnMore: '/book/essential-nodejs-security',
+		linkBuy: STORE.EssentialNodejsSecurity.linkBuy,
+        price: '$29.99'
+	},
+    {
+        title: 'Web Security: Learning HTTP Security Headers',
+    	description: ``,
+		coverPicture: '/images/book/book-web-security-headers-cover-dark.png',
+        linkLearnMore: STORE.WebSecurityHeaders.linkBuy,
+		linkBuy: STORE.WebSecurityHeaders.linkBuy,
+        price: '$29.99'
+	},
+];
+---
+
+<Layout {meta}>
+	<section class="bg-white dark:bg-gray-900">
+		<div class="">
+			<div class="grid grid-cols-1 md:grid-cols-3 mx-auto md:mx-24 justify-center gap-8 mb-6 lg:mb-4 rounded-lg shadow">
+                {
+
+                bookProducts.map((book) => (
+
+                    <div
+                        class="pt-8 items-center text-center flex flex-col justify-center mb-6 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 m-4 p-4 rounded-md"
+                    >
+                        <img
+                            class="shadow-lg rounded-lg"
+                            width="200"
+                            src={book.coverPicture}
+                            alt="Node.js Secure Coding: Mitigate and Weaponize Code Injection Vulnerabilities"
+                            loading="eager"
+                        />
+
+                        <div class="pt-4">
+                            <h2 class="text-lg">
+                                {book.title}
+                            </h2>
+                        </div>
+
+                        <div class="pt-4 items-center text-center">
+                            <!-- 
+                            <span class="ml-1 text-sm text-black dark:text-slate-50">
+                                {book.price}
+                            </span>
+                            -->
+
+                            <span class="block"></span>
+
+                            <div class="mt-2">
+                                <a
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-14 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    href={book.linkBuy}
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    <svg
+                                        class="w-3.5 h-3.5 me-2"
+                                        aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        viewBox="0 0 18 21"
+                                    >
+                                        <path
+                                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"
+                                        >
+                                        </path>
+                                    </svg>
+                                    <p class="text-nowrap">
+                                        Get The Book
+                                    </p>
+                                    
+                                </a>
+                            </div>
+
+                            {
+                                (
+                                    <a href={book.linkLearnMore} class="text-xs inline-flex items-center text-blue-600 hover:underline">
+                                        Learn more about the book
+                                    </a>
+                                )
+                            }
+                        </div>
+                    </div>
+                ))
+                }
+
+			</div>
+		</div>
+	</section>
+
+	<div class="flex flex-col justify-center text-center mt-24 md:mb-44">
+		<!-- <p class="block mt-4">
+			You heard <code class="text-blue-500"> eval()</code>
+			and <code class="text-blue-500">new Function()</code> are 
+			dangerous but have you seen them in action for real-world use cases?
+		</p>
+		<p class="block mt-4">
+			Do you know why Node.js <code class="text-blue-500">vm module</code> is dangerous?
+			Do you know how to exploit <code class="text-blue-500">require</code> 
+			 and <code class="text-blue-500">import</code> as security sinks?
+		</p> -->
+
+		<p class="block mt-4">
+			<span class="font-semibold underline decoration-blue-500 decoration-2 underline-offset-4">
+				Get trained on secure coding techniques
+			</span> that are hacker-proof and build unbreakable Node.js and Server-side JavaScript apps.
+		</p>
+
+		<div class="mt-4 self-center text-center justify-center flex">
+			<TopRated />
+		</div>
+	</div>
+
+	<!-- TODO doesn't exist yet -->
+	<!-- <PagesGallery /> -->
+
+	<!-- <Stats /> -->
+
+	<TestimonialCollection />
+
+	<!-- <BookModules /> -->
+
+	<!-- <ScaleUpSecurity /> -->
+
+	<BookAuthor />
+
+	<!-- <BookFeatures /> -->
+
+	<!-- <Pricing1Column
+		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+		priceAfterDiscount={bookPricing.priceAfterDiscount}
+		linkBuy={bookPricing.linkBuy}
+	/> -->
+
+	<!-- <BookSampleCTA /> -->
+
+	<!-- <Steps /> -->
+	<!-- <Features3 /> -->
+	<!-- <Features /> -->
+
+	<TestimonialHeroBlock />
+
+	<FAQ />
+
+	<CallToAction
+		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
+		priceAfterDiscount={bookPricing.priceAfterDiscount}
+		linkBuy={bookPricing.linkBuy}
+	/>
+</Layout>
