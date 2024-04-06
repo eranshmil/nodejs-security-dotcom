@@ -18,13 +18,13 @@ import PagesGallery from '~/components/widgets/CodeInjection/PagesGallery.astro'
 import BookModules from '~/components/widgets/CodeInjection/BookModules.astro';
 import TopRated from '~/components/atoms/TopRated.astro';
 
-import ogImage from '~/assets/images/code-injection-book-og-v1.png';
+// @TODO fix a specific og image for this landing page
+//import ogImage from '~/assets/images/code-injection-book-og-v1.png';
 
 const meta = {
 	title: 'Node.js Secure Coding: Mitigate and Weaponize Code Injection Vulnerabilities',
 	description: `Learn Node.js security and secure coding best practices to prevent code injection vulnerabilities.`,
 	canonical: getCanonical(getHomePermalink()),
-	image: ogImage,
 };
 
 const discountCode = Astro.url.searchParams.get('discount_code');
