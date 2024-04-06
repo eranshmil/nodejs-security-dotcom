@@ -27,10 +27,12 @@ const meta = {
 	image: ogImage,
 };
 
-// @TBD - during pre-order we use the discount A0MZIZMQ for this book
-const discountCode = Astro.url.searchParams.get('discount_code') || 'A0MZIZMQ';
-const bundlePricing = buildBookPricing({ discountCode: '', bookId: 'bundle' });
-const bookPricing = buildBookPricing({ discountCode, bookId: 'CodeInjection' });
+const discountCode = Astro.url.searchParams.get('discount_code');
+let discountURLSuffix = '';
+if (discountCode) {
+    discountURLSuffix = `checkout%5Bdiscount_code%5D=${discountCode}`
+}
+
 
 // This page route is rendered on-demand on the server
 export const prerender = false;
@@ -41,7 +43,7 @@ const bookProducts = [
 		description: `Learn Node.js security and secure coding best practices to prevent code injection vulnerabilities.`,
 		coverPicture: '/images/book/book-code-injection-cover-light.png',
         linkLearnMore: '/book/code-injection',
-		linkBuy: STORE.CodeInjection.linkBuy,
+		linkBuy: `${STORE.CodeInjection.linkBuy}?${discountURLSuffix}`,
         price: '$57.60'
 	},
 	{
@@ -49,7 +51,7 @@ const bookProducts = [
     	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
 		coverPicture: '/images/book/book-command-injection-cover-light.png',
         linkLearnMore: '/book/command-injection',
-		linkBuy: STORE.CommandInjection.linkBuy,
+        linkBuy: `${STORE.CommandInjection.linkBuy}?${discountURLSuffix}`,
         price: '$57.60'
 	},
     {
@@ -57,7 +59,7 @@ const bookProducts = [
     	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent path traversal and directory traversal vulnerabilities with expert Liran Tal.`,
 		coverPicture: '/images/book/book-path-traversal-cover-light.png',
         linkLearnMore: '/book/path-traversal',
-		linkBuy: STORE.PathTraversal.linkBuy,
+        linkBuy: `${STORE.PathTraversal.linkBuy}?${discountURLSuffix}`,
         price: '$57.60'
 	},
     {
@@ -65,7 +67,7 @@ const bookProducts = [
     	description: ``,
 		coverPicture: '/images/book/essential-nodejs-security-2020-book-cover.png',
         linkLearnMore: '/book/essential-nodejs-security',
-		linkBuy: STORE.EssentialNodejsSecurity.linkBuy,
+        linkBuy: `${STORE.EssentialNodejsSecurity.linkBuy}?${discountURLSuffix}`,
         price: '$29.99'
 	},
     {
@@ -73,7 +75,7 @@ const bookProducts = [
     	description: ``,
 		coverPicture: '/images/book/book-web-security-headers-cover-dark.png',
         linkLearnMore: STORE.WebSecurityHeaders.linkBuy,
-		linkBuy: STORE.WebSecurityHeaders.linkBuy,
+        linkBuy: `${STORE.WebSecurityHeaders.linkBuy}?${discountURLSuffix}`,
         price: '$29.99'
 	},
 ];
@@ -193,12 +195,6 @@ const bookProducts = [
 
 	<!-- <BookFeatures /> -->
 
-	<!-- <Pricing1Column
-		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
-		priceAfterDiscount={bookPricing.priceAfterDiscount}
-		linkBuy={bookPricing.linkBuy}
-	/> -->
-
 	<!-- <BookSampleCTA /> -->
 
 	<!-- <Steps /> -->
@@ -208,10 +204,4 @@ const bookProducts = [
 	<TestimonialHeroBlock />
 
 	<FAQ />
-
-	<CallToAction
-		priceBeforeDiscount={bookPricing.priceBeforeDiscount}
-		priceAfterDiscount={bookPricing.priceAfterDiscount}
-		linkBuy={bookPricing.linkBuy}
-	/>
 </Layout>
