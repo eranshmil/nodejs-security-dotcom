@@ -82,6 +82,22 @@ const bookProducts = [
 ---
 
 <Layout {meta}>
+    <section class="mt-14">
+        <div class="container mx-auto flex px-5 items-center text-center justify-center flex-col">
+            
+            <div class="w-32 mb-4">
+                <img class="rounded-full" src="/images/lirantal-profile-picture.png" alt="Liran Tal profile picture" />
+            </div>
+    
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-5xl dark:text-white">
+                Teaching developers how to apply world-class JavaScript secure coding skills
+            </h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-44 dark:text-gray-400">
+                Learn essential security principles for Server-side JavaScript and Node.js development, enabling you to build robust and secure web applications with Angular, React, Vue.js, or Node.js backend APIs.
+            </p>
+        </div>
+    </section>
+
 	<section class="bg-white dark:bg-gray-900">
 		<div class="">
 			<div class="grid grid-cols-1 md:grid-cols-3 mx-auto md:mx-24 justify-center gap-8 mb-6 lg:mb-4 rounded-lg shadow">
@@ -96,7 +112,7 @@ const bookProducts = [
                             class="shadow-lg rounded-lg"
                             width="200"
                             src={book.coverPicture}
-                            alt="Node.js Secure Coding: Mitigate and Weaponize Code Injection Vulnerabilities"
+                            alt={book.title}
                             loading="eager"
                         />
 
