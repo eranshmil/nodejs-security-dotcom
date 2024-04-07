@@ -24,12 +24,15 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 
+import ogImage from '~/assets/images/blog-og-v1.png';
+
 const meta = {
 	title: `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
 	description: SITE.description,
 	canonical: getCanonical(page.url.current),
 	ogType: 'blog',
 	noindex: false,
+	image: ogImage,
 };
 ---
 
