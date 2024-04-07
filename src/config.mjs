@@ -62,7 +62,13 @@ export const STORE = {
 			priceAfterDiscount: '$31.68',
 		},
 		bundle: {
-			discountCode: '',
+			discountCode: 'AYMTUXMA',
+			discountPercentage: 62,
+			priceBeforeDiscount: '$115.20',
+			priceAfterDiscount: '$43.77',
+		},
+		AYMTUXMA: {
+			discountCode: 'AYMTUXMA',
 			discountPercentage: 62,
 			priceBeforeDiscount: '$115.20',
 			priceAfterDiscount: '$43.77',
