@@ -18,22 +18,21 @@ interface CallToAction {
 export interface Props {
 	title?: string;
 	subtitle?: string;
+    description?: string;
 	CTA1?: string | CallToAction;
 	CTA2?: string | CallToAction;
 	CTA3?: string | CallToAction;
 	DISCOUNT_CALLOUT?: CallToAction;
 	image?: string | any; // TODO: find HTMLElementProps
+    bundlePricing: any;
+    bookPricing: any;
 }
 
 const {
 	title,
 	subtitle,
 	description = await Astro.slots.render('description'),
-	content = 'sdsdsds',
 	DISCOUNT_CALLOUT = '30% discount',
-} = Astro.props;
-
-const {
     bundlePricing,
     bookPricing
 } = Astro.props;
