@@ -20,6 +20,7 @@ import VulnerableCodeSnippet1 from '~/components/widgets/PathTraversal/Vulnerabl
 import VulnerableCodeSnippet2 from '~/components/widgets/PathTraversal/VulnerableCodeSnippet2.astro';
 import NpmInstallVulnerable from '~/components/widgets/npmInstallVulnerable.astro';
 
+import AmazonSearch from '~/components/widgets/AmazonSearch.astro';
 
 const meta = {
 	title: SITE.title,
@@ -42,6 +43,12 @@ export const prerender = false
 		discountPercentage={bundlePricing.discountPercentage}
 		linkBuy={bundlePricing.linkBuy}
 		priceBeforeDiscount={bundlePricing.priceBeforeDiscount}
+		priceAfterDiscount={bundlePricing.priceAfterDiscount}
+	/>
+
+	<AmazonSearch
+		discountPercentage={bundlePricing.discountPercentage}
+		linkBuy={bundlePricing.linkBuy}
 		priceAfterDiscount={bundlePricing.priceAfterDiscount}
 	/>
 
