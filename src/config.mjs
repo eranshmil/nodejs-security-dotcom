@@ -238,7 +238,7 @@ export const FOOTER = {
 };
 
 export const SITE = {
-	name: 'Node.js Secure Coding',
+	name: 'NodeJS Security & NodeJS Secure Coding',
 	author: 'Liran Tal',
 
 	origin: 'https://www.nodejs-security.com',
@@ -246,7 +246,7 @@ export const SITE = {
 
 	title: 'Node.js Security starts with Node.js Secure Coding',
 	description:
-		'Master hands-on Node.js security with Node.js Secure Coding education and learn how to defend against command injection vulnerabilities and gain backend development skills to exploit and prevent path traversal attacks by reviewing real-world vulnerable npm packages and insecure code.',
+		'Master hands-on Node.js security with Node.js Secure Coding education and learn how to defend against JavaScript Command Injection vulnerabilities and gain backend development skills to exploit and prevent Path Traversal attacks by reviewing real-world vulnerable npm packages and insecure code.',
 };
 
 export const BLOG = {
