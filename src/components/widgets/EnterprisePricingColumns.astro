@@ -8,52 +8,53 @@ const pricingPlans = [
 		features: [
 			{
 				icon: 'check',
-				text: '35 digital edition copies of the Node.js Secure Coding book'
+				text: '60 minutes live session with Liran Tal on secure coding, supply chain security or other security topics with your R&D team'
 			},
 			{
 				icon: 'check',
-				text: '35% OFF'
+				text: '5 free complimentary digital edition copies of the Node.js Secure Coding book'
 			},
 		],
-		price: 1310,
+		price: 1510,
 		buyLink: STORE.plan1BuyLink,
 	},
-	{
-		title: 'Engage in Secure Coding',
-		description: 'Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and awareness',
-		features: [
-			{
-				icon: 'check',
-				text: '35 Digital Edition copies of the Node.js Secure Coding book'
-			},
-			{
-				icon: 'check',
-				text: '35% OFF'
-			},
-			{
-				icon: 'check',
-				text: '60 minutes live session with Liran Tal on secure coding with your R&D team'
-			},
-		],
-		price: 2150,
-		buyLink: STORE.plan2BuyLink,
-	},
+	// {
+	// 	title: 'Engage in Secure Coding',
+	// 	description: 'Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and awareness',
+	// 	features: [
+	// 		{
+	// 			icon: 'check',
+	// 			text: '35 Digital Edition copies of the Node.js Secure Coding book'
+	// 		},
+	// 		{
+	// 			icon: 'check',
+	// 			text: '35% OFF'
+	// 		},
+	// 		{
+	// 			icon: 'check',
+	// 			text: '60 minutes live session with Liran Tal on secure coding with your R&D team'
+	// 		},
+	// 	],
+	// 	price: 2150,
+	// 	buyLink: STORE.plan2BuyLink,
+	// },
 	{
 		title: 'Practice Secure Coding',
 		description: 'Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and awareness',
 		features: [
 			{
 				icon: 'check',
-				text: '35 Digital Edition copies of the Node.js Secure Coding book'
+				text: '1/2 half day hands-on practical workshop with Liran Tal on secure coding with your R&D team. We learn by hacking and fixing code together!'
+			},
+			{
+				icon: 'check',
+				text: '12 free digital edition copies of the Node.js Secure Coding book'
 			},
 			{
 				icon: 'check',
 				text: '35% OFF'
 			},
-			{
-				icon: 'check',
-				text: '1/2 day hands-on workshop with Liran Tal on secure coding with your R&D team'
-			},
+			
 		],
 		price: 3850,
 		buyLink: STORE.plan3BuyLink,
@@ -72,7 +73,7 @@ const pricingPlans = [
 				Start hacking right away with the Ivory Rose edition, or go full-on geek mode with the Starlit Rose edition.
 			</p> -->
 		</div>
-		<div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">			
+		<div class="space-y-8 lg:grid lg:grid-cols-2 sm:gap-6 xl:gap-10 lg:space-y-0">			
 			{ 
 				pricingPlans.map((plan) => {
 					return (
@@ -113,7 +114,7 @@ const pricingPlans = [
 							</ul>
 						</div>
 						<div class="mt-auto justify-center items-baseline mb-4">
-							<span class="mr-2 text-2xl font-extrabold">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(plan.price)}</span>
+							<span class="mr-2 text-2xl font-extrabold">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumSignificantDigits: 4 }).format(plan.price)}</span>
 							<span class="text-gray-500 dark:text-gray-400"></span>
 						</div>
 						<a
