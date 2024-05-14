@@ -1,5 +1,66 @@
 ---
 import { STORE } from 'src/config.mjs';
+
+const pricingPlans = [
+	{
+		title: 'Learn Secure Coding',
+		description: 'Educate your developer, ops and security teams with secure coding knowledge and help promote their technical career path',
+		features: [
+			{
+				icon: 'check',
+				text: '35 digital edition copies of the Node.js Secure Coding book'
+			},
+			{
+				icon: 'check',
+				text: '35% OFF'
+			},
+		],
+		price: 1310,
+		buyLink: STORE.plan1BuyLink,
+	},
+	{
+		title: 'Engage in Secure Coding',
+		description: 'Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and awareness',
+		features: [
+			{
+				icon: 'check',
+				text: '35 Digital Edition copies of the Node.js Secure Coding book'
+			},
+			{
+				icon: 'check',
+				text: '35% OFF'
+			},
+			{
+				icon: 'check',
+				text: '60 minutes live session with Liran Tal on secure coding with your R&D team'
+			},
+		],
+		price: 2150,
+		buyLink: STORE.plan2BuyLink,
+	},
+	{
+		title: 'Practice Secure Coding',
+		description: 'Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and awareness',
+		features: [
+			{
+				icon: 'check',
+				text: '35 Digital Edition copies of the Node.js Secure Coding book'
+			},
+			{
+				icon: 'check',
+				text: '35% OFF'
+			},
+			{
+				icon: 'check',
+				text: '1/2 day hands-on workshop with Liran Tal on secure coding with your R&D team'
+			},
+		],
+		price: 3850,
+		buyLink: STORE.plan3BuyLink,
+	},
+]
+
+
 ---
 
 <section class="bg-white dark:bg-gray-900">
@@ -11,199 +72,59 @@ import { STORE } from 'src/config.mjs';
 				Start hacking right away with the Ivory Rose edition, or go full-on geek mode with the Starlit Rose edition.
 			</p> -->
 		</div>
-		<div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
-			<!-- Pricing Card -->
-			<div
-				class="flex flex-col p-6 mx-auto text-center bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800"
-			>
-				<h3 class="mb-4 text-xl font-semibold">
-					<code class="text-pink-500">Learn<br />Secure Coding</code>
-				</h3>
-				<p class="font-light text-gray-500 text-md dark:text-gray-400">
-					Educate your developer, ops and security teams with secure coding knowledge and help promote their technical
-					career path
-				</p>
+		<div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">			
+			{ 
+				pricingPlans.map((plan) => {
+					return (
+					<div
+						class="flex flex-col p-6 mx-auto text-center bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800"
+					>
+						<h3 class="mb-4 text-xl font-semibold">
+							<code class="text-pink-500">{plan.title}</code>
+						</h3>
+						<p class="font-light text-gray-500 text-md dark:text-gray-400">
+							{plan.description}
+						</p>
 
-				<!-- List -->
-				<div class="mt-6 mb-8 space-y-4 text-left">
-					<ul role="list">
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>35 digital edition copies of the Node.js Secure Coding book</span>
-						</li>
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>35% OFF</span>
-						</li>
-					</ul>
-				</div>
-				<div class="mt-auto justify-center items-baseline mb-4">
-					<span class="mr-2 text-2xl font-extrabold">$1,310</span>
-					<span class="text-gray-500 dark:text-gray-400"></span>
-				</div>
-				<a
-					href={STORE.plan1BuyLink}
-					class="btn text-white border border-pink-500 bg-pink-500 hover:bg-pink-700 hover:border-pink-700 sm:mb-0 w-full"
-					>Buy</a
-				>
-			</div>
-			<!-- Pricing Card -->
-			<div
-				class="flex flex-col p-6 mx-auto text-center bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800"
-			>
-				<h3 class="mb-4 text-xl font-semibold">
-					<code class="text-pink-500">Engage in<br />Secure Coding</code>
-				</h3>
-				<p class="font-light text-gray-500 text-md dark:text-gray-400">
-					Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and
-					awareness
-				</p>
-				<!-- List -->
-				<div class="mt-6 mb-8 space-y-4 text-left">
-					<ul role="list">
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>35 Digital Edition copies of the Node.js Secure Coding book</span>
-						</li>
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>35% OFF</span>
-						</li>
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span class="font-bold">60 minutes live session with Liran Tal on secure coding with your R&D team</span>
-						</li>
-					</ul>
-				</div>
-				<div class="mt-auto flex justify-center items-baseline mb-4">
-					<span class="mr-2 text-2xl font-extrabold">$2,150</span>
-					<span class="text-gray-500 dark:text-gray-400"></span>
-				</div>
-				<a
-					href={STORE.plan2BuyLink}
-					class="btn text-white border border-pink-500 bg-pink-500 hover:bg-pink-700 hover:border-pink-700 sm:mb-0 w-full"
-					>Buy</a
-				>
-			</div>
-			<!-- Pricing Card -->
-			<div
-				class="flex flex-col p-6 mx-auto text-center bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800"
-			>
-				<h3 class="mb-4 text-xl font-semibold">
-					<code class="text-pink-500">Practice<br />Secure Coding</code>
-				</h3>
-				<p class="font-light text-gray-500 text-md dark:text-gray-400">
-					Engage your developer and security teams in meaningful interactions that instill secure coding knowledge and
-					awareness
-				</p>
-				<!-- List -->
-				<div class="mt-6 mb-8 space-y-4 text-left">
-					<ul role="list">
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>35 Digital Edition copies of the Node.js Secure Coding book</span>
-						</li>
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span>35% OFF</span>
-						</li>
-						<li class="flex items-center space-x-3 mb-4">
-							<!-- Icon -->
-							<svg
-								class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
-								fill="currentColor"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-								><path
-									fill-rule="evenodd"
-									d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-									clip-rule="evenodd"></path>
-							</svg>
-							<span class="font-bold">1/2 day hands-on workshop with Liran Tal on secure coding with your R&D team</span
-							>
-						</li>
-					</ul>
-				</div>
-				<div class="mt-auto flex justify-center items-baseline mb-4">
-					<span class="mr-2 text-2xl font-extrabold">$3,850</span>
-					<span class="text-gray-500 dark:text-gray-400"></span>
-				</div>
-				<a
-					href={STORE.plan3BuyLink}
-					class="btn text-white border border-pink-500 bg-pink-500 hover:bg-pink-700 hover:border-pink-700 sm:mb-0 w-full"
-					>Buy</a
-				>
-			</div>
+						<!-- List -->
+						<div class="mt-6 mb-8 space-y-4 text-left">
+							<ul role="list">
+								{
+									plan.features.map((feature) => {
+										return (
+											<li class="flex items-center space-x-3 mb-4">
+												<svg
+													class="flex-shrink-0 w-5 h-5 text-pink-500 dark:text-pink-500"
+													fill="currentColor"
+													viewBox="0 0 20 20"
+													xmlns="http://www.w3.org/2000/svg"
+													><path
+														fill-rule="evenodd"
+														d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+														clip-rule="evenodd"></path>
+												</svg>
+												<span>
+													{feature.text}
+												</span>
+											</li>
+										)
+									})
+								}
+							</ul>
+						</div>
+						<div class="mt-auto justify-center items-baseline mb-4">
+							<span class="mr-2 text-2xl font-extrabold">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(plan.price)}</span>
+							<span class="text-gray-500 dark:text-gray-400"></span>
+						</div>
+						<a
+							href={plan.buyLink}
+							class="btn text-white border border-pink-500 bg-pink-500 hover:bg-pink-700 hover:border-pink-700 sm:mb-0 w-full"
+							>Buy</a
+						>
+					</div>
+					)
+				})
+			}
 		</div>
 	</div>
 </section>
