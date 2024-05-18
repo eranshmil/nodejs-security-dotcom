@@ -49,6 +49,12 @@ export const STORE = {
 			priceBeforeDiscount: '$57.60',
 			priceAfterDiscount: '$17.28',
 		},
+		U5NZI3MW: {
+			discountCode: 'U5NZI3MW',
+			discountPercentage: 30,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$40.32',
+		},
 		E3MZY0OA: {
 			discountCode: 'E3MZY0OA',
 			discountPercentage: 30,
