@@ -28,7 +28,7 @@ const meta = {
 };
 
 // @TBD - during pre-order we use the discount A0MZIZMQ for this book
-const discountCode = Astro.url.searchParams.get('discount_code') || 'A0MZIZMQ';
+const discountCode = Astro.url.searchParams.get('discount_code') || 'U5NZI3MW';
 const bundlePricing = buildBookPricing({discountCode: '', bookId: 'bundle'});
 const bookPricing = buildBookPricing({discountCode, bookId: 'CodeInjection'});
 
