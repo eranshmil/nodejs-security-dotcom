@@ -111,7 +111,7 @@ const currentYear = new Date().getFullYear();
 														{item.icon ? <Icon name={item.icon} class="w-3 h-3" /> : ''}
 													</div>
 													<div class={`flex ml-${item.icon ? '2' : '8'}`}>
-														<a class=" text-gray-600 hover:text-gray-700 dark:text-gray-400" href={item.link}>
+														<a class="  text-gray-600 hover:text-gray-700 dark:text-gray-400" href={item.link}>
 															{item.title}
 														</a>
 													</div>
@@ -133,7 +133,7 @@ const currentYear = new Date().getFullYear();
 						return (
 							<li class="mb-2">
 								<div class="flex">
-									<a class=" text-gray-600 hover:text-gray-700 dark:text-gray-400" href={'/blog/' + item.slug}>
+									<a class="text-xs text-gray-600 hover:text-gray-700 dark:text-gray-400" href={'/blog/' + item.slug}>
 										{item.title}
 									</a>
 								</div>
