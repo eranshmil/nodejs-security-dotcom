@@ -11,7 +11,7 @@ tags: ['js', 'security']
 image: ~/assets/images/blog/js-security-concepts-javascript-developers.jpeg
 ---
 
-import BlogCallToAction from '~/components/widgets/BlogCallToAction.astro';
+import BlogCallToAction from '~/components/widgets/BlogCallToAction.vue';
 
 Building up on JS security concepts is something application developers would benefit a lot of in terms of awareness and readiness to handle potential vulnerabilities. How do you get started implementing some JavaScript security best practices? Here, I'll share some JS security concepts to enhance your development workflow.
 
@@ -60,7 +60,7 @@ Some developers might rush to implement JS security controls like sanitization a
 
 Regardless to code injection, you want to sanitize user input before using it, and confirm that it matches the expected format. Consider safer alternatives for dynamic code execution whenever possible. For example, use template literals for string manipulation or pre-compiled libraries for dynamic functionality.
 
-<BlogCallToAction client:idle />
+<BlogCallToAction client:load />
 
 ## Secure DOM Manipulation
 

@@ -11,6 +11,7 @@ import remarkToc from 'remark-toc';
 import { remarkReadingTime } from './src/utils/remark-frontmatter-extensions.mjs';
 import compress from 'astro-compress';
 import vercel from '@astrojs/vercel/serverless';
+import vue from '@astrojs/vue';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -47,6 +48,7 @@ export default defineConfig({
 		}),
 		solid(),
 		compress(),
+		vue(),
 	],
 	vite: {
 		resolve: {
