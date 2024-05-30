@@ -1,7 +1,7 @@
 ---
-title: "JS Security Concepts for JavaScript Developers"
+title: 'JS Security Concepts for JavaScript Developers'
 description: >-
-    Enhance your development workflow with JavaScript security best practices. Learn about Content Security Policy (CSP) in Nuxt.js, avoiding `eval` and `new Function` with untrusted input, secure DOM manipulation, cookie security, and third-party integration.
+  Enhance your development workflow with JavaScript security best practices. Learn about Content Security Policy (CSP) in Nuxt.js, avoiding `eval` and `new Function` with untrusted input, secure DOM manipulation, cookie security, and third-party integration.
 pubDate: '2024-05-30'
 categories: ['']
 keywords: []
@@ -10,6 +10,8 @@ draft: false
 tags: ['js', 'security']
 image: ~/assets/images/blog/js-security-concepts-javascript-developers.jpeg
 ---
+
+import BlogCallToAction from '~/components/widgets/BlogCallToAction.astro';
 
 Building up on JS security concepts is something application developers would benefit a lot of in terms of awareness and readiness to handle potential vulnerabilities. How do you get started implementing some JavaScript security best practices? Here, I'll share some JS security concepts to enhance your development workflow.
 
@@ -33,14 +35,14 @@ Then, add the module to your `nuxt.config.js` file:
 
 ```js
 export default {
-  modules: ['nuxt-security'],
-  security: {
-    headers: {
-      contentSecurityPolicy: {
-        'img-src': ["'self'", 'data:', 'https://www.example.com'],
-      },
-    },
-  }
+	modules: ['nuxt-security'],
+	security: {
+		headers: {
+			contentSecurityPolicy: {
+				'img-src': ["'self'", 'data:', 'https://www.example.com'],
+			},
+		},
+	},
 };
 ```
 
@@ -57,6 +59,8 @@ The apparent security risk relates to code injection - Untrusted input can conta
 Some developers might rush to implement JS security controls like sanitization and input validation. However, the best practice is to avoid using `eval` and `new Function` altogether, especially with untrusted input.
 
 Regardless to code injection, you want to sanitize user input before using it, and confirm that it matches the expected format. Consider safer alternatives for dynamic code execution whenever possible. For example, use template literals for string manipulation or pre-compiled libraries for dynamic functionality.
+
+<BlogCallToAction client:idle />
 
 ## Secure DOM Manipulation
 
@@ -89,8 +93,9 @@ export default {
 </script>
 ```
 
-To mitigate cross-site scripting vulnerabilities, some of the security controls you should implement are: 
-- Use framework APIs to manage your components lifecycle and template's content. 
+To mitigate cross-site scripting vulnerabilities, some of the security controls you should implement are:
+
+- Use framework APIs to manage your components lifecycle and template's content.
 - Do not use React's `dangerouslySetInnerHTML` or Vue's `v-html` directive with untrusted input. If you do, at least ensure you securely sanitize the input before rendering it in the DOM, with a library like `DOMPurify`. Then make sure it is up to date, because security vulnerabilities are discovered and patched regularly for DOMPurify.
 
 Modern JavaScript frameworks provide secure APIs for DOM manipulation, use them to prevent XSS attacks and to properly adopt JS security best practices such as output encoding.
