@@ -1,7 +1,7 @@
 ---
-title: "Node.js Security Best Practices"
+title: 'Node.js Security Best Practices'
 description: >-
-    Level up your Node.js security game! This guide explores essential best practices to safeguard your server-side code and build robust, secure applications.
+  Level up your Node.js security game! This guide explores essential best practices to safeguard your server-side code and build robust, secure applications.
 pubDate: '2024-03-15'
 categories: ['']
 keywords: []
@@ -41,6 +41,7 @@ Did you know that crypto-mining malware was found in a dependency that traced ba
 Aim for robust and battle-tested authentication algorithms. Employ strong authentication mechanisms like password hashing with secure algorithms (e.g., `bcrypt`) and of course follow practices like implementing authentication layers via two-factor authentication (2FA) to enhance user account security.
 
 What you need to know to avoid common security pitfalls when implementing authentication:
+
 - Do not store plain text passwords.
 - Do not use weak hashing algorithms. If you want to use modern secure hashing algorithms like scrypt or argon2, those are too, vetted securely to use.
 - Do not implement password limits like a maximum of 16 characters or requiring special characters. Instead, encourage the use of passphrases and lengthy generated passwords from password managers.
@@ -54,6 +55,8 @@ With regards to encryption at rest, make sure to avoid leaking sensitive informa
 If you wonder what practices to avoid then you should read my guide on [environment variables and security anti-patterns](https://lirantal.com/blog/environment-variables-configuration-anti-patterns-node-js-applications).
 
 There's another more in-depth concept to look into which is key management: most cloud vendors offer a key management service that can help you manage your keys securely. For example, AWS Key Management Service (KMS) or Google Cloud Key Management Service (KMS) are good examples. You can also use open-source solutions like HashiCorp Vault or the dotenv's team [dotenvx](https://dotenvx.com/) which builds on the practice of using `.env` files for configuration and secrets management.
+
+<BlogCallToAction client:load />
 
 ## 5. Prioritize error handling and logging
 

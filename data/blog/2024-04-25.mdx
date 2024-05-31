@@ -1,5 +1,5 @@
 ---
-title: "Introducing Node.js Security Permissions Model, Threat Model, and Security Releases"
+title: 'Introducing Node.js Security Permissions Model, Threat Model, and Security Releases'
 description: >-
   Learn how to secure your Node.js applications with the new Permissions Model, stay informed about security releases, and understand the Node.js Security Threat.
 pubDate: '2024-04-25'
@@ -18,7 +18,6 @@ In this blog post, I'll shortly review some of the built-in security features in
 Node.js 18 introduces a new experimental feature now available in Node.js 20 too: the permissions model. This model aims to enhance security by allowing granular control over what resources code can access within the Node.js process.
 
 Traditionally, Node.js code has relied on a privileged execution environment. This means code could access most system resources by default. For example, a Node.js application could read and write files arbitrarily on the file system, open network connections, and spawn child processes without any restrictions.
-
 
 The [Node.js Permissions Model](https://nodejs.org/api/permissions.html#process-based-permissions) operates with two key concepts: permissions and flags. Permissions define specific actions code can perform (e.g., fs.read, fs.write), while flags control the overall model behavior and allowed operations.
 
@@ -66,7 +65,9 @@ Node.js releases security updates periodically to address vulnerabilities report
 - CVE-2024-27983 (High Severity): This vulnerability in Node.js HTTP/2 server could lead to Denial-of-Service (DoS) attacks. An attacker could exploit this by sending malformed HTTP requests.
 
 - CVE-2024-21892 (High Severity): This critical vulnerability allows code injection and privilege escalation through Linux capabilities. Attackers could potentially gain unauthorized access to your system.
-These are just a few examples, and new vulnerabilities are discovered regularly.
+  These are just a few examples, and new vulnerabilities are discovered regularly.
+
+<BlogCallToAction client:load />
 
 ### Staying Informed about Security Updates:
 
@@ -78,7 +79,7 @@ Here are practical steps to ensure you're notified about security updates:
 
 - Utilize Node.js version management tools: Tools like `nvm` and `fnm` make it easy to switch between Node.js versions. They also provide commands to list available versions and check for updates.
 
-- Use Official Node.js Docker Images:  The official [Node.js Docker Hub images](https://hub.docker.com/_/node) are built from secure base images and often include the latest security patches. Pin image versions and avoid using the latest tag when pulling Node.js Docker images. Specify a specific version number to ensure consistent security posture across deployments.
+- Use Official Node.js Docker Images: The official [Node.js Docker Hub images](https://hub.docker.com/_/node) are built from secure base images and often include the latest security patches. Pin image versions and avoid using the latest tag when pulling Node.js Docker images. Specify a specific version number to ensure consistent security posture across deployments.
 
 ## Node.js Security Threat Model
 
@@ -90,4 +91,3 @@ One of the outcomes of this work is the [Node.js threat model](https://github.co
 - The loss of availability of services provided by Node.js applications, including degradation of performance.
 
 You are also encouraged to report security vulnerabilities in Node.js through the [Node.js JavaScript Runtime project on HackerOne](https://hackerone.com/nodejs).
-

@@ -1,14 +1,14 @@
 ---
-title: "Secure Code Review Tips to Defend Against Vulnerable Node.js Code"
+title: 'Secure Code Review Tips to Defend Against Vulnerable Node.js Code'
 description: >-
-    How do you identify vulnerable code patterns? Can you spot insufficient input validation? Enhance your Node.js development security with this guide to secure code review.
+  How do you identify vulnerable code patterns? Can you spot insufficient input validation? Enhance your Node.js development security with this guide to secure code review.
 date: '2023-11-08'
 pubDate: '2023-11-08'
 categories: []
 keywords: []
-slug: "secure-code-review-tips-to-defend-against-vulnerable-nodejs-code"
+slug: 'secure-code-review-tips-to-defend-against-vulnerable-nodejs-code'
 draft: false
-tags: ["command injection", "nodejs", "javascript", "security"]
+tags: ['command injection', 'nodejs', 'javascript', 'security']
 image: ~/assets/images/blog/practical-tips-for-nodejs-secure-code-review.png
 ---
 
@@ -51,7 +51,7 @@ Code Pattern:
 const userInput = req.query.input;
 const command = `echo ${userInput}`;
 exec(command, (error, stdout, stderr) => {
-  // Handle the command execution
+	// Handle the command execution
 });
 ```
 
@@ -64,11 +64,13 @@ Code Pattern:
 ```js
 const filename = req.body.filename;
 exec(`cat ${filename}`, (error, stdout, stderr) => {
-  // Handle the command execution
+	// Handle the command execution
 });
 ```
 
 **Why It's Risky**: Failing to validate user input can permit attackers to manipulate input, executing unauthorized commands.
+
+<BlogCallToAction client:load />
 
 ### 3. Lack of Proper Escaping in Node.js code
 
@@ -77,7 +79,7 @@ Code Pattern:
 ```js
 const userInput = req.query.input;
 exec(`echo "${userInput}"`, (error, stdout, stderr) => {
-  // Handle the command execution
+	// Handle the command execution
 });
 ```
 
@@ -94,7 +96,7 @@ Code Pattern:
 ```js
 const userRole = getUserRoleFromDatabase();
 exec(`grantPermission --role=${userRole}`, (error, stdout, stderr) => {
-  // Handle the command execution
+	// Handle the command execution
 });
 ```
 

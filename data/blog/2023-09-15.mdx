@@ -1,13 +1,13 @@
 ---
-title: "Securing Your Node.js Apps by Analyzing Real-World Command Injection Examples"
+title: 'Securing Your Node.js Apps by Analyzing Real-World Command Injection Examples'
 description: >-
-    This article explores real-world command injection vulnerabilities that have impacted popular applications, emphasizing the need for secure coding practices. We take you through the background of Node.js and its vast user base, setting the stage for understanding the gravity of command injection attacks.
+  This article explores real-world command injection vulnerabilities that have impacted popular applications, emphasizing the need for secure coding practices. We take you through the background of Node.js and its vast user base, setting the stage for understanding the gravity of command injection attacks.
 date: '2023-09-15'
 pubDate: '2023-09-15'
 categories: []
 keywords: []
-slug: "securing-your-nodejs-apps-by-analyzing-real-world-command-injection-examples"
-tags: ["command injection", "nodejs", "javascript", "security"]
+slug: 'securing-your-nodejs-apps-by-analyzing-real-world-command-injection-examples'
+tags: ['command injection', 'nodejs', 'javascript', 'security']
 image: ~/assets/images/blog/command-injection-vulnerability-real-world-cases.png
 ---
 
@@ -20,42 +20,41 @@ Command injection vulnerabilities are not an abstract concept but a real and pre
 What is seemingly an obvious security risk such as demonstrated in this code:
 
 ```js
-var exec = require('child_process').execSync
-var platform = require('os').platform()
+var exec = require('child_process').execSync;
+var platform = require('os').platform();
 
-module.exports = function(){
-  var commands = Array.isArray(arguments[0]) ? arguments[0] : Array.prototype.slice.apply(arguments)
-  var command = null
-  commands.some(function(c){
-    if (isExec(findCommand(c))){
-      command = c
-      return true
-    }
-  })
-  return command
-}
+module.exports = function () {
+	var commands = Array.isArray(arguments[0]) ? arguments[0] : Array.prototype.slice.apply(arguments);
+	var command = null;
+	commands.some(function (c) {
+		if (isExec(findCommand(c))) {
+			command = c;
+			return true;
+		}
+	});
+	return command;
+};
 
-function isExec(command){
-  try{
-    exec(command, { stdio: 'ignore' })
-    return true
-  }
-  catch (_e){
-    return false
-  }
+function isExec(command) {
+	try {
+		exec(command, { stdio: 'ignore' });
+		return true;
+	} catch (_e) {
+		return false;
+	}
 }
-function findCommand(command){
-  if (/^win/.test(platform)){
-    return "where " + command
-  } else {
-    return "command -v " + command
-  }
+function findCommand(command) {
+	if (/^win/.test(platform)) {
+		return 'where ' + command;
+	} else {
+		return 'command -v ' + command;
+	}
 }
 ```
 
 Is actually an often overlooked coding practice by JavaScript developers day to day.
 
-> The above command injection vulnerability was found in the [find-exec](https://github.com/shime/find-exec/commit/74fb108097c229b03d6dba4cce81e36aa364b51c) npm package with as many as over 2,000 weekly downloads. Not too many, but enough to put some users at risk. The consequences of command injection vulnerabilities can be devastating, ranging from data breaches to complete system compromise. 
+> The above command injection vulnerability was found in the [find-exec](https://github.com/shime/find-exec/commit/74fb108097c229b03d6dba4cce81e36aa364b51c) npm package with as many as over 2,000 weekly downloads. Not too many, but enough to put some users at risk. The consequences of command injection vulnerabilities can be devastating, ranging from data breaches to complete system compromise.
 
 What Is Command Injection? In short, at its core, command injection occurs when an application allows unsanitized user input to be executed as system commands. These commands can manipulate the underlying system, potentially leading to unauthorized access, data breaches, or even complete system compromise.
 
@@ -65,11 +64,11 @@ To truly understand the severity of command injection vulnerabilities and the ur
 
 ### 1. The Equifax Data Breach (2017)
 
-*Affected Application*: Apache Struts2 framework used by Equifax
-*Attack Vector*: Command injection via unpatched vulnerability
-*Outcome*: One of the most significant data breaches in history, exposing sensitive personal and financial data of nearly 147 million people.
+_Affected Application_: Apache Struts2 framework used by Equifax
+_Attack Vector_: Command injection via unpatched vulnerability
+_Outcome_: One of the most significant data breaches in history, exposing sensitive personal and financial data of nearly 147 million people.
 
-*Details*: The Equifax breach serves as a sobering reminder of the potential impact of command injection vulnerabilities. Attackers exploited a known vulnerability in Apache Struts2 to execute arbitrary commands on Equifax's servers. This breach had far-reaching consequences, resulting in legal repercussions and widespread public concern.
+_Details_: The Equifax breach serves as a sobering reminder of the potential impact of command injection vulnerabilities. Attackers exploited a known vulnerability in Apache Struts2 to execute arbitrary commands on Equifax's servers. This breach had far-reaching consequences, resulting in legal repercussions and widespread public concern.
 
 Guy Podjarny, Snyk's Co-founder and president wrote an analysis on how [open source vulnerabilities tripped Equifax](https://snyk.io/blog/equifax-breach-vulnerable-open-source-libraries/) and suggesting the adoption of Software Composition Analysis (SCA) tools such as Snyk to mitigate risks of vulnerable open-source dependencies, that may introduce command injection vulnerabilities. A year later, Simon Maple, heading up the AI Advocacy at Snyk, wrote a follow-up article on [how Equifax could have prevented the breach](https://snyk.io/blog/report-shows-the-equifax-breach-was-entirely-preventable/).
 
@@ -113,8 +112,9 @@ Joey Holliday's write-up on the Shellshock vulnerability in his [shellshock GitH
 
 Let's dive into a detailed analysis of a real-world command injection vulnerability that affected the `fs-git` npm package, version 1.0.1. This case study sheds light on how a seemingly innocuous module can become a critical security risk when command injection vulnerabilities are present. We will explore the background of the application, delve into the specifics of the vulnerability, and examine the consequences it wrought.
 
-
 `fs-git` is an npm package for Node.js designed to provide a file system-like API for Git repositories. It aims to make interacting with Git repositories more intuitive and accessible for developers. As a module intended to simplify Git-related tasks, it garnered a user base that included a wide range of developers and projects.
+
+<BlogCallToAction client:load />
 
 The vulnerability we're investigating here is identified as [CVE-2017-1000451](https://github.com/advisories/GHSA-wp3j-gv53-4pg8) and was discovered in the `fs-git` module, version 1.0.1. This module relies on the `child_process.exec` function to execute system commands. However, the `buildCommand` method used to construct the `exec` strings lacked proper data sanitization, making it vulnerable to command injection.
 
@@ -153,7 +153,7 @@ The consequences of this vulnerability were far-reaching. Attackers could execut
 
 The `fs-git` case study highlights the critical importance of input validation and data sanitization in preventing command injection vulnerabilities. Even seemingly innocuous modules can introduce severe security risks if they do not follow secure coding practices. Developers and maintainers must exercise caution when dealing with user-provided data and always employ best practices for data validation and sanitization.
 
-##  Additional Resources to Command Injection Vulnerabilities
+## Additional Resources to Command Injection Vulnerabilities
 
 In this blog post, we set out to explore the ins and outs of command injection vulnerabilities in Node.js applications. We dissected real-world examples, delved into the intricacies of how these vulnerabilities occur, and analyzed the devastating consequences they can unleash.
 

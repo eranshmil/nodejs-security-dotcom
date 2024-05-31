@@ -1,5 +1,5 @@
 ---
-title: "A Node.js Vulnerability Scanner to Avoid Security Risks of EOL Runtime Versions"
+title: 'A Node.js Vulnerability Scanner to Avoid Security Risks of EOL Runtime Versions'
 description: >-
   Don't let vulnerabilities slow you down: Introducing is-my-node-vulnerable, the Node.js vulnerability scanner. Securing your Node.js applications in production is crucial. This blog post explores is-my-node-vulnerable, a free and easy-to-use scanner developed by Node.js expert Rafael Gonzaga.
 pubDate: '2024-02-18'
@@ -11,7 +11,7 @@ tags: ['nodejs', 'vulnerabilities', 'security', 'cve']
 image: ~/assets/images/blog/nodejs-vulnerability-scanner-eol.jpeg
 ---
 
-Running Node.js in production environments? Security should be your top priority. Thankfully, the community has tools like [is-my-node-vulnerable](https://github.com/RafaelGSS/is-my-node-vulnerable) which is a sort of Node.js vulnerability scanner, created by Node.js TSC member Rafael Gonzaga to help you stay ahead of potential threats. 
+Running Node.js in production environments? Security should be your top priority. Thankfully, the community has tools like [is-my-node-vulnerable](https://github.com/RafaelGSS/is-my-node-vulnerable) which is a sort of Node.js vulnerability scanner, created by Node.js TSC member Rafael Gonzaga to help you stay ahead of potential threats.
 
 What is `is-my-node-vulnerable`?
 
@@ -40,6 +40,8 @@ $ npx is-my-node-vulnerable
 v15.14.0 is end-of-life. There are high chances of being vulnerable. Please upgrade it.
 ```
 
+<BlogCallToAction client:load />
+
 ## Critical path traversal and why you need a Node.js vulnerability scanner
 
 If you don't already understand the importance of staying up to date with patched Node.js runtime versions then let's explore with a bit more details, such as the case in time in which Node.js was vulnerable to a path traversal.
@@ -48,7 +50,7 @@ Staying vigilant for vulnerable Node.js versions requires ongoing attention and 
 
 ![Developers download vulnerable Node.js versions despite them being end-of-life](/images/blog/nodejs-eol-downloads.png)
 
-Case in point: Node.js 8.5.0, declared EOL in December 2019, was susceptible to a critical Path Traversal vulnerability (CVE-2019-11358). This vulnerability could be easily exploited using automated offensive security tools, potentially granting attackers access to sensitive data or even system control. 
+Case in point: Node.js 8.5.0, declared EOL in December 2019, was susceptible to a critical Path Traversal vulnerability (CVE-2019-11358). This vulnerability could be easily exploited using automated offensive security tools, potentially granting attackers access to sensitive data or even system control.
 
 Don't wait for disaster to strike. Integrate `is-my-node-vulnerable` into your development workflow for regular vulnerability checks. Make sure to upgrade to supported Node.js versions as soon as new releases become available, and use tools like Snyk to scan your open-source dependencies and your Node.js runtime version in Docker containers.
 
