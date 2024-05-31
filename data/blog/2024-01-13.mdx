@@ -1,5 +1,5 @@
 ---
-title: "Secure JavaScript Coding to Avoid Insecure Direct Object References (IDOR)"
+title: 'Secure JavaScript Coding to Avoid Insecure Direct Object References (IDOR)'
 description: >-
   Insecure direct object references (IDOR) are an important web application security concept that every developer should understand. IDOR vulnerabilities allow attackers to access unauthorized data and functionality by manipulating object identifiers used in web applications. In this post, I'll  explain IDORs and provide examples to help you prevent these issues in your Node.js and JavaScript server-side applications.
 pubDate: '2024-01-13'
@@ -11,7 +11,7 @@ tags: ['IDOR', 'JavaScript', 'Node.js', 'Security']
 image: ~/assets/images/blog/idor-in-javascript.jpeg
 ---
 
-Insecure direct object references (IDOR) are an important web application security concept that every developer should understand. IDOR vulnerabilities allow attackers to access unauthorized data and functionality by manipulating object identifiers used in web applications. In this post, I'll  explain IDORs and provide examples to help you prevent these issues in your Node.js and JavaScript server-side applications.
+Insecure direct object references (IDOR) are an important web application security concept that every developer should understand. IDOR vulnerabilities allow attackers to access unauthorized data and functionality by manipulating object identifiers used in web applications. In this post, I'll explain IDORs and provide examples to help you prevent these issues in your Node.js and JavaScript server-side applications.
 
 ## What is an Insecure Direct Object Reference?
 
@@ -27,8 +27,8 @@ You can also imagine a similar vulnerable Node.js app that uses the user ID to r
 
 ```js
 app.get('/users/:id', (req, res) => {
-  const user = db.users.find(req.params.id);
-  res.render('user', { user });
+	const user = db.users.find(req.params.id);
+	res.render('user', { user });
 });
 ```
 
@@ -77,13 +77,21 @@ https://app.com/static/uploads/13579.png
 
 The file name contains a user ID - attackers can access other users' files. Or for example, imagine that the web application generates predictable URLs for user profile pictures based on user IDs.
 
+<BlogCallToAction client:load />
+
 ## Should I Use Sequential IDs in My Database?
 
 Using sequential, auto-incrementing IDs in database tables is standard practice. However, as we saw above, these IDs can introduce security issues if used improperly in web applications.
 
 Kent C. Dodds asked on Twitter:
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Please give me one good reason to use serial/auto-incrementing number IDs in a database table.</p>&mdash; Kent C. Dodds 🌌 (@kentcdodds) <a href="https://twitter.com/kentcdodds/status/1746239448021631288?ref_src=twsrc%5Etfw">January 13, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet">
+	<p lang="en" dir="ltr">
+		Please give me one good reason to use serial/auto-incrementing number IDs in a database table.
+	</p>
+	&mdash; Kent C. Dodds 🌌 (@kentcdodds){' '}
+	<a href="https://twitter.com/kentcdodds/status/1746239448021631288?ref_src=twsrc%5Etfw">January 13, 2024</a>
+</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 So now you know:
 
@@ -98,15 +106,10 @@ So sequential IDs themselves are not insecure - the vulnerability arises from di
 Here are some tips to avoid introducing IDOR issues in your web applications:
 
 - Leverage authorization frameworks and services - IDORs fall under the OWASP Top 10 category of Broken Access Control. Use authorization frameworks like Permit.io to implement access control checks and prevent unauthorized access.
-  
 - Always implement access control checks - Verify if the current user has permission to access any requested objects on the server-side before returning data.
-  
 - Hash IDs exposed to clients - Hash IDs before adding them to URLs or API responses users can access. This preserves back-end reference without exposing real IDs. In general, avoid exposing and basing any functionality on database IDs which are incremental in nature, and prefer UUIDs or other non-sequential identifiers.
-  
 - Use indirect reference maps - Instead of numerical IDs, reference objects by less guessable UUIDs or other tokens. Map these to internal IDs on the server.
 
 We see that IDOR issues commonly occur due to relying on predictable identifiers without verification. Be vigilant about adding authorization checks when exposing database keys or other identifiers.
 
 I hope this gives you a solid understanding of insecure direct object reference vulnerabilities!
-
-

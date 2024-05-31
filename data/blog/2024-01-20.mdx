@@ -1,7 +1,7 @@
 ---
-title: "OWASP Node.js Authentication, Authorization and Cryptography Practices"
+title: 'OWASP Node.js Authentication, Authorization and Cryptography Practices'
 description: >-
-    Properly implementing authentication and authorization is crucial for securing Node.js apps. This section covers guidelines like proper session management, password hashing, and attack prevention.
+  Properly implementing authentication and authorization is crucial for securing Node.js apps. This section covers guidelines like proper session management, password hashing, and attack prevention.
 pubDate: '2024-01-20'
 categories: ['']
 keywords: []
@@ -41,9 +41,11 @@ Plaintext passwords are vulnerable to interception, but realistically even more 
 
 - Use bcrypt or scrypt for password hashing. These algorithms are designed to be slow to hinder brute force attacks. In Node.js, you can use the native module via the npm package [bcrypt](https://snyk.io/advisor/npm-package/bcrypt) or the built in [scrypt Node.js API in the crypto module](https://nodejs.org/api/crypto.html).
 
-- Salt each password hash with a unique, random salt value. Salting ensures no two password hashes are identical. If you're using bcrypt, the salt is automatically generated and stored in the hash, and unique for each password. 
+- Salt each password hash with a unique, random salt value. Salting ensures no two password hashes are identical. If you're using bcrypt, the salt is automatically generated and stored in the hash, and unique for each password.
 
 - Compare hashes rather than plain passwords during authentication. Never store unhashed passwords. Even for something as simple as comparing two data variables, you have to take security in account. Use a constant-time string comparison function to prevent timing attacks.
+
+<BlogCallToAction client:load />
 
 ### Prevent Brute Force Attacks
 
@@ -73,19 +75,19 @@ Here's a stock example for a route handler that checks if a user has the admin r
 
 ```js
 function checkRole(role) {
-  return (req, res, next) => {
-    if (req.user.role !== role) {
-      res.status(401)
-      return res.send('Not allowed')
-    }
-    
-    next()
-  }
+	return (req, res, next) => {
+		if (req.user.role !== role) {
+			res.status(401);
+			return res.send('Not allowed');
+		}
+
+		next();
+	};
 }
 
 app.get('/admin', checkRole('admin'), (req, res) => {
-  // Admin page
-})
+	// Admin page
+});
 ```
 
 Defining and assigning roles appropriately restricts access for unauthorized users. A lot of time though, that's harder than to do in practice for production-grade applications.
@@ -98,19 +100,19 @@ Denylist and allowlist specific routes helps restrict access to authorized users
 
 ```js
 function checkPath(path) {
-  const allowedPaths = ['/app']
-  
-  if (!allowedPaths.find(p => path.startsWith(p))) {
-    res.status(401)
-    return res.send('Not allowed')
-  }
-  
-  next()
+	const allowedPaths = ['/app'];
+
+	if (!allowedPaths.find((p) => path.startsWith(p))) {
+		res.status(401);
+		return res.send('Not allowed');
+	}
+
+	next();
 }
 
 app.get('/api/users', checkPath, (req, res) => {
-  // Show users
-})
+	// Show users
+});
 ```
 
 Implementing these access control lists prevents access to unauthorized routes. In larger scale applications you'd want to centralize the access control list and use a middleware to check the path against the list.
@@ -121,16 +123,16 @@ Verifying permissions at multiple points, like middleware and route handlers, pr
 
 ```js
 function checkAuth(req, res, next) {
-  if (!req.user) { 
-    res.redirect('/login')
-  }
-  
-  next()  
+	if (!req.user) {
+		res.redirect('/login');
+	}
+
+	next();
 }
 
 app.get('/account', checkAuth, checkRole('user'), (req, res) => {
-  // Show account
-})
+	// Show account
+});
 ```
 
 Here the `checkAuth` middleware and `checkRole` handler together act as layered auth to increase security.
@@ -143,7 +145,7 @@ Cryptography provides critical protections for data confidentiality and integrit
 
 ### Properly Use Encryption Algorithms
 
-Choosing the right encryption algorithm and configuring it correctly is essential to prevent data exposure. 
+Choosing the right encryption algorithm and configuring it correctly is essential to prevent data exposure.
 
 Here are some key tips for choosing and configuring encryption algorithms to prevent data exposure, referencing industry standards like NIST and FIPS.
 
@@ -151,7 +153,7 @@ Here are some key tips for choosing and configuring encryption algorithms to pre
 
 - FIPS 140-3: Prioritize algorithms validated under the Federal Information Processing Standard (FIPS) 140-3, ensuring they meet stringent government security requirements.
 
-- AES for Confidentiality: Adopt the Advanced Encryption Standard (AES) for symmetric encryption, offering robust protection for sensitive data. AES-256 is widely considered one of the strongest encryption algorithms available today, offering a very high level of protection for data. 
+- AES for Confidentiality: Adopt the Advanced Encryption Standard (AES) for symmetric encryption, offering robust protection for sensitive data. AES-256 is widely considered one of the strongest encryption algorithms available today, offering a very high level of protection for data.
 
 - RSA for Key Exchange: Utilize RSA for secure key exchange and digital signatures in asymmetric encryption, such as when you need to use a public key and a private key to encrypt and decrypt data. RSA is a widely used and trusted algorithm for this purpose.
 
@@ -167,24 +169,23 @@ Using the built-in Node.js crypto module, you can encrypt data at rest using the
 const crypto = require('crypto');
 
 function encrypt(data) {
+	const algorithm = 'aes-256-gcm';
+	const key = crypto.randomBytes(32);
+	const iv = crypto.randomBytes(16);
 
-  const algorithm = 'aes-256-gcm';
-  const key = crypto.randomBytes(32);
-  const iv = crypto.randomBytes(16);
+	// Create the cipher
+	const cipher = crypto.createCipheriv(algorithm, key, iv);
 
-  // Create the cipher
-  const cipher = crypto.createCipheriv(algorithm, key, iv);
+	// Encrypt the data
+	let encrypted = cipher.update('my secret data', 'utf8', 'hex');
+	encrypted += cipher.final('hex');
 
-  // Encrypt the data
-  let encrypted = cipher.update('my secret data', 'utf8', 'hex');
-  encrypted += cipher.final('hex');
+	// Add the auth tag
+	const authTag = cipher.getAuthTag();
 
-  // Add the auth tag
-  const authTag = cipher.getAuthTag();
-
-  // The encrypted data
-  const encryptedText = `${encrypted}:${authTag}`;
-  return encryptedText;
+	// The encrypted data
+	const encryptedText = `${encrypted}:${authTag}`;
+	return encryptedText;
 }
 ```
 
@@ -194,27 +195,25 @@ And for decrypting the data later:
 const crypto = require('crypto');
 
 function decrypt(encryptedText) {
+	// Split the encrypted data and auth tag
+	const [encrypted, authTag] = encryptedText.split(':');
 
-  // Split the encrypted data and auth tag
-  const [encrypted, authTag] = encryptedText.split(':');
+	const algorithm = 'aes-256-gcm';
+	const key = crypto.randomBytes(32);
+	const iv = crypto.randomBytes(16);
 
-  const algorithm = 'aes-256-gcm';
-  const key = crypto.randomBytes(32);
-  const iv = crypto.randomBytes(16);
+	// Create the decipher
+	const decipher = crypto.createDecipheriv(algorithm, key, iv);
 
-  // Create the decipher
-  const decipher = crypto.createDecipheriv(algorithm, key, iv);
+	// Verify the auth tag
+	decipher.setAuthTag(authTag);
 
-  // Verify the auth tag
-  decipher.setAuthTag(authTag);
+	// Decrypt the data
+	let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+	decrypted += decipher.final('utf8');
 
-  // Decrypt the data
-  let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-
-  // The decrypted data
-  const decryptedText = decrypted;
-
+	// The decrypted data
+	const decryptedText = decrypted;
 }
 ```
 

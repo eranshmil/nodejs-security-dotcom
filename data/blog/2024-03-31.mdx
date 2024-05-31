@@ -1,7 +1,7 @@
 ---
-title: "The XZ backdoor CVE-2024-3094: a JavaScript perspective"
+title: 'The XZ backdoor CVE-2024-3094: a JavaScript perspective'
 description: >-
-    The XZ backdoor CVE-2024-3094 already happened in JavaScript 5 years ago but now the xz and liblzma malware bundled onto Linux distributions is bringing forth a world-wide threatening event in cybersecurity that jeopardizes the trust, sustainability and security concerns in the open-source ecosystem.
+  The XZ backdoor CVE-2024-3094 already happened in JavaScript 5 years ago but now the xz and liblzma malware bundled onto Linux distributions is bringing forth a world-wide threatening event in cybersecurity that jeopardizes the trust, sustainability and security concerns in the open-source ecosystem.
 pubDate: '2024-03-31'
 categories: ['']
 keywords: []
@@ -50,6 +50,8 @@ So, finally coming around to the JavaScript perspective of the XZ backdoor and w
 The `event-stream` incident involved the introduction of a malicious package named `flatmap-stream` as a dependency to the popular `event-stream` package, which was downloaded nearly 8 million times in just 2.5 months. The malicious package was added by a new maintainer, `right9ctrl`, who was granted publishing rights by the original maintainer, `dominictarr`, after offering to help maintain the package.
 
 Sounds familiar? History repeats, with a bang.
+
+<BlogCallToAction client:load />
 
 The `flatmap-stream` package contained obfuscated code that was designed to steal bitcoins from applications using the `event-stream` package. The malicious code was not detected for 2.5 months until a developer, Jayden Seric, noticed on October 29th 2018 an unexpected deprecation warning in the `nodemon` package and reported it upstream in an issue. The issue was later linked to the `event-stream` package, which led to the discovery of the malicious dependency. This report of a strange-looking dependency and a Node.js server bootstrap error, lead to the discovery of the backdoor.
 
