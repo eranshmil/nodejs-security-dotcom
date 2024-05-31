@@ -12,6 +12,7 @@ import { remarkReadingTime } from './src/utils/remark-frontmatter-extensions.mjs
 import compress from 'astro-compress';
 import vercel from '@astrojs/vercel/serverless';
 import vue from '@astrojs/vue';
+import AutoImport from 'astro-auto-import';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -43,12 +44,13 @@ export default defineConfig({
 				forward: ['dataLayer.push'],
 			},
 		}),
-		mdx({
-			remarkPlugins: [remarkReadingTime],
-		}),
 		solid(),
 		compress(),
 		vue(),
+		AutoImport({
+			imports: ['./src/components/widgets/BlogCallToAction.vue'],
+		}),
+		mdx(),
 	],
 	vite: {
 		resolve: {
