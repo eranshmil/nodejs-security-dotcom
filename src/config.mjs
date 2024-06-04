@@ -91,6 +91,12 @@ export const STORE = {
 			priceBeforeDiscount: '$29.99',
 			priceAfterDiscount: '$14.99',
 		},
+		Q5ODGZNQ: {
+			discountCode: 'Q5ODGZNQ',
+			discountPercentage: 55,
+			priceBeforeDiscount: '$57.60',
+			priceAfterDiscount: '$25.92',
+		},
 		EssentialNodejsSecurity: {
 			discountCode: 'E0MDYZMW',
 			discountPercentage: 100,
