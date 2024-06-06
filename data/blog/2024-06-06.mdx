@@ -1,0 +1,66 @@
+---
+title: 'Why is it considered a bad practice to write raw SQL commands?'
+description: >-
+  Are we going to settle the debate between raw SQL queries and ORMs once and for all? Let's explore the pros and cons of each approach and find the right balance between control and convenience.
+pubDate: '2024-06-06'
+categories: ['']
+keywords: []
+slug: 'why-it-considered-bad-practice-write-raw-sql-commands'
+draft: false
+tags: ['nodejs', 'secure', 'configuration']
+image: ~/assets/images/blog/bad-to-write-raw-sql.jpeg
+---
+
+We've all been there: cranking out database queries to fuel our awesome JavaScript applications, but someone recently mentioned about a conversation they had and that raw SQL queries being bad practice, and you're left wondering: is that really true?
+
+Well, the answer, like most things in software development, is a nuanced "it depends.". Let's break down the debate and explore some safer alternatives.
+
+## What's an ORM and why should I care?
+
+Imagine writing complex database interactions without ever touching raw SQL. That's the magic of Object-Relational Mappers (ORMs). These frameworks like Prisma or Sequelize translate your JavaScript objects (think user models) into database tables and vice versa. You write code that looks familiar, like `user.save()` or `users.findByName('Alice')`, and the ORM library handles the gritty SQL details under the hood. The ORM library might need to look up model relations, perform joins, but you don't have to worry about it because the ORM library translates your JavaScript code into SQL queries.
+
+Of course, all of this ORM magic happens because you have to first up define your data models in the ORM's language. This can be a bit of a learning curve and ends up being different between ORM libraries such as Prisma and Sequelize but at least if you change your database schema, you only have to update your ORM models _once_ and not your entire codebase to search and replace all your raw SQL queries. This is of course, ORM benefit number one.
+
+### What about Query Builders?
+
+But ORMs aren't the only game in town. Query builders like Knex.js offer a middle ground. Think of them as a guided tour through the land of SQL.
+
+Having worked before with different ORMs, I grew to like query builders more, such as Knex.js. They offer a middle ground between raw SQL and ORMs. You construct SQL queries using JavaScript functions, but with a layer of abstraction that helps prevent errors and improves readability. Think of them as a guided tour through the land of SQL. For example, here's a typical application query in Knex.js:
+
+```javascript
+const users = await knex('users').select('name', 'email').where('age', '>', 18).orderBy('name', 'desc');
+```
+
+If you're also a fan of TypeScript, you'll appreciate that query builders like but that bring a strongly-typed layer to your functions. If that's the case, you want to look at two libraries that shine in this area and are growing recently in popularity: `kysely` and `DrizzleORM`. Both of these libraries offer a strongly-typed query builder that can be used with TypeScript.
+
+## Raw Power vs. Safe Abstraction: Finding the Balance between raw SQL queries and ORMs
+
+The debate between raw SQL and ORMs/query builders boils down to a trade-off between control and convenience. Those who advocate for raw queries argue that they are far more efficient in producing optimized queries and improved performance, which isn't wrong, but it comes at a trade cost. You have to maintain your queries, and you have to be careful about SQL injection attacks. You have to know SQL _very well_, maintain schema migrations, and keep your queries up-to-date with your schema changes.
+
+If you're a raw SQL queries zealot, why stop at writing raw SQL queries? leverage the database's full power and write stored procedures, triggers, and materialized views. PostgreSQL has the concept of database functions to write complex queries in a more modular way. Where do you draw the line? remember, the more you rely on database-specific features, the harder it becomes to switch to a different database system. Although, I do find that this is often a moot point as most applications are tied to a specific database system and almost never ending up switching.
+
+(And hey, if you find yourself writing too much raw SQL, maybe it's time to build your own ORM... just kidding... mostly.)
+
+So, a fan of raw SQL, are we? while it offers fine-grained control and can be very efficient for specific use cases, there's a dark side: SQL injection vulnerabilities. By embedding user input directly into your queries, malicious actors can exploit these weaknesses to inject their own code and wreak havoc on your database. Remember the MOVEit data breach in May 2023? Yep, SQL injection was the culprit. Surely, writing raw SQL queries doesn't mean they are vulnerable by default, and you _should_ use proper parameterization placeholders as is provided by the database driver when you write raw SQL queries, but it's easy to forget or make a mistake.
+
+Here's the thing: even the most seasoned developer can make a mistake when escaping user input manually. That's why ORMs and query builders are lifesavers. They handle escaping for you, significantly reducing the risk of SQL injection.
+
+Speaking of risks, keeping your dependencies up-to-date is crucial. Remember the CVE-2020-8158 vulnerability in TypeORM? A prototype pollution issue could have been exploited for SQL injection. Yikes!
+
+Back to SQL abstractions - ORMs and query builders abstract away the complexity of SQL, making it easier to write and maintain code. They also help prevent common pitfalls like SQL injection attacks and make it easier to reason about data fetching and operations without having to know SQL in-depth.
+
+<BlogCallToAction client:load />
+
+## The Bottom Line: ORM or an raw SQL, you need to write Secure and Maintainable Code
+
+While raw SQL has its place for fine-tuning performance, it's often a security risk. Keeping a balance in software development is a key concept and the same applies to database interactions. ORMs and query builders offer a safer and more maintainable approach for most database interactions. But when the need comes, you can always go to the raw SQL escape hatch and write optimized SQL queries for your specific use case (while keeping in mind SQL injection risks).
+
+When it comes to choosing between raw SQL, ORMs, or query builders, consider the following factors:
+
+- The learning curve: ORMs, and query builders might have a steeper initial learning curve compared to writing raw SQL, especially for developers who are very comfortable with SQL. However, the security and maintainability benefits outweigh this initial hurdle.
+- Database schema migrations: When using raw SQL, you have to manually update your queries when the database schema changes. ORMs and query builders often handle this automatically, reducing the risk of errors. There's also the notion of tear-down and rollbacks that ORMs and query builders can handle for you (although, from experience, you'll rarely use this feature and mostly go for roll-forward migrations).
+- Performance: While ORMs and query builders might not be as performant as raw SQL in some cases (the classic N+1 query comes to mind) the difference is often negligible for most applications. The convenience and security benefits of using ORMs and query builders usually outweigh the minor performance trade-offs. Still, for specific use-cases you can always drop down to raw SQL queries and get the job done.
+- Strongly-typed queries and data schema or not? If you're a heavy TypeScript adopter, you'll appreciate the strongly-typed nature of ORMs and query builders. This can help catch errors at compile-time and improve code quality. If you're not a TypeScript fan, you might find the type safety of ORMs and query builders less appealing.
+- Community and Support: So many ORM libraries out there, how do you choose? Look for active development, a large community, and extensive documentation. This will make it easier to find solutions and get help when needed. Knex.js is one of the long-standing query builder libraries out there. Prisma is a newcomer but has gained a lot of traction recently, and is also venture capital backed. Sequelize is another popular ORM library that has been around for a while. Upcoming libraries like `kysely` and `DrizzleORM` are also worth checking out if you're a TypeScript fan.
+
+In the end, there's no silver bullet on raw SQL queries being good or bad. Raw SQL isn't an inherently bad practice, but context is key, and applicative and data security is a top concern.
