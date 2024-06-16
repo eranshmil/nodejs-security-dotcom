@@ -1,0 +1,96 @@
+---
+title: 'IDOR Vulnerability: What is it and how to prevent it?'
+description: >-
+  Interestingly enough, the IDOR vulnerability type is found as a CVE more commonly in some languages rather than others. Why is that and how can you prevent it?
+pubDate: '2024-06-16'
+categories: ['']
+keywords: []
+slug: 'idor-vulnerability-what-is-it-and-how-to-prevent-it'
+draft: false
+tags: ['nodejs', 'secure', 'configuration']
+image: ~/assets/images/blog/express-static-serve-image-files-insecure.png
+---
+
+While browsing some security vulnerabilities databases, I noticed that that the IDOR vulnerability type is being reported more commonly in some language ecosystems (such as PHP) and not in others (RubyGems), which is interesting and brings up the question: why is that?
+
+If you've never heard of the security weakness known as Insecure Direct Object References (IDOR), you're not alone and we'll cover it in this article and I'll provide some references to JavaScript and Node.js as the only known case for it in the npm ecosystem and some other references to provide more practical examples.
+
+To kickoff with an interesting example, here's a Git diff from a fix applied to the popular Grafana Go application to address an IDOR vulnerability:
+
+![IDOR vulnerability and its fix in Grafana Go application](/images/blog/grafana-go-idor-vulnerability-diff.png)
+
+## What is an IDOR Vulnerability?
+
+IDOR, fully abbreviated for Insecure Direct Object References, is a security vulnerability that occurs when an application provides direct access to objects based on user-supplied input. As a result of this vulnerability, attackers can bypass authorization and access resources in the system directly. In other words, the attacker can manipulate the input, such as through a method of enumerating a formatted sequence of identifiers, to gain access to unauthorized data.
+
+## How Does IDOR Work in Practice?
+
+To better understand how IDOR works, let's consider an example. Suppose you have a web application that allows users to view their invoice information. The application uses a URL parameter to identify the invoice number, such as `https://example.com/invoice?id=123`. The application then retrieves the invoice information based on the provided ID and displays it to the user.
+
+We can see how this plays out in the following Next.js page route definition:
+
+```jsx
+// pages/invoice/[id].js
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
+
+export default function Invoice() {
+	const router = useRouter();
+	const { id } = router.query;
+
+	// Fetch invoice data based on the provided ID
+	// implementation:
+	const { data } = useSWR(`/api/invoice/${id}`, fetcher);
+
+	// Display the invoice information to the user
+	return (
+		<div>
+			<h1>Invoice #{id}</h1>
+			{data ? (
+				<div>
+					<p>Amount: {data.amount}</p>
+					<p>Date: {data.date}</p>
+				</div>
+			) : (
+				<p>Loading...</p>
+			)}
+		</div>
+	);
+}
+```
+
+What's wrong with this code? The issue lies in the fact that the application doesn't validate whether the user is authorized to access the invoice information. An attacker could manipulate the `id` parameter in the URL to access invoices that don't belong to them. For example, an attacker could try to access `https://example.com/invoice?id=124` to view another user's invoice.
+
+<BlogCallToAction client:load />
+
+## How does an IDOR vulnerability report look like in CVE?
+
+As an example to what an IDOR vulnerability security disclosure and how it manifests in practical terms, we can refer to the popular Grafana application in Go that was found vulnerable to IDOR via CVE-2022-21713. It references an insecure Teams API as follows:
+
+> This vulnerability only impacts the following API endpoints:
+>
+> `/teams/:teamId` - an authenticated attacker can view unintended data by querying for the specific team ID.
+> `/teams/:search` - an authenticated attacker can search for teams and see the total number of available teams, including for those teams that the user does not have access to.
+> `/teams/:teamId/members` - when editors_can_admin flag is enabled, an authenticated attacker can see unintended data by querying for the specific team ID.
+
+## IDOR Vulnerability: Libraries vs Applications
+
+IDOR, by its nature, is a type of security vulnerability that is most commonly found in web applications and APIs, and less so in libraries. To an extent, it could be described as business logic flaws, as it is a result of the application's logic and not the library's logic. Libraries often provide a simplistic and decisive way to achieve a certain task, and aren't responsible for validating user access to resources. However, it is important to note that libraries can also be vulnerable to IDOR, especially if they are used in a way that exposes the application to this type of vulnerability.
+
+The only known CVE report for IDOR in the npm ecosystem is that of Clerk's authentication integration SDK for Next.js and Node.js applications, as reported in CVE-2024-22206 `@clerk/nextjs`. I mentioned it in a prior article about [secure JavaScript coding to how to avoid Insecure Direct Object References (IDOR)](/blog/secure-javascript-coding-to-avoid-insecure-direct-object-references-idor/).
+
+So, how do ecosystem span in regards to IDOR? at the time of writing the article, the findings are as follows:
+
+- 0 IDOR vulnerabilities in RubyGems, Erlang, Nuget, pip, and Rust
+- 1-2 IDOR vulnerabilities in npm and Go
+- 16 IDOR vulnerabilities in Composer, which is the package manager and registry for PHP
+
+This data aligns with the premise that IDOR vulnerabilities are more applicative by nature than library-based. And indeed, most PHP findings for IDOR vulnerabilities are attributed to codebases such as Moodle and Magento.
+
+## How to Prevent IDOR Vulnerabilities?
+
+To prevent IDOR vulnerabilities in your applications, you should follow these best practices:
+
+1. **Implement Proper Authorization**: ensure you validate user access to resources based on their permissions (this is the definition of authorization). Never trust user input or solely rely on user input to determine which resources to access. This is a common mistake that leads to IDOR vulnerabilities and probably contributed a lot to OWASP Top 10 featuring Broken Access Control as security risk #1 in 2021.
+2. **Use Indirect Object References**: instead of directly referencing objects in your application, use indirect references that are mapped to the actual objects. This way, even if an attacker manipulates the input, they won't be able to access unauthorized resources. For example, given a user ID, you fetch the user's data from the database and then use the user's ID to access the data.
+3. **Avoid Enumerating IDs**: avoid using incremental IDs or predictable values in your application. Instead, use random or unique identifiers that are hard to guess. This makes it more difficult for attackers to exploit IDOR vulnerabilities. For example, in the invoice example above, you could use a UUID instead of an incremental ID. This isn't a security control by itself but it helps in making it harder for attackers to guess the next ID.
