@@ -1,0 +1,54 @@
+---
+title: 'How to protect against a security breach in React Server Components'
+description: >-
+  Sasha shares how they inadvertently wrote a React Server Component code that would have resulted in a security breach, if not refactored in time to fix the issue. What can we learn and how to avoid security risks that developers easily repeat, especially as it blurs the line between client-side and server-side React code.
+date: '2024-06-21'
+pubDate: '2024-06-21'
+categories: []
+keywords: []
+draft: false
+tags: ['react', 'breach', 'authorization']
+slug: 'how-to-protect-against-a-security-breach-in-react-server-components'
+image: ~/assets/images/blog/react-server-components-breach-sasha.jpeg
+---
+
+JavaScript developers are buzzing about React Server Components and new trends in server-side rendering on a regular basis. Nothing new here, right? but too often, we get caught up in the excitement of a new feature that promises to revolutionize the way we build web applications, to the point where we forget about the security implications.
+
+## What is React Server Components?
+
+React Server Components, often known as RSC for short, are a new React development paradigm that allows frontend developers to render components on the server and send them to the client. This can be a game-changer for performance, but it also introduces new security risks that developers should be aware of, especially as it blurs the line between client-side and server-side React code.
+
+## The security risk of React Server Components
+
+This got my attention through a post from [Sasha](https://x.com/kossnocorp) on X, who shared how they have adopted React Server Components more than regularly, and only by a margin of luck, figured out that they originally wrote a React component code that would have resulted in a security breach, if not refactored in time to fix the issue.
+
+![security data breach in React Server Components](/images/blog/security-data-breach-in-react-server-components.png)
+
+At the gist of it, the `userId` variable in the `DeleteTeamMemberPage` component is passed down to a child component `<DeleteForm>` which is in fact a React Server Component. The `DeleteForm` component relies on a `deleteTeamMemberAction` action to delete a team member, and the `userId` variable is used to identify the team member to delete.
+
+Once the `userId` gets passed to the that action function, it is used to delete the team member from the database, using the `deleteTeamMember` function.
+
+A software developer at Netflix mentioned they [got hacked](https://x.com/trashh_dev/status/1797624304060018922) due to the same React Server Components pattern. What do you think is the security risk here?
+
+Unfortunately, as it was not initially obvious to Sasha, the security risk is also [not obvious to many developers](https://x.com/TAbrodi/status/1799047364428304502). Some developers might think this is about client-side input validation and that the fix should be moved to a server-side input validation (which isn't the point here and not the security risk entailed with Sasha's security refactor). Others might think client-side request forgery (CSRF) is the issue, but again, that's not the security risk here.
+
+So the security risk comes down to 2 security threats and security vulnerabilities:
+
+1. Broken access control: if the `userId` is not properly authorized, an attacker could potentially delete any team member by guessing the `userId` value. This is the colossal security risk that Sasha's refactor fixed.
+2. Enumeration attack: if the `userId` is in the format of an easily-guessed sequential format such as incrementing integer, and it is not bound by rate-limit or other security control, an attacker could potentially enumerate all the team members in the database by iterating over the `userId` values.
+
+Perhaps not obvious, the problem isn't authentication in this case, it's all about _authorization_. But unfortunately, many developers fail to recognize where the root-cause of the security risk lies:
+
+![react-server-components-incorrect-advice-for-authz-issue](/images/blog/react-server-components-incorrect-advice-for-authz-issue.png)
+
+## How to protect against a security breach in React Server Components
+
+One developer [suggested](https://x.com/wyattjoh/status/1797684898406543728) that passing arguments to server-side components through a closure will [encrypt these props](https://nextjs.org/blog/security-nextjs-server-components-actions#closures), however this is more of a "security by obscurity" approach and not a recommended security practice. What happens when the component's code is later refactored? The security risk will renew.
+
+Per the Next.js security page and guidelines, the recommended approach to handling user input in a React Server Components is to treat any variables passed to it as hostile input, to validate, sanitize, and authorize the input before using it in any server-side code. Do not blindly trust user input passed to server-side action functions.
+
+Other security practices and controls to be aware of are:
+
+- Data leak: React components are most notably a frontend asset, and it has been witnessed many times that developers pass sensitive data to the frontend which gets buried in transpiled JavaScript code, seemingly hidden from the user. In other cases, this is due to sensitive API keys and tokens loaded from environment variables configuration that leak onto the frontend.
+- CSRF: React Server Components are not immune to CSRF attacks and so fullstack developers who utilized RSC should be aware of the security implications of server-side rendering and how request forgery attacks can be exploited.
+- Routes discovery: unrelated to React Server Components, but a common security risk in React applications is the discovery of routes and endpoints that are not meant to be publicly accessible. This is a common security risk in frontend and client-side applications code that developers should be aware of. Never take for granted that a route is secure just because it's not linked to from the frontend or that a frontend router requires authentication to access it.
