@@ -1,7 +1,7 @@
 ---
 import { STORE, buildBookPricing} from '~/config.mjs';
 
-import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import { getCanonical } from '~/utils/permalinks';
 import Layout from '~/layouts/BooksLayout.astro';
 import Hero from '~/components/widgets/EssentialNodejsSecurity/Hero.astro';
 import BookAuthor from '~/components/widgets/CommandInjection/BookAuthor.astro';
@@ -19,7 +19,7 @@ import ogImage from '~/assets/images/essential-nodejs-security-opengraph.png';
 const meta = {
 	title: 'Essential Node.js Security',
 	description: `for Express Web Applications`,
-	canonical: getCanonical(getHomePermalink()),
+	canonical: getCanonical(Astro.url.pathname),
 	image: ogImage,
 };
 

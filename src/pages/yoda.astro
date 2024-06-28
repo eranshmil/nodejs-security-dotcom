@@ -6,14 +6,14 @@ import Yoda from '~/assets/images/yoda_render.webp';
 import Starfield from '~/components/atoms/Starfield.astro';
 import BooksFooter from '~/components/widgets/BooksFooter.astro';
 
-import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import { getCanonical } from '~/utils/permalinks';
 import Layout from '~/layouts/BaseLayout.astro';
 import { STORE } from 'src/config.mjs';
 
 const meta = {
 	title: 'Node.js Secure Coding: Defending Against Command Injection Vulnerabilities',
 	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent command injection vulnerabilities with expert Liran Tal.`,
-	canonical: getCanonical(getHomePermalink()),
+	canonical: getCanonical(Astro.url.pathname),
 };
 ---
 

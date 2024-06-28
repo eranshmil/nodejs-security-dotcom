@@ -23,7 +23,7 @@ export default defineConfig({
 	base: SITE.basePathname,
 	output: 'hybrid',
 	adapter: vercel(),
-	trailingSlash: 'ignore',
+	trailingSlash: 'never',
 	redirects: {
 		'/business': '/security-training',
 		'/enterprise': '/security-training',

@@ -22,10 +22,15 @@ export const POST_BASE = cleanSlug(BLOG?.post?.pathname);
 export const CATEGORY_BASE = cleanSlug(BLOG?.category?.pathname);
 export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname);
 
+function removeTrailingSlash(path) {
+	return path.endsWith('/') ? path.slice(0, -1) : path;
+}
+
 /** */
 export const getCanonical = (path = '') => {
-	path = path.endsWith('/') ? '' : path + '/';
-	return new URL(path, SITE.origin);
+	path = removeTrailingSlash(path);
+	const canonicalPath = new URL(path, SITE.origin);
+	return canonicalPath;
 };
 
 /** */
