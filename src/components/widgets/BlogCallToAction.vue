@@ -19,7 +19,7 @@
 						</div>
 						<div class="flex flex-row gap-8 mx-auto">
 							<div class="mt-2">
-								<a href="/book/command-injection/" target="_blank" rel="noopener">
+								<a href="/book/command-injection" target="_blank" rel="noopener">
 									<img
 										alt="Node.js Secure Coding: Defending Against Command Injection Vulnerabilities"
 										class="mx-auto shadow-lg rounded-lg h-44 object-cover object-center mb-4"
@@ -29,7 +29,7 @@
 							</div>
 
 							<div class="mt-2">
-								<a href="/book/path-traversal/" target="_blank" rel="noopener">
+								<a href="/book/path-traversal" target="_blank" rel="noopener">
 									<img
 										alt="Node.js Secure Coding: Prevention and Exploitation of Path Traversal Vulnerabilities"
 										class="mx-auto shadow-lg rounded-lg h-44 object-cover object-center mb-4"
