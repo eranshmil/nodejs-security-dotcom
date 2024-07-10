@@ -1,0 +1,112 @@
+---
+title: 'Understanding and Preventing Prototype Pollution in Node.js'
+description: >-
+  Learn about Prototype Pollution in Node.js: what it is, how it works, and how to prevent it. Includes real-world examples and security best practices for developers.
+pubDate: '2024-07-10'
+categories: ['']
+keywords: []
+slug: 'understanding-and-preventing-prototype-pollution-in-nodejs'
+draft: false
+tags: ['nodejs', 'prototype pollution']
+image: ~/assets/images/blog/intro-to-prototype-pollution.png
+---
+
+Node.js and JavaScript developers feel right-at-home to work with JSON and regularly work and manipulate objects and their prototypes. However, this fundamental feature of JavaScript can also be a source of significant security vulnerabilities if not handled carefully. Today, we're going to dive deep into one such vulnerability: Prototype Pollution.
+
+![ProtoType Pollution in Node.js](/images/blog/prototype-pollution-meme.png)
+
+## What is Prototype Pollution?
+
+Prototype Pollution is a security vulnerability that occurs when an attacker is able to manipulate the prototype of JavaScript objects. These object manipulation actions can lead to unexpected behavior in your application, potentially resulting in denial of service, remote code execution, or even cross-site scripting attacks. All of these can have serious consequences for the security and integrity of your application, regardless if such JavaScript code is running on the client-side or server-side.
+
+In JavaScript, all objects inherit properties from their prototype. The `Object.prototype` is at the root of every normal object, and its properties are inherited by all objects through the prototype chain. Prototype Pollution occurs when an attacker finds a way to add or modify properties of `Object.prototype`. By doing this, they can affect the behavior of all objects in the application, depending on how the application interacts with these objects.
+
+## How Does Prototype Pollution Work?
+
+To understand Prototype Pollution, we need to first understand two key concepts in JavaScript:
+
+1. The `__proto__` property
+2. The `constructor.prototype` property
+
+Both of these properties provide access to an object's prototype in JavaScript. If an attacker can control any kind of user input that ends up modifying these properties, they can potentially pollute the prototype chain. Note: there's a difference in terms of impact between _prototype pollution_ and _prototype poisoning_ but we won't go into that in the scope of this write-up.
+
+Let's look at a simple prototype pollution example:
+
+```javascript
+const user = {};
+user.__proto__.isAdmin = true;
+
+const newUser = {};
+console.log(newUser.isAdmin); // true
+```
+
+In this example, we've added an `isAdmin` property to the prototype of all objects, because `user.__proto__` is the same as `Object.prototype`. Tip: You can open up the DevTools console in your browser and try this out to see the results for yourself and explore the connection between objects and their prototypes. Now, every object we create will have this property set to `true`.
+
+## Real-World Example: Vulnerability in `@akbr/update`
+
+To illustrate how Prototype Pollution can occur in real-world scenarios, let's examine a vulnerability that was discovered in the `@akbr/update` package. Surely, an old package, unmaintained and not practically used but nevertheless, a good example to understand the concept.
+
+The `@akbr/update` package is described as a tool to "Immutably patch JS objects.". Here's an example of its intended use:
+
+```javascript
+var obj = { hello: 'world' };
+var obj2 = update(obj, 'foo', 'bar');
+
+console.log(obj2);
+// {hello: "world", foo: "bar"}
+```
+
+However, this package had a vulnerability that allowed for Prototype Pollution. Let's look at a proof-of-concept exploit, as provided by the security researcher who discovered the vulnerability:
+
+```javascript
+(async () => {
+	const lib = await import('@akbr/update');
+
+	var victim = {};
+	console.log('Before Attack: ', JSON.stringify(victim.__proto__));
+	try {
+		lib.default({}, [['__proto__'], 'polluted'], true, true);
+	} catch (e) {}
+	console.log('After Attack: ', JSON.stringify(victim.__proto__));
+	delete Object.prototype.polluted;
+})();
+```
+
+When we run this code, we get the following output:
+
+```
+Before Attack: {}
+After Attack: {"polluted":true}
+```
+
+As we can see, we've successfully added a `polluted` property to the prototype of all objects.
+
+<BlogCallToAction client:load />
+
+## The Dangers of Prototype Pollution
+
+The consequences of Prototype Pollution can be severe:
+
+1. **Denial of Service**: By polluting prototypes with unexpected properties, you can cause applications to crash or behave erratically.
+
+2. **Remote Code Execution**: In some cases, polluted properties can be used to inject and execute malicious code.
+
+3. **Logic Manipulation**: Prototype Pollution can be used to bypass security checks or alter application logic.
+
+## Preventing Prototype Pollution
+
+To prevent Prototype Pollution, consider the following strategies:
+
+1. **Input Validation**: Always validate and sanitize user input, especially when it's used to set object properties.
+
+2. **Use Object.create(null)**: This creates objects without a prototype, making them immune to prototype pollution.
+
+3. **Freeze the Object Prototype**: Use `Object.freeze(Object.prototype)` to prevent modifications to the Object prototype.
+
+4. **Use a Library**: Consider using libraries that are known to be secure and have been audited for vulnerabilities. Many Lodash and other utilities libraries were found to be vulnerable to Prototype Pollution in the past. If you source out a library, make sure to always monitor these dependencies for future security vulnerabilities.
+
+5. **Code Reviews and Security Audits**: Regularly review your code and dependencies for potential vulnerabilities.
+
+## Conclusion
+
+Prototype Pollution is a subtle but powerful vulnerability that can have far-reaching consequences in JavaScript applications. I've seen security issues that start with a prototype pollution exploitation and escalate to an SQL injection or a remote code execution attack. So, don't get fooled by the simplicity of the concept or other false negative assumptions. Especially with code running on the server-side, as Node.js developers, it's crucial that we understand this vulnerability and take steps to prevent it in our code.
