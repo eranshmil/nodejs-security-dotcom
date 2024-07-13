@@ -3,7 +3,7 @@ import { OGImageRoute } from 'astro-og-canvas';
 const bgFile = './src/assets/images/og-background.jpg';
 
 async function getPages() {
-	const rawPages = await import.meta.glob('../../../data/blog/**/*.md*', { eager: true });
+	const rawPages = await import.meta.glob(['../../../data/blog/**/*.md*', '../../../src/content/newsletter/**/*.md*'], { eager: true });
 	const pages = Object.entries(rawPages).reduce((acc, [path, page]) => {
 		// @TBD we're consuming the frontmatter like this:
 		// console.log(page.frontmatter);
@@ -47,10 +47,10 @@ export const { getStaticPaths, GET } = OGImageRoute({
 				path: bgFile,
 				fit: 'fill',
 			},
-			padding: 50,
+			padding: 44,
 			font: {
 				title: {
-					size: 62,
+					size: 52,
 					lineHeight: 1.2,
 					families: [
 						'Work Sans',
