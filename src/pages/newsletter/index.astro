@@ -1,0 +1,83 @@
+---
+import { getCanonical } from '~/utils/permalinks';
+
+import Layout from '~/layouts/BooksLayout.astro';
+
+import Hero from '~/components/widgets/newsletter/Hero.astro';
+
+import ogImage from '~/assets/images/nodejs-security-newsletter-og-v1.png';
+
+const meta = {
+	title: 'Node.js Security Newsletter | Node.js Secure Coding | Liran Tal',
+	description: `Discover the best practices for Node.js security and secure coding. Learn how to identify and prevent security vulnerabilities in your server-side JavaScript applications.`,
+	canonical: getCanonical(Astro.url.pathname),
+	image: ogImage,
+};
+
+
+import { getCollection } from 'astro:content';
+const blogEntries = await getCollection('newsletter');
+
+---
+
+<Layout {meta}>
+
+	<Hero />
+
+	<section class="body-font">
+		<div class="container px-5 py-2 mx-auto xl:w-1/2 lg:w-3/4 w-full">
+	
+		<h3 class="text-center underline text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+			Node.js Security Newsletter editions
+		</h3>
+
+		<div class="container px-5 py-8 mx-auto">
+			<div class="-my-8 divide-y-2 divide-gray-100">
+				{blogEntries.map(blogPostEntry => (
+					<div>
+						<div class="py-8 flex flex-wrap md:flex-nowrap">
+							<div class="mt-1 md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+								<li class="flex space-x-1 items-center mt-18">
+									<svg
+										class="flex-shrink-0 w-3 h-3 text-blue-600 dark:text-blue-500"
+										aria-hidden="true"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor"
+										viewBox="0 0 20 20"
+									>
+										<path
+											d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"
+										></path>
+									</svg>
+
+									<span class="text-sm">
+										<time datetime={blogPostEntry.data.pubDate.toISOString()}>
+											{blogPostEntry.data.pubDate.toISOString().substring(0, 10)}
+										</time>
+									</span>
+								</li>
+								<span class="mt-1 text-sm"></span>
+							</div>
+
+							<div class="md:flex-grow">
+								<h2 class="text-xl">
+									<a href={`/newsletter/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+								</h2>
+								<p class="leading-relaxed"></p>
+								<a class="text-indigo-500 inline-flex items-center mt-4" href={`/newsletter/${blogPostEntry.slug}`}>
+									Read
+									<svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M5 12h14"></path>
+									<path d="M12 5l7 7-7 7"></path>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+

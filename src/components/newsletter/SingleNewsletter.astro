@@ -1,0 +1,71 @@
+---
+import PostTags from '~/components/atoms/Tags.astro';
+import { getEntry } from 'astro:content';
+
+import { getFormattedDate } from '~/utils/utils';
+import NewsletterForm from '~/components/widgets/newsletter/NewsletterForm.astro';
+
+const { post } = Astro.props;
+
+const entry = await getEntry('newsletter', post.slug);
+const { Content } = await entry.render();
+
+---
+
+<section class="py-2 sm:py-2 lg:py-2 mx-auto">
+	<article>
+		<header>
+			<p class="max-w-3xl mx-auto text-center">
+				<time datetime={post.pubDate}>{getFormattedDate(post.pubDate)}</time>
+			</p>
+			<h1
+				class="break-words px-4 sm:px-6 max-w-3xl mx-auto text-center text-3xl md:text-3xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+			>
+				{
+                    // split a text line by command and return a span block break for each item
+                    post.title.split(',').map((text, index) => {
+                        return (
+                            index === 0 ? 
+                            <span class="block">{text},</span> :
+                            index === post.title.split(',').length - 1 ?
+                                <span>{text}</span> : <span class="block">{text},</span>   
+                        )
+                    })
+                }
+			</h1>
+
+			<!-- <SocialShare {...post} class="mt-5 sm:mt-1 align-middle text-gray-400 dark:text-slate-600" /> -->
+
+			<!-- {
+				post.image && (
+					<Image
+						src={post.image}
+						class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-4 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+						widths={[400, 900]}
+						sizes="(max-width: 900px) 400px, 900px"
+						alt={post.description}
+					/>
+				)
+			} -->
+
+			<div class="mx-auto text-center">
+				<PostTags tags={post.tags} />
+			</div>
+            
+		</header>
+		<div
+			class="container mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-base dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
+		>
+			<Content />
+		</div>
+	</article>
+
+	<div class="mx-auto w-full max-w-screen-md">
+		<hr class="my-8 border-t border-gray-200 dark:border-gray-700" />
+	</div>
+
+	<div class="mx-auto w-full max-w-screen-sm">
+		<NewsletterForm />
+	</div>
+
+</section>

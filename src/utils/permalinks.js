@@ -21,6 +21,7 @@ export const BLOG_BASE = cleanSlug(BLOG?.blog?.pathname);
 export const POST_BASE = cleanSlug(BLOG?.post?.pathname);
 export const CATEGORY_BASE = cleanSlug(BLOG?.category?.pathname);
 export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname);
+export const NEWSLETTER_BASE = cleanSlug(BLOG?.newsletter?.pathname);
 
 function removeTrailingSlash(path) {
 	return path.endsWith('/') ? path.slice(0, -1) : path;
@@ -46,6 +47,9 @@ export const getPermalink = (slug = '', type = 'page') => {
 
 		case 'post':
 			return createPath(basePathname, POST_BASE, _slug);
+
+		case 'newsletter':
+			return createPath(basePathname, NEWSLETTER_BASE, _slug);
 
 		case 'page':
 		default:

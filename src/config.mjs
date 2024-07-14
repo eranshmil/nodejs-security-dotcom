@@ -270,6 +270,11 @@ export const BLOG = {
 		pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
 	},
 
+	newsletter: {
+		disabled: false,
+		pathname: 'newsletter', // blog main path, you can change this to "articles" (/articles)
+	},
+
 	post: {
 		disabled: false,
 		pathname: 'blog', // empty for /some-post, value for /pathname/some-post

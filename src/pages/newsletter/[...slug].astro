@@ -1,0 +1,40 @@
+---
+import { getCanonical, getPermalink, NEWSLETTER_BASE } from '~/utils/permalinks';
+import { findImage } from '~/utils/images';
+
+import { getCollection } from 'astro:content';
+import Layout from '~/layouts/NewsletterLayout.astro';
+import SingleNewsletter from '~/components/newsletter/SingleNewsletter.astro';
+
+export async function getStaticPaths() {
+    const pages = await getCollection('newsletter', ({ data }) => {
+        // Allows accessing draft content in development
+        return import.meta.env.PROD ? data.draft !== true : true;
+    });
+
+  return pages.map(({ slug, body, data }) => {
+    return {
+      params: { slug },
+      props: { slug, title: data.title, description: data.description, pubDate: data.pubDate, image: data.image, text: body },
+    };
+  });
+}
+
+const post = Astro.props;
+
+const meta = {
+	title: `${post.title}`,
+	description: post.description,
+	canonical: getCanonical(getPermalink(post.slug, NEWSLETTER_BASE)),
+	image: await findImage(post.image),
+	ogImage: `/og/${post.slug}.png`,
+	ogTitle: post.title,
+	ogType: 'article',
+	post: post,
+};
+
+---
+
+<Layout {meta}>
+	<SingleNewsletter post={{ ...post,  image: meta.image }} />
+</Layout>
