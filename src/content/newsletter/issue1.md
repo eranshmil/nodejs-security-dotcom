@@ -1,6 +1,6 @@
 ---
 title: Node.js security release, React Server Components authorization bypass, NodeConf EU and a collection of useful GitHub Actions
-author: "Liran Tal"
+author: Liran Tal"
 description: 
 pubDate: 2024-06-27
 slug: "nodejs-security-release-react-server-components-authorization-bypass"

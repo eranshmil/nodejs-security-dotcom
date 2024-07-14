@@ -25,15 +25,15 @@ const blogEntries = await getCollection('newsletter');
 	<Hero />
 
 	<section class="body-font">
-		<div class="container px-5 py-2 mx-auto xl:w-1/2 lg:w-3/4 w-full">
+		<div class="container px-5 py-8 mx-auto xl:w-1/2 lg:w-3/4 w-full">
 	
-		<h3 class="text-center underline text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+		<h3 class="text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
 			Node.js Security Newsletter editions
 		</h3>
 
 		<div class="container px-5 py-8 mx-auto">
 			<div class="-my-8 divide-y-2 divide-gray-100">
-				{blogEntries.map(blogPostEntry => (
+				{blogEntries.map((blogPostEntry, index) => (
 					<div>
 						<div class="py-8 flex flex-wrap md:flex-nowrap">
 							<div class="mt-1 md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
@@ -54,9 +54,12 @@ const blogEntries = await getCollection('newsletter');
 										<time datetime={blogPostEntry.data.pubDate.toISOString()}>
 											{blogPostEntry.data.pubDate.toISOString().substring(0, 10)}
 										</time>
+										
 									</span>
 								</li>
-								<span class="mt-1 text-sm"></span>
+								<span class="mt-1 text-sm">
+									Issue #{++index}
+								</span>
 							</div>
 
 							<div class="md:flex-grow">

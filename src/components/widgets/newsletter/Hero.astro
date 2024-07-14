@@ -3,22 +3,27 @@
 import DeveloperCircles from "~/components/widgets/DeveloperCircles.astro";
 import NewsletterForm from "~/components/widgets/newsletter//NewsletterForm.astro";
 
-const title = `Node.js Security Newsletter`;
-const description = `Everything in and around the Node.js security ecosystem, direct to your inbox.`;
-
 ---
 
-<section class="min-h-screen">
-    <div class="container mx-auto flex px-5 py-24 items-center text-center justify-center flex-col">
+<section class="">
+    <div class="container mx-auto flex px-5 py-14 items-center text-center justify-center flex-col">
         
-        <div class="w-32 mb-4">
-            <img class="rounded-full" src="/images/lirantal-profile-picture.png" alt="Liran Tal profile picture" />
-        </div>
+         <div class="flex flex-row justify-center items-center">
+            <div class="w-1/2 flex flex-col justify-center items-center">
+                <div class="w-20 mb-4 justify-center items-center">
+                    
+                    <img class="rounded-full" src="/images/lirantal-profile-picture.png" alt="Liran Tal profile picture" />
+                    <h3 class="text-sm mt-2 ">curated by Liran Tal</h3>
+                </div>
+        
+                <div class="mt-4 w-3/4">
+                    <DeveloperCircles />
+                </div>
+            </div>
 
-        <NewsletterForm />
-
-        <div class="mt-12">
-            <DeveloperCircles />
+            <div class="w-1/2">
+                <NewsletterForm />
+            </div>
         </div>
 
     </div>
