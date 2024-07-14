@@ -16,7 +16,7 @@ const meta = {
 
 
 import { getCollection } from 'astro:content';
-const blogEntries = await getCollection('newsletter');
+const newsletterEntries = await getCollection('newsletter');
 
 ---
 
@@ -33,7 +33,7 @@ const blogEntries = await getCollection('newsletter');
 
 		<div class="container px-5 py-8 mx-auto">
 			<div class="-my-8 divide-y-2 divide-gray-100">
-				{blogEntries.map((blogPostEntry, index) => (
+				{newsletterEntries.map((item, index) => (
 					<div>
 						<div class="py-8 flex flex-wrap md:flex-nowrap">
 							<div class="mt-1 md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
@@ -51,8 +51,8 @@ const blogEntries = await getCollection('newsletter');
 									</svg>
 
 									<span class="text-sm">
-										<time datetime={blogPostEntry.data.pubDate.toISOString()}>
-											{blogPostEntry.data.pubDate.toISOString().substring(0, 10)}
+										<time datetime={item.data.pubDate.toISOString()}>
+											{item.data.pubDate.toISOString().substring(0, 10)}
 										</time>
 										
 									</span>
@@ -64,10 +64,10 @@ const blogEntries = await getCollection('newsletter');
 
 							<div class="md:flex-grow">
 								<h2 class="text-xl">
-									<a href={`/newsletter/${blogPostEntry.slug}`}>{blogPostEntry.data.title}</a>
+									<a href={`/newsletter/${item.slug}`}>{item.data.title}</a>
 								</h2>
 								<p class="leading-relaxed"></p>
-								<a class="text-indigo-500 inline-flex items-center mt-4" href={`/newsletter/${blogPostEntry.slug}`}>
+								<a class="text-indigo-500 inline-flex items-center mt-4" href={`/newsletter/${item.slug}`}>
 									Read
 									<svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
 									<path d="M5 12h14"></path>
