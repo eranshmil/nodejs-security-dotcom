@@ -1,9 +1,9 @@
 ---
-title: Node.js security release, React Server Components authorization bypass, NodeConf EU and a collection of useful GitHub Actions
+title: Popular JavaScript polyfill library delivers malware, Node.js core performance boosts and more
 author: Liran Tal"
 description: 
 pubDate: 2024-06-27
-slug: "nodejs-security-release-react-server-components-authorization-bypass"
+slug: "popular-javascript-polyfill-library-delivers-malware-nodejs-core-performance-boosts"
 image: ~/assets/images/blog/intro-to-prototype-pollution.png
 ---
 
