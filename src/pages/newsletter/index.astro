@@ -17,6 +17,9 @@ const meta = {
 
 import { getCollection } from 'astro:content';
 const newsletterEntries = await getCollection('newsletter');
+const sortedByDateDescendingEntries = newsletterEntries.sort((a, b) => {
+	return new Date(b.data.pubDate) - new Date(a.data.pubDate);
+});
 
 ---
 
@@ -33,7 +36,7 @@ const newsletterEntries = await getCollection('newsletter');
 
 		<div class="container px-5 py-8 mx-auto">
 			<div class="-my-8 divide-y-2 divide-gray-100">
-				{newsletterEntries.map((item, index) => (
+				{sortedByDateDescendingEntries.map((item, index) => (
 					<div>
 						<div class="py-8 flex flex-wrap md:flex-nowrap">
 							<div class="md:flex-grow">
@@ -59,7 +62,7 @@ const newsletterEntries = await getCollection('newsletter');
 									</span>
 								</li>
 								<span class="mt-1 text-sm">
-									Issue #{++index}
+									Issue #{sortedByDateDescendingEntries.length - index}
 								</span>
 							</div>
 
